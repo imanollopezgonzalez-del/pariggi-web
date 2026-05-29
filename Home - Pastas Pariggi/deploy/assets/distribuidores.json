@@ -1,0 +1,62 @@
+{
+  "_comment": "Editá este archivo para sumar / quitar puntos de venta. 'online' = tiendas web. 'tiendas' = locales físicos con coordenadas. Las latitudes/longitudes se pueden obtener con https://nominatim.openstreetmap.org (gratuito) o desde Google Maps (botón derecho → 'Qué hay aquí').",
+  "online": [
+    {
+      "nombre": "Tienda Directa",
+      "region": "CABA y GBA",
+      "url": "https://www.tiendadirecta.com.ar/search/?q=pastas+pariggi",
+      "logo": null
+    },
+    {
+      "nombre": "The Fresh Market",
+      "region": "CABA y GBA",
+      "url": "https://www.thefreshmarket.com.ar/marcas/pastas-pariggi/",
+      "logo": null
+    },
+    {
+      "nombre": "Cedisur",
+      "region": "Patagonia Norte",
+      "url": "https://tienda.cedisur.com.ar/",
+      "logo": null
+    },
+    {
+      "nombre": "Distribuidora Santini",
+      "region": "CABA y GBA",
+      "url": "https://santinidistribuidora.whataform.com/",
+      "logo": null
+    },
+    {
+      "nombre": "Tienda Almendra",
+      "region": "CABA y GBA",
+      "url": "https://tiendaalmendra.com.ar/search/?q=pariggi",
+      "logo": null
+    },
+    {
+      "nombre": "Green & Co",
+      "region": "Todo el país",
+      "url": "https://www.greenco.com.ar/Galeria/381-pastas-pariggi",
+      "logo": null
+    },
+    {
+      "nombre": "Decanters",
+      "region": "CABA · GBA · La Plata",
+      "url": "https://decanters2.mitiendanube.com/pastas-congeladas",
+      "logo": null
+    }
+  ],
+  "tiendas": [
+    {
+      "id": "vc-fabrica",
+      "nombre": "Fábrica Pariggi",
+      "direccion": "Antonio Timoteo Gonzalez 2425",
+      "ciudad": "Villa Celina",
+      "provincia": "Buenos Aires",
+      "cp": "1772",
+      "telefono": "+54 9 11 7637-0365",
+      "horario": "Lun a Vie · 9 a 17 h",
+      "tipo": "fabrica",
+      "lat": -34.7068,
+      "lng": -58.4922
+    }
+  ]
+}

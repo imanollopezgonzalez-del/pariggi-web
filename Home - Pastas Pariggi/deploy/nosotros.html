@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nosotros — Pastas Pariggi</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+<script src="brand-loader.js"></script>
+
+<style>
+@font-face { font-family:'Veneer'; src:url('fonts/Veneer.ttf') format('truetype'); font-weight:400; font-display:swap; }
+@font-face { font-family:'Roboto'; src:url('fonts/Roboto-Thin.ttf') format('truetype'); font-weight:100; font-display:swap; }
+@font-face { font-family:'Roboto'; src:url('fonts/Roboto-Light.ttf') format('truetype'); font-weight:300; font-display:swap; }
+@font-face { font-family:'Roboto'; src:url('fonts/Roboto-Regular.ttf') format('truetype'); font-weight:400; font-display:swap; }
+@font-face { font-family:'Roboto'; src:url('fonts/Roboto-Medium.ttf') format('truetype'); font-weight:500; font-display:swap; }
+@font-face { font-family:'Roboto'; src:url('fonts/Roboto-Bold.ttf') format('truetype'); font-weight:700; font-display:swap; }
+
+:root{
+  --gold:#D99000;
+  --brown:#905F33;
+  --cream:#F5F0E8;
+  --ease: cubic-bezier(0.22,1,0.36,1);
+  --ease-io: cubic-bezier(0.65,0,0.35,1);
+}
+
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+
+html, body{
+  width:100%;
+  background:var(--cream);
+  color:#0a0a0a;
+  font-family:'Roboto', system-ui, sans-serif;
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='20' viewBox='0 0 28 20'><g fill='%23fff' stroke='%230a0a0a' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'><path d='M14 10 L3 2 C1.5 2 0.8 4 1.8 7 C0 8 0 12 1.8 13 C0.8 16 1.5 18 3 18 Z'/><path d='M14 10 L25 2 C26.5 2 27.2 4 26.2 7 C28 8 28 12 26.2 13 C27.2 16 26.5 18 25 18 Z'/><path d='M14 10 L7 5 M14 10 L7 15 M14 10 L21 5 M14 10 L21 15' fill='none'/><path d='M11 7 L14 10 L11 13 M17 7 L14 10 L17 13' fill='none'/></g></svg>") 14 10, auto;
+}
+a{ color:inherit; text-decoration:none; }
+button{ font-family:inherit; }
+a, button, .nav-link, .menu-list a, .burger, .menu-close, .topbar-logo{
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='20' viewBox='0 0 28 20'><g fill='%23C9A24B' stroke='%230a0a0a' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'><path d='M14 10 L3 2 C1.5 2 0.8 4 1.8 7 C0 8 0 12 1.8 13 C0.8 16 1.5 18 3 18 Z'/><path d='M14 10 L25 2 C26.5 2 27.2 4 26.2 7 C28 8 28 12 26.2 13 C27.2 16 26.5 18 25 18 Z'/><path d='M14 10 L7 5 M14 10 L7 15 M14 10 L21 5 M14 10 L21 15' fill='none'/><path d='M11 7 L14 10 L11 13 M17 7 L14 10 L17 13' fill='none'/></g></svg>") 14 10, pointer;
+}
+
+/* ============ TOP BAR ============ */
+.topbar{
+  position:fixed; top:0; left:0; right:0;
+  z-index:100;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 28px;
+  background-color:#F5F0E8;
+}
+.topbar-logo img{
+  display:block; width:160px; height:auto; object-fit:contain;
+  filter: brightness(0);
+}
+.topbar-right{ display:flex; align-items:center; gap:18px; }
+.topbar-social{ display:flex; align-items:center; gap:13px; }
+.topbar-social a{ display:flex; align-items:center; justify-content:center; color:inherit; opacity:.85; transition: color .4s var(--ease), opacity .3s var(--ease); }
+.topbar-social a:hover{ opacity:1; color:#D99000; }
+.topbar-social a svg{ width:20px; height:20px; display:block; }
+.topbar-social{ color:#0a0a0a; }
+.burger{
+  width:56px; height:56px;
+  display:flex; flex-direction:column; justify-content:center; align-items:flex-end;
+  gap:8px;
+  background:transparent; border:none;
+  padding:0 4px;
+}
+.burger span{
+  display:block; height:1.5px; background:#111;
+  transition: transform .5s var(--ease), width .5s var(--ease), opacity .3s var(--ease);
+  transform-origin:center;
+}
+.burger span:nth-child(1){ width:36px; }
+.burger span:nth-child(2){ width:26px; }
+.burger span:nth-child(3){ width:36px; }
+.burger.open span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
+.burger.open span:nth-child(2){ opacity:0; }
+.burger.open span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
+
+/* ============ SECTION 1 — TITLE + PHOTOS ============ */
+.somos{
+  background: var(--cream);
+  padding-top: 60px;
+}
+
+.somos-wrapper {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 16px;
+  padding: 60px 40px 30px;
+  white-space: nowrap;
+}
+.somos-label {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 64px;
+  letter-spacing: 0.15em;
+  color: #000;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+.somos-clip {
+  overflow: hidden;
+  height: 1.3em;
+  padding-bottom: 0.05em;
+  display: flex;
+  align-items: center;
+  font-size: 64px;
+  line-height: 1.1;
+}
+.somos-track {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.5s ease;
+}
+.somos-word {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 70px;
+  height: 70px;
+  color: #000;
+  text-transform: uppercase;
+  white-space: nowrap;
+  display: block;
+}
+
+/* photo stack */
+.photo-stack{
+  position: relative;
+  height: 720px;
+  margin: 0 auto;
+  max-width: 900px;
+  padding-bottom: 0;
+  z-index: 1;
+}
+.somos-pad{ padding-bottom: 70px; }
+
+.photo-stack .ps{
+  position: absolute;
+  opacity: 1;
+  will-change: z-index;
+}
+.photo-stack .ps img{
+  display:block;
+  width: auto;
+  height: auto;
+  max-height: 416px;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 0;
+}
+.photo-stack .ps img[src*="1.jpg"]{ max-height: 460px; }
+.photo-stack .ps img[src*="6.jpg"]{ max-height: 600px; width: 560px; max-width: 560px; }
+.photo-stack .ps img[src*="3.jpg"]{ max-height: 500px; border-radius: 0 !important; }
+
+/* sharp front, others slightly blurred to give protagonism */
+.photo-stack .ps img{
+  transition: opacity 2.5s ease-in-out, filter 2.5s ease-in-out;
+  filter: blur(2px);
+  opacity: 0.4;
+}
+.photo-stack .ps.is-front img{
+  filter: blur(0);
+  opacity: 1;
+}
+
+/* ============ SECTION 2 — HISTORIA ============ */
+.historia{
+  background: var(--cream);
+  display: flex;
+  align-items: flex-start;
+  padding: 80px 60px 20px;
+}
+.historia-text{
+  width: 65%;
+  padding-right: 60px;
+}
+.historia-image{
+  width: 35%;
+  position: sticky;
+  top: 0;
+  height: 94vh;
+  align-self: flex-start;
+  overflow: hidden;
+}
+.historia-image img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+  transform: scale(1.12);
+  display: block;
+}
+
+.historia-eyebrow{
+  font-family:'Roboto', sans-serif;
+  font-weight:400;
+  font-size:13px;
+  letter-spacing:0.35em;
+  color: var(--brown);
+  text-transform: uppercase;
+}
+.historia-title{
+  font-family:'Cormorant Garamond', serif;
+  font-weight:500;
+  font-size: clamp(48px, 6vw, 80px);
+  line-height: 0.98;
+  letter-spacing:-0.015em;
+  color:#000;
+  margin-top: 16px;
+}
+.historia-sub{
+  font-family:'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight:400;
+  font-size: 28px;
+  color: var(--brown);
+  margin-top: 12px;
+}
+.historia-rule{
+  width: 60px;
+  height: 1px;
+  background: var(--gold);
+  border: none;
+  margin: 24px 0;
+}
+.historia-body p{
+  font-family:'Roboto', sans-serif;
+  font-weight:400;
+  font-size: 18px;
+  line-height: 1.85;
+  color: #111;
+  margin-bottom: 28px;
+  text-wrap: pretty;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.historia-body p:nth-child(1){ transition-delay: 0s;   }
+.historia-body p:nth-child(2){ transition-delay: 0.1s; }
+.historia-body p:nth-child(3){ transition-delay: 0.2s; }
+.historia-body p:nth-child(4){ transition-delay: 0.3s; }
+.historia-body p.visible{
+  opacity: 1;
+  transform: translateY(0);
+}
+.historia-body p em{ color: var(--brown); font-style: italic; }
+
+.historia-tagline{
+  font-family:'Cormorant Garamond', serif;
+  font-style:italic;
+  font-weight:500;
+  font-size: clamp(26px, 2.4vw, 34px);
+  line-height: 1.3;
+  color:#000;
+  margin: 16px 0 36px;
+  letter-spacing:-0.005em;
+  max-width: 28ch;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.historia-tagline.visible{ opacity:1; transform: translateY(0); }
+
+.historia-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  padding: 20px 56px;
+  border: 1px solid var(--gold);
+  background-color: var(--gold);
+  color: #000;
+  font-family:'Roboto', sans-serif;
+  font-weight:400;
+  font-size: 13px;
+  letter-spacing:0.25em;
+  text-transform:uppercase;
+  transition: background-color .4s var(--ease), color .4s var(--ease), border-color .4s var(--ease);
+}
+.historia-cta .arrow{ display:inline-block; transition: transform .4s var(--ease); }
+.historia-cta:hover{ background-color: #000; color: var(--gold); border-color: #000; }
+.historia-cta:hover .arrow{ transform: translateX(6px); }
+
+/* ============ CONTACTO ============ */
+:root{ --ink:#1a1a1a; --muted:#6a6660; --cream-2:#EFE9DD; --gold-deep:#A26A00; --rule:rgba(0,0,0,0.12); }
+.nos-contacto{
+  background: var(--cream-2);
+  padding: 100px 60px 110px;
+  border-top: 1px solid var(--rule);
+}
+.nos-contacto-inner{
+  max-width: 1280px; margin: 0 auto;
+  display:grid; grid-template-columns: 1fr 1.1fr; gap: clamp(50px,7vw,100px);
+  align-items: flex-start;
+}
+.nc-eyebrow{
+  font-family:'Roboto', sans-serif; font-weight:300; font-size:11px;
+  letter-spacing:0.42em; text-transform:uppercase; color:var(--gold); margin-bottom:16px;
+}
+.nc-title{
+  font-family:'Veneer', sans-serif; font-weight:400;
+  font-size: clamp(44px, 5.4vw, 84px); line-height:0.96; letter-spacing:0.04em;
+  text-transform:uppercase; color:var(--ink); margin-bottom:22px;
+}
+.nc-title em{ font-style:normal; color:var(--gold); }
+.nc-lead{
+  font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:500;
+  font-size: clamp(18px,1.7vw,24px); line-height:1.35; color:var(--ink);
+  max-width:460px; text-wrap:balance; margin:24px 0 36px;
+}
+.nc-info{ display:flex; flex-direction:column; margin-top:8px; }
+.nc-info-item{
+  display:flex; gap:14px; align-items:flex-start; padding:14px 0;
+  border-top:1px solid var(--rule);
+  font-family:'Roboto', sans-serif; font-weight:300; font-size:14.5px; color:var(--ink);
+}
+.nc-info-item:last-of-type{ border-bottom:1px solid var(--rule); }
+.nc-info-item .ci-k{
+  flex:0 0 90px; font-size:10px; letter-spacing:0.32em; text-transform:uppercase;
+  color:var(--muted); padding-top:3px;
+}
+.nc-info-item .ci-v strong{ font-weight:500; display:block; font-size:16px; margin-bottom:2px; }
+.nc-social{ margin-top:30px; display:flex; align-items:center; gap:16px; }
+.nc-social .cs-label{
+  font-family:'Roboto', sans-serif; font-weight:400; font-size:10px;
+  letter-spacing:0.32em; text-transform:uppercase; color:var(--muted);
+}
+.nc-social a{
+  width:42px; height:42px; border:1px solid var(--rule); border-radius:50%;
+  display:flex; align-items:center; justify-content:center; color:var(--ink);
+  transition: background-color .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease), transform .3s var(--ease);
+}
+.nc-social a svg{ width:20px; height:20px; }
+.nc-social a:hover{ background:var(--gold); border-color:var(--gold); color:#fff; transform:translateY(-2px); }
+form.nc-form{
+  display:grid; grid-template-columns:1fr 1fr; gap:22px;
+  background:var(--cream); padding:36px; border:1px solid var(--rule);
+}
+form.nc-form .field-full{ grid-column:1 / -1; }
+form.nc-form label{
+  display:flex; flex-direction:column; gap:8px;
+  font-family:'Roboto', sans-serif; font-weight:400; font-size:10px;
+  letter-spacing:0.32em; text-transform:uppercase; color:var(--muted);
+}
+form.nc-form input, form.nc-form select, form.nc-form textarea{
+  font-family:'Roboto', sans-serif; font-weight:300; font-size:15px; color:var(--ink);
+  padding:12px 0; background:transparent; border:none; border-bottom:1px solid rgba(0,0,0,0.25);
+  outline:none; transition:border-color .3s var(--ease); letter-spacing:normal; text-transform:none;
+}
+form.nc-form input:focus, form.nc-form select:focus, form.nc-form textarea:focus{ border-bottom-color:var(--gold); }
+form.nc-form textarea{ resize:vertical; min-height:110px; }
+form.nc-form select{
+  appearance:none; -webkit-appearance:none;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><polyline points='1,1 5,5 9,1' fill='none' stroke='%231a1a1a' stroke-width='1.2'/></svg>");
+  background-repeat:no-repeat; background-position:right 6px center; padding-right:22px;
+}
+form.nc-form .submit-row{ display:flex; justify-content:flex-start; margin-top:10px; }
+form.nc-form button{
+  display:inline-flex; align-items:center; gap:14px; padding:16px 32px;
+  background:var(--ink); color:#fff; font-family:'Roboto', sans-serif; font-weight:500;
+  font-size:12px; letter-spacing:0.3em; text-transform:uppercase; border:1px solid var(--ink);
+  transition: background-color .3s var(--ease), color .3s var(--ease), gap .3s var(--ease);
+}
+form.nc-form button:hover{ background:var(--gold); border-color:var(--gold); gap:22px; }
+form.nc-form button .arrow-btn{ width:22px; height:1px; background:currentColor; position:relative; }
+form.nc-form button .arrow-btn::after{
+  content:""; position:absolute; right:0; top:-4px; width:9px; height:9px;
+  border-right:1px solid currentColor; border-top:1px solid currentColor; transform:rotate(45deg);
+}
+.nc-success{
+  display:none; grid-column:1 / -1; padding:22px 18px;
+  background:rgba(217,144,0,0.12); border:1px solid var(--gold); color:var(--ink);
+  font-family:'Cormorant Garamond', serif; font-style:italic; font-size:18px; text-align:center;
+}
+.nc-success.on{ display:block; }
+
+.nos-foot{
+  background:var(--cream); padding:80px 60px 100px; text-align:center;
+}
+.nos-foot-text{
+  font-family:'Veneer', sans-serif; font-weight:400;
+  font-size: clamp(28px,3.4vw,44px); letter-spacing:0.12em; text-transform:uppercase;
+  color:var(--ink); line-height:1.1;
+}
+.nos-foot-text .sep{ color:var(--gold); margin:0 14px; }
+
+@media (max-width: 900px){
+  .nos-contacto{ padding: 70px 24px 80px; }
+  .nos-contacto-inner{ grid-template-columns:1fr; gap:40px; }
+  form.nc-form{ grid-template-columns:1fr; }
+}
+
+/* ============ MENU PANEL ============ */
+.menu-panel{
+  position:fixed; inset:0;
+  z-index:200;
+  background:var(--cream);
+  color:#111;
+  transform: translateY(-100%);
+  transition: transform .9s var(--ease-io);
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  visibility:hidden;
+  pointer-events:none;
+}
+.menu-panel.open{
+  transform: translateY(0);
+  visibility:visible;
+  pointer-events:auto;
+}
+.menu-topbar{
+  position:absolute; top:0; left:0; right:0;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:24px 36px;
+  z-index:3;
+  pointer-events:none;
+}
+.menu-topbar > *{ pointer-events:auto; }
+.menu-topbar img{ display:block; width:160px; height:auto; filter: brightness(0) invert(1); }
+.menu-close{
+  width:44px; height:44px;
+  display:flex; align-items:center; justify-content:center;
+  background:transparent; border:none;
+  color:#111;
+}
+.menu-close svg{ width:22px; height:22px; }
+
+.menu-image{ position:relative; overflow:hidden; background:#111; }
+.menu-image .mi{
+  position:absolute; inset:0;
+  background-size:cover; background-position:center;
+  opacity:0;
+  transition: opacity .9s var(--ease), transform 6s ease;
+  filter: brightness(0.6) contrast(1.1);
+}
+.menu-image .mi.active{ opacity:1; transform: scale(1.04); }
+.menu-image::after{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.45) 100%);
+  pointer-events:none;
+}
+
+.menu-right{
+  display:flex; flex-direction:column; justify-content:center;
+  padding: 120px 8vw 60px;
+  position:relative;
+}
+.menu-list{ list-style:none; display:flex; flex-direction:column; }
+.menu-list li{ border-bottom:1px solid rgba(0,0,0,0.12); }
+.menu-list li:first-child{ border-top:1px solid rgba(0,0,0,0.12); }
+.menu-list a{
+  display:flex; align-items:center; justify-content:flex-end;
+  gap:18px;
+  padding: clamp(18px, 2.2vw, 28px) 0;
+  font-family:'Cormorant Garamond', serif;
+  font-weight:500;
+  font-size: clamp(42px, 5vw, 64px);
+  line-height:1;
+  color:#0b0b0b;
+  text-align:right;
+  transition: color .3s var(--ease);
+}
+.menu-list a .dot{
+  width:8px; height:8px; border-radius:50%;
+  background:var(--gold); opacity:0;
+  transform: translateX(-8px) scale(0.4);
+  transition: opacity .4s var(--ease), transform .4s var(--ease);
+}
+.menu-list a .lbl{ display:inline-block; transition: transform .5s var(--ease); }
+.menu-list a:hover .dot{ opacity:1; transform: translateX(0) scale(1); }
+.menu-list a:hover .lbl{ transform: translateX(-12px); color: var(--gold); }
+.menu-list a:hover{ color: var(--gold); }
+.menu-list a .num{
+  font-family:'Roboto', sans-serif;
+  font-weight:300; font-size:12px; letter-spacing:0.3em;
+  color:rgba(0,0,0,0.35);
+  margin-left:24px;
+  align-self:flex-start;
+  padding-top:10px;
+}
+
+/* ============ CURSOR ============ */
+.cursor{
+  position:fixed; top:0; left:0;
+  width:36px; height:36px;
+  border:1.5px solid #fff;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:99999;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  transition: width .3s var(--ease), height .3s var(--ease);
+}
+.cursor.big{ width:72px; height:72px; background:rgba(255,255,255,0.08); }
+.cursor.dot{
+  width:4px; height:4px; border-radius:50%;
+  background:#fff; border:none;
+  z-index:99999;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 900px){
+  .somos-clip, .somos-word{ font-size: 36px; }
+  #photoStack{ height: 480px; max-width: 100%; }
+  .photo-stack .ps img{ max-height: 220px; }
+  .historia{ flex-direction: column; padding: 60px 24px; }
+  .historia-text, .historia-image{ width: 100%; padding-right: 0; }
+  .historia-image{ position: relative; height: 70vh; margin-top: 40px; }
+  .menu-panel{ grid-template-columns: 1fr; }
+  .menu-image{ display:none; }
+  .menu-list a{ font-size: 38px; }
+}
+</style>
+<style id="menu-unify">
+.menu-topbar-right{ display:flex; align-items:center; gap:14px; pointer-events:auto; }
+.menu-social{ width:40px; height:40px; border:1px solid var(--rule, rgba(0,0,0,0.18)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--ink, #1a1a1a); transition: background-color .3s var(--ease, ease), color .3s var(--ease, ease), border-color .3s var(--ease, ease), transform .3s var(--ease, ease); }
+.menu-social svg{ width:18px; height:18px; }
+.menu-social:hover{ background:var(--gold, #D99000); border-color:var(--gold, #D99000); color:#fff; transform:translateY(-2px); }
+
+.menu-list .has-sub > a > .caret{ display:inline-flex; align-items:center; justify-content:center; width:18px; height:18px; margin-left:8px; border:1px solid currentColor; border-radius:50%; font-family:'Roboto', sans-serif; font-weight:400; font-size:12px; line-height:1; opacity:0.6; transition: transform .35s var(--ease, ease), opacity .25s var(--ease, ease); align-self:flex-start; margin-top:16px; }
+.menu-list .has-sub:hover > a > .caret, .menu-list .has-sub.open > a > .caret{ opacity:1; transform: rotate(45deg); }
+.menu-list .submenu{ list-style:none; display:flex; flex-direction:column; max-height:0; overflow:hidden; transition: max-height .55s var(--ease, ease); }
+.menu-list .has-sub:hover > .submenu, .menu-list .has-sub.open > .submenu{ max-height:320px; }
+.menu-list .submenu li{ border:none; border-top:1px dashed rgba(0,0,0,0.12); }
+.menu-list .submenu li:first-child{ border-top:1px dashed rgba(0,0,0,0.12); }
+.menu-list .submenu a{ display:flex; flex-direction:column; align-items:flex-end; gap:4px; padding:18px 0; text-align:right; font-size:18px; line-height:1.15; font-family:'Roboto', sans-serif; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink, #1a1a1a); transition: color .25s var(--ease, ease), transform .35s var(--ease, ease); }
+.menu-list .submenu a .sub-hint{ font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:400; font-size:15px; letter-spacing:0; text-transform:none; color:var(--muted, #6a6660); }
+.menu-list .submenu a:hover{ color:var(--gold, #D99000); transform:translateX(-8px); }
+.menu-list .submenu a:hover .sub-hint{ color:rgba(217,144,0,0.8); }
+</style>
+</head>
+<body>
+
+<!-- ============ CURSOR ============ -->
+<div class="cursor" id="cursor" style="display:none"></div>
+<div class="cursor dot" id="cursorDot" style="display:none"></div>
+
+<!-- ============ TOP BAR ============ -->
+<div class="topbar" id="topbar">
+  <a href="Home.html" class="topbar-logo" aria-label="Pariggi">
+    <img src="assets/logo-pariggi-transparente.png" alt="Pariggi" />
+  </a>
+  <div class="topbar-right"><div class="topbar-social"><a href="https://www.instagram.com/pastaspariggi/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg></a><a href="https://www.facebook.com/pastaspariggi/?locale=es_LA" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.3h2.45l.37-2.85H13.5V9.04c0-.83.23-1.39 1.42-1.39h1.51V5.1c-.26-.03-1.16-.11-2.2-.11-2.18 0-3.67 1.33-3.67 3.77v2.1H8.1v2.85h2.46V21h2.94z"/></svg></a></div><button class="burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button></div>
+</div>
+
+<!-- ============ SECTION 1 ============ -->
+<section class="somos" data-screen-label="Nosotros — Somos">
+  <div style="display:flex; align-items:baseline; justify-content:center; padding:100px 40px 60px; gap:20px;">
+    <span id="somos-label" style="font-family:Roboto,sans-serif; font-weight:300; font-size:64px; letter-spacing:0.15em; color:#000; text-transform:uppercase; flex-shrink:0; line-height:1;">SOMOS</span>
+    <div id="somos-clip" style="overflow:hidden; height:64px; padding:0; display:flex; align-items:flex-start; flex-shrink:0;">
+      <div id="somos-track" style="display:flex; flex-direction:column; transition:transform 0.5s ease; will-change:transform;">
+        <span class="somos-word">COCINA</span>
+        <span class="somos-word">TRADICIÓN</span>
+        <span class="somos-word">CALIDAD</span>
+        <span class="somos-word">TRIGO CANDEAL</span>
+        <span class="somos-word">EFICIENCIA</span>
+        <span class="somos-word">COCINA</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="somos-pad">
+    <div class="photo-stack" id="photoStack"></div>
+  </div>
+</section>
+
+<!-- ============ SECTION 2 ============ -->
+<section class="historia" data-screen-label="Nosotros — Historia">
+  <div class="historia-text">
+    <div class="historia-eyebrow">Pariggi · Come una volta</div>
+    <h1 class="historia-title">Nuestra Historia</h1>
+    <p class="historia-sub">De cocineros, para cocineros.</p>
+    <hr class="historia-rule" />
+
+    <div class="historia-body">
+      <p>En 2018, Luciano y Joela detectaron un problema concreto en la gastronomía argentina: la pasta fresca había perdido calidad. El mercado se había acostumbrado a harinas de trigo blando, almidones y conservantes que producen un resultado inconsistente, poco digerible y sin la firmeza que una cocina profesional exige.</p>
+
+      <p>Luciano trabajó en cocinas de tradición italiana en Venecia y San Pablo. Joela creció con la pasta del domingo amasada por manos de mujeres de su familia siciliana. Dos caminos distintos, una misma convicción: la pasta de verdad se hace con sémola de trigo candeal, sin atajos.</p>
+
+      <p>Nació Pariggi. <em>Come una volta</em> — como era antes. Un producto elaborado en la provincia de Buenos Aires, 100% con sémola de trigo candeal, trafilado en bronce para mayor adherencia a la salsa, laminado a 0,7 mm. Sin conservantes. Sin colorantes. Una pasta con dente real, firme en su punto, que sale igual siempre.</p>
+
+      <p>Pariggi es para el cocinero que exige consistencia. Para el chef que necesita que la receta salga igual de lunes a lunes. Para la cocina profesional que no puede permitirse mermas, procesos extra ni resultados impredecibles. Eficiencia sin resignar calidad.</p>
+    </div>
+
+    <p class="historia-tagline">Un producto pensado por cocineros, para&nbsp;cocineros.</p>
+
+    <a href="productos.html" class="historia-cta">
+      <span>Conocé nuestros productos</span>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+
+  <div class="historia-image">
+    <img src="assets/somos/luciano_joela.jpg" alt="Luciano y Joela" />
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="nos-contacto" id="contacto" data-screen-label="Nosotros — Contacto">
+  <div class="nos-contacto-inner">
+    <div class="nc-text">
+      <div class="nc-eyebrow">Hablemos</div>
+      <h2 class="nc-title">Escribínos y<br/>te <em>contactamos</em></h2>
+      <p class="nc-lead">Contanos qué necesitás — restaurante, catering, distribución o exportación — y armamos una propuesta a tu medida.</p>
+
+      <div class="nc-info">
+        <div class="nc-info-item">
+          <span class="ci-k">Pedidos</span>
+          <span class="ci-v"><strong>+54 9 11 7637-0365</strong>Lunes a viernes de 9 a 15 h</span>
+        </div>
+        <div class="nc-info-item">
+          <span class="ci-k">Email</span>
+          <span class="ci-v"><strong>pedidos@pariggi.com.ar</strong>Respondemos en menos de 24 h hábiles</span>
+        </div>
+        <div class="nc-info-item">
+          <span class="ci-k">Planta</span>
+          <span class="ci-v"><strong>Chivilcoy, Buenos Aires</strong>Distribución a todo el país</span>
+        </div>
+      </div>
+
+      <div class="nc-social">
+        <span class="cs-label">Seguinos</span>
+        <a href="https://www.instagram.com/pastaspariggi/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.facebook.com/pastaspariggi/?locale=es_LA" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.3h2.45l.37-2.85H13.5V9.04c0-.83.23-1.39 1.42-1.39h1.51V5.1c-.26-.03-1.16-.11-2.2-.11-2.18 0-3.67 1.33-3.67 3.77v2.1H8.1v2.85h2.46V21h2.94z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <form class="nc-form" id="nosForm" novalidate>
+      <label>Nombre y apellido
+        <input type="text" name="nombre" required placeholder="Tu nombre" />
+      </label>
+      <label>Empresa o local
+        <input type="text" name="empresa" placeholder="Nombre de tu negocio" />
+      </label>
+      <label>Email
+        <input type="email" name="email" required placeholder="tu@correo.com" />
+      </label>
+      <label>Teléfono
+        <input type="tel" name="telefono" placeholder="+54 9 11 7637-0365" />
+      </label>
+      <label>Tipo de consulta
+        <select name="tipo" required>
+          <option value="">Seleccionar</option>
+          <option>Restaurante</option>
+          <option>Catering</option>
+          <option>Comedor / Hotelería</option>
+          <option>Distribuidor</option>
+          <option>Exportador</option>
+          <option>Consumidor final</option>
+          <option>Otro</option>
+        </select>
+      </label>
+      <label>Localidad
+        <input type="text" name="localidad" placeholder="Ciudad / Provincia" />
+      </label>
+      <label class="field-full">Contanos qué necesitás
+        <textarea name="mensaje" placeholder="Productos de interés, frecuencia estimada, plazos, etc."></textarea>
+      </label>
+      <div class="nc-success" id="nosFormOk">¡Gracias! Recibimos tu mensaje — te respondemos en menos de 24 hs hábiles.</div>
+      <div class="submit-row field-full">
+        <button type="submit">Enviar consulta<span class="arrow-btn"></span></button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<div class="nos-foot">
+  <div class="nos-foot-text">Pastas Pariggi <span class="sep">—</span> come una volta</div>
+</div>
+
+<!-- ============ MENU PANEL ============ -->
+<aside class="menu-panel" id="menuPanel" aria-hidden="true">
+  <div class="menu-topbar">
+    <a href="Home.html" class="menu-logo-link" aria-label="Pariggi — Inicio">
+      <img src="assets/logo-pariggi-transparente.png" alt="Pariggi" />
+    </a>
+    <div class="menu-topbar-right">
+      <a class="menu-social" href="https://www.instagram.com/pastaspariggi/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a class="menu-social" href="https://www.facebook.com/pastaspariggi/?locale=es_LA" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.3h2.45l.37-2.85H13.5V9.04c0-.83.23-1.39 1.42-1.39h1.51V5.1c-.26-.03-1.16-.11-2.2-.11-2.18 0-3.67 1.33-3.67 3.77v2.1H8.1v2.85h2.46V21h2.94z"/></svg>
+      </a>
+      <button class="menu-close" id="menuClose" aria-label="Cerrar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+          <line x1="5" y1="5" x2="19" y2="19"/>
+          <line x1="19" y1="5" x2="5" y2="19"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="menu-image" id="menuImage">
+    <div class="mi" data-key="nosotros"       style="background-image:url('assets/menu-nosotros.jpg');"></div>
+    <div class="mi" data-key="productos"      style="background-image:url('assets/menu-productos.jpg');"></div>
+    <div class="mi" data-key="metodo"         style="background-image:url('assets/menu-metodo.jpg');"></div>
+    <div class="mi" data-key="b2b"            style="background-image:url('assets/menu-b2b.jpg');"></div>
+    <div class="mi" data-key="distribuidores" style="background-image:url('assets/menu-distribuidores.jpg');"></div>
+    <div class="mi" data-key="contacto"       style="background-image:url('assets/menu-general.jpg');"></div>
+    <div class="mi active" data-key="__default" style="background-image:url('assets/menu-general.jpg');"></div>
+  </div>
+
+  <div class="menu-right">
+    <ul class="menu-list">
+      <li><a href="nosotros.html" data-key="nosotros"      ><span class="dot"></span><span class="lbl">Nosotros</span><span class="num">01</span></a></li>
+      <li><a href="productos.html" data-key="productos"        ><span class="dot"></span><span class="lbl">Productos</span><span class="num">02</span></a></li>
+      <li><a href="metodo.html" data-key="metodo"                    ><span class="dot"></span><span class="lbl">Método</span><span class="num">03</span></a></li>
+      <li class="has-sub" id="menuB2B"><a href="b2b.html" data-key="b2b"          ><span class="dot"></span><span class="lbl">B2B</span><span class="caret">+</span><span class="num">04</span></a>
+        <ul class="submenu">
+          <li><a href="contacto.html">Quiero ser cliente<span class="sub-hint">Hacer pedidos · catering · distribución</span></a></li>
+          <li><a href="http://186.123.162.186:8187/PortalClientes" target="_blank" rel="noopener">Portal mayorista<span class="sub-hint">Ingresá a tu cuenta y hacé tus pedidos</span></a></li>
+        </ul>
+      </li>
+      <li><a href="distribuidores.html" data-key="distribuidores"            ><span class="dot"></span><span class="lbl">Distribuidores</span><span class="num">05</span></a></li>
+      <li><a href="contacto.html" data-key="contacto" ><span class="dot"></span><span class="lbl">Contacto</span><span class="num">06</span></a></li>
+    </ul>
+  </div>
+</aside>
+
+<script>
+/* ---------- Cursor ---------- */
+const cur = document.getElementById('cursor');
+const dot = document.getElementById('cursorDot');
+let mx = innerWidth/2, my = innerHeight/2, cx = mx, cy = my;
+addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.left = mx+'px'; dot.style.top = my+'px'; });
+function loop(){
+  cx += (mx - cx) * 0.18;
+  cy += (my - cy) * 0.18;
+  cur.style.left = cx+'px'; cur.style.top = cy+'px';
+  requestAnimationFrame(loop);
+}
+loop();
+document.querySelectorAll('a, button').forEach(el => {
+  el.addEventListener('mouseenter', () => cur.classList.add('big'));
+  el.addEventListener('mouseleave', () => cur.classList.remove('big'));
+});
+
+/* ---------- Menu ---------- */
+const burger = document.getElementById('burger');
+const panel  = document.getElementById('menuPanel');
+const closeBtn = document.getElementById('menuClose');
+const imgs = document.querySelectorAll('.menu-image .mi');
+function openMenu(){ burger.classList.add('open'); panel.classList.add('open'); panel.setAttribute('aria-hidden','false'); }
+function closeMenu(){ burger.classList.remove('open'); panel.classList.remove('open'); panel.setAttribute('aria-hidden','true'); }
+burger.addEventListener('click', () => panel.classList.contains('open') ? closeMenu() : openMenu());
+closeBtn.addEventListener('click', closeMenu);
+document.querySelectorAll('.menu-list a').forEach(a => {
+  a.addEventListener('mouseenter', () => {
+    const k = a.dataset.key;
+    imgs.forEach(i => i.classList.toggle('active', i.dataset.key === k));
+  });
+  a.addEventListener('mouseleave', () => {
+    imgs.forEach(i => i.classList.toggle('active', i.dataset.key === '__default'));
+  });
+});
+
+/* ---------- Title rotator: continuous loop, no rebound ---------- */
+const track = document.getElementById('somos-track');
+const words = track.querySelectorAll('.somos-word');
+const wordHeight = 70;
+let current = 0;
+let animating = false;
+
+setInterval(() => {
+  if (animating) return;
+  animating = true;
+  current++;
+  track.style.transition = 'transform 0.5s ease';
+  track.style.transform = `translateY(-${current * wordHeight}px)`;
+
+  setTimeout(() => {
+    if (current >= words.length - 1) {
+      track.style.transition = 'none';
+      track.style.transform = 'translateY(0)';
+      current = 0;
+    }
+    animating = false;
+  }, 550);
+}, 2500);
+
+/* ---------- Photo stack ---------- */
+const photoSrcs = [
+  'assets/somos/1.jpg',
+  'assets/somos/2.jpg',
+  'assets/somos/3.jpg',
+  'assets/somos/4.jpg',
+  'assets/somos/5.jpg',
+  'assets/somos/6.jpg',
+  'assets/somos/7.jpg',
+  'assets/somos/8.jpg',
+  'assets/somos/9.jpg'
+];
+
+const layouts = [
+  { top:  2, left:  6, r: -3 },
+  { top:  9, left: 36, r:  2 },
+  { top:  0, left: 62, r: -4 },
+  { top: 22, left: 16, r:  3 },
+  { top: 17, left: 46, r: -1 },
+  { top: 16, left: 42, r:  4 },
+  { top: 33, left: 28, r: -2 },
+  { top: 29, left: 58, r:  2 },
+  { top: 26, left:  4, r:  4 }
+];
+
+const stackEl = document.getElementById('photoStack');
+photoSrcs.forEach((src, i) => {
+  const wrap = document.createElement('div');
+  wrap.className = 'ps';
+  const L = layouts[i % layouts.length];
+  wrap.style.top  = L.top  + '%';
+  wrap.style.left = L.left + '%';
+  wrap.style.transform = `rotate(${L.r}deg)`;
+  wrap.style.zIndex = String(i + 1);
+
+  const img = document.createElement('img');
+  img.src = src;
+  img.alt = '';
+  img.style.opacity = '0';
+  img.style.transition = 'opacity 0.8s ease';
+  if (img.complete && img.naturalWidth > 0) {
+    img.style.opacity = '1';
+  } else {
+    img.addEventListener('load', () => { img.style.opacity = '1'; }, { once: true });
+    img.addEventListener('error', () => { img.style.opacity = '1'; }, { once: true });
+  }
+  wrap.appendChild(img);
+  stackEl.appendChild(wrap);
+});
+
+function iniciarLoop() {
+  const wrappers = document.querySelectorAll('.photo-stack .ps');
+  let topIndex = 20;
+  let current = 0;
+
+  wrappers.forEach((w, i) => {
+    w.style.opacity = '1';
+    w.style.visibility = 'visible';
+    w.style.zIndex = i + 1;
+  });
+
+  setInterval(() => {
+    current = (current + 1) % wrappers.length;
+    topIndex++;
+    wrappers[current].style.zIndex = topIndex;
+
+    // soft reveal: retrigger the animation on the new top photo
+    wrappers.forEach(w => w.classList.remove('is-front'));
+    // force reflow so the animation restarts cleanly
+    void wrappers[current].offsetWidth;
+    wrappers[current].classList.add('is-front');
+  }, 800);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', iniciarLoop);
+} else {
+  iniciarLoop();
+}
+
+/* ---------- Paragraph reveal/hide on scroll ---------- */
+const revealItems = document.querySelectorAll('.historia-body p, .historia-tagline');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting){
+      e.target.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+      e.target.classList.add('visible');
+    } else {
+      e.target.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+      e.target.classList.remove('visible');
+    }
+  });
+}, { threshold: [0, 0.2] });
+revealItems.forEach(p => io.observe(p));
+
+/* ---------- Contact form ---------- */
+const nosForm = document.getElementById('nosForm');
+const nosFormOk = document.getElementById('nosFormOk');
+if (nosForm){
+  nosForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let valid = true;
+    nosForm.querySelectorAll('[required]').forEach(r => {
+      if (!r.value.trim()){
+        valid = false;
+        r.style.borderBottomColor = '#c33';
+        r.addEventListener('input', () => { r.style.borderBottomColor = ''; }, { once: true });
+      }
+    });
+    if (!valid) return;
+    nosForm.querySelectorAll('input, select, textarea, button').forEach(el => el.disabled = true);
+    nosFormOk.classList.add('on');
+  });
+}
+</script>
+<script src="social-float.js"></script>
+
+<script>
+(function(){
+  var menuB2B=document.getElementById('menuB2B');
+  if(menuB2B){
+    var trigger=menuB2B.querySelector('a[data-key="b2b"]');
+    if(trigger){ trigger.addEventListener('click',function(e){
+      if(!matchMedia('(hover: none)').matches) return;
+      if(!menuB2B.classList.contains('open')){ e.preventDefault(); menuB2B.classList.add('open'); }
+    }); }
+  }
+})();
+</script>
+</body>
+</html>

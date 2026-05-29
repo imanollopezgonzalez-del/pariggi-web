@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Método e Ingredientes — Pastas Pariggi</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+<script src="brand-loader.js"></script>
+
+<style>
+@font-face { font-family:'Veneer';     src:url('fonts/Veneer.ttf') format('truetype'); font-weight:400; font-display:swap; }
+@font-face { font-family:'Arca Heavy'; src:url('fonts/Arca-Heavy.ttf') format('truetype'); font-weight:900; font-display:swap; }
+@font-face { font-family:'Roboto';     src:url('fonts/Roboto-Thin.ttf')    format('truetype'); font-weight:100; font-display:swap; }
+@font-face { font-family:'Roboto';     src:url('fonts/Roboto-Light.ttf')   format('truetype'); font-weight:300; font-display:swap; }
+@font-face { font-family:'Roboto';     src:url('fonts/Roboto-Regular.ttf') format('truetype'); font-weight:400; font-display:swap; }
+@font-face { font-family:'Roboto';     src:url('fonts/Roboto-Medium.ttf')  format('truetype'); font-weight:500; font-display:swap; }
+@font-face { font-family:'Roboto';     src:url('fonts/Roboto-Bold.ttf')    format('truetype'); font-weight:700; font-display:swap; }
+
+:root{
+  --black:#0a0a0a;
+  --gold:#D99000;
+  --brown:#905F33;
+  --cream:#F5F0E8;
+  --cream-2:#EFE9DD;
+  --ink:#1a1a1a;
+  --muted:#6a6660;
+  --rule:rgba(0,0,0,0.12);
+  --ease: cubic-bezier(0.22,1,0.36,1);
+}
+
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+html,body{
+  background:var(--cream);
+  color:var(--ink);
+  font-family:'Roboto', system-ui, sans-serif;
+  font-weight:300;
+  -webkit-font-smoothing:antialiased;
+}
+a{ color:inherit; text-decoration:none; }
+button{ font-family:inherit; cursor:pointer; }
+img{ display:block; max-width:100%; }
+
+/* ============ TOP BAR ============ */
+.topbar{
+  position:fixed; top:0; left:0; right:0;
+  z-index:100;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 28px;
+  background: transparent;
+  transition: background-color .4s var(--ease), border-color .4s var(--ease);
+  border-bottom: 1px solid transparent;
+}
+.topbar.scrolled{
+  background:var(--cream);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.topbar-logo img{
+  display:block; width:160px; height:auto; object-fit:contain;
+  filter: brightness(0) invert(1);
+  transition: filter .4s var(--ease);
+}
+.topbar.scrolled .topbar-logo img{ filter: brightness(0); }
+.topbar-right{ display:flex; align-items:center; gap:18px; }
+.topbar-social{ display:flex; align-items:center; gap:13px; }
+.topbar-social a{ display:flex; align-items:center; justify-content:center; color:inherit; opacity:.85; transition: color .4s var(--ease), opacity .3s var(--ease); }
+.topbar-social a:hover{ opacity:1; color:#D99000; }
+.topbar-social a svg{ width:20px; height:20px; display:block; }
+.topbar-social{ color:#fff; }
+.topbar.scrolled .topbar-social{ color:#0a0a0a; }
+.burger{
+  width:44px; height:44px;
+  display:flex; flex-direction:column; justify-content:center; align-items:flex-end;
+  gap:7px;
+  background:transparent; border:none;
+  padding:0 4px;
+}
+.burger span{
+  display:block; height:1px;
+  background:#fff;
+  transition: transform .5s var(--ease), width .5s var(--ease), opacity .3s var(--ease), background-color .4s var(--ease);
+  transform-origin:center;
+}
+.topbar.scrolled .burger span{ background:#0a0a0a; }
+.burger span:nth-child(1){ width:32px; }
+.burger span:nth-child(2){ width:22px; }
+.burger span:nth-child(3){ width:32px; }
+.burger.open span:nth-child(1){ transform: translateY(7px) rotate(45deg); width:32px; }
+.burger.open span:nth-child(2){ opacity:0; }
+.burger.open span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); width:32px; }
+
+/* ============ HERO with looping video ============ */
+.hero{
+  position:relative;
+  width:100%;
+  height: 100vh;
+  min-height: 620px;
+  overflow:hidden;
+  background:#000;
+}
+.hero-video{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover;
+  z-index:1;
+}
+.hero-overlay{
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse at center, rgba(0,0,0,0.25) 35%, rgba(0,0,0,0.65) 100%),
+    linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 35%, rgba(0,0,0,0.25) 70%, rgba(0,0,0,0.7) 100%);
+  z-index:2;
+}
+.hero-inner{
+  position:relative; z-index:3;
+  height:100%;
+  max-width: 1500px; margin: 0 auto;
+  padding: 0 8vw;
+  display:flex; flex-direction:column; justify-content:center;
+}
+.hero-eyebrow{
+  font-family:'Roboto', sans-serif;
+  font-weight:300; font-size:11px; letter-spacing:0.5em;
+  text-transform:uppercase;
+  color: var(--gold);
+  margin-bottom: 22px;
+}
+.hero-title{
+  font-family:'Veneer', sans-serif;
+  font-weight:400;
+  font-size: clamp(64px, 9vw, 160px);
+  line-height: 0.92;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color:#fff;
+  margin-bottom: 28px;
+}
+.hero-subtitle{
+  font-family:'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(22px, 2.4vw, 36px);
+  line-height: 1.25;
+  color: rgba(255,255,255,0.92);
+  max-width: 720px;
+  text-wrap: balance;
+}
+.hero-scroll{
+  position:absolute;
+  bottom: 36px; left:50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display:flex; flex-direction:column; align-items:center; gap:10px;
+  font-family:'Roboto', sans-serif;
+  font-weight:300; font-size:10px; letter-spacing:0.32em;
+  text-transform:uppercase;
+  color: rgba(255,255,255,0.8);
+}
+.hero-scroll .line{
+  width:1px; height: 50px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.7), rgba(255,255,255,0));
+  animation: scrollHint 2.6s var(--ease) infinite;
+  transform-origin: top center;
+}
+@keyframes scrollHint{
+  0%{   transform: scaleY(0);   opacity: 0; }
+  35%{  transform: scaleY(1);   opacity: 1; }
+  100%{ transform: scaleY(1);   opacity: 0; }
+}
+
+/* ============ PROCESO ============ */
+.proceso{
+  background: var(--cream);
+  padding: 140px 8vw 120px;
+  position:relative;
+}
+.proceso-inner{
+  max-width: 1400px; margin: 0 auto;
+  display:grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: clamp(50px, 7vw, 110px);
+  align-items:flex-start;
+}
+.proceso-eyebrow{
+  font-family:'Roboto', sans-serif;
+  font-weight:300; font-size:12px; letter-spacing:0.42em;
+  text-transform:uppercase;
+  color: var(--gold);
+  margin-bottom: 22px;
+}
+.proceso-title{
+  font-family:'Veneer', sans-serif;
+  font-weight:400;
+  font-size: clamp(56px, 7vw, 108px);
+  line-height: 0.94;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 30px;
+}
+.proceso-title em{ font-style:normal; color: var(--gold); }
+.proceso-lead{
+  font-family:'Cormorant Garamond', serif;
+  font-style:italic;
+  font-weight: 500;
+  font-size: clamp(22px, 2.2vw, 30px);
+  line-height: 1.3;
+  color: var(--ink);
+  max-width: 520px;
+  text-wrap: balance;
+  margin-bottom: 36px;
+}
+.proceso-text{
+  font-family:'Roboto', sans-serif;
+  font-weight:300; font-size: 15.5px; line-height: 1.75;
+  color: var(--ink);
+  max-width: 560px;
+  text-wrap: pretty;
+}
+.proceso-text + .proceso-text{ margin-top: 14px; }
+.proceso-text strong{ color: var(--gold); font-weight: 500; }
+
+.proceso-points{
+  list-style:none;
+  counter-reset: pp;
+  display:flex; flex-direction:column;
+  gap: 18px;
+}
+.proceso-points li{
+  counter-increment: pp;
+  display:grid;
+  grid-template-columns: 60px 1fr;
+  align-items: flex-start;
+  gap: 22px;
+  padding: 22px 0 26px;
+  border-bottom: 1px solid var(--rule);
+}
+.proceso-points li::before{
+  content: counter(pp, decimal-leading-zero);
+  font-family:'Veneer', sans-serif;
+  font-size: 42px;
+  line-height: 1;
+  color: var(--gold);
+  letter-spacing: 0.02em;
+}
+.proceso-points .pp-title{
+  font-family:'Cormorant Garamond', serif;
+  font-weight:500; font-style: italic;
+  font-size: 22px; line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.proceso-points .pp-text{
+  font-family:'Roboto', sans-serif;
+  font-weight: 300; font-size: 14.5px; line-height: 1.6;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+/* ============ INGREDIENTES ============ */
+.ingredientes{
+  background: var(--cream-2);
+  padding: 140px 8vw 160px;
+  border-top: 1px solid var(--rule);
+  position:relative;
+}
+.ingredientes-head{
+  max-width: 1400px; margin: 0 auto 80px;
+  text-align: left;
+}
+.ingredientes-eyebrow{
+  font-family:'Roboto', sans-serif;
+  font-weight:300; font-size:12px; letter-spacing:0.42em;
+  text-transform:uppercase;
+  color: var(--gold);
+  margin-bottom: 22px;
+}
+.ingredientes-title{
+  font-family:'Veneer', sans-serif;
+  font-weight:400;
+  font-size: clamp(56px, 7vw, 108px);
+  line-height: 0.94;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+.ingredientes-lead{
+  font-family:'Cormorant Garamond', serif;
+  font-style:italic;
+  font-weight: 500;
+  font-size: clamp(20px, 2vw, 26px);
+  line-height: 1.35;
+  color: var(--ink);
+  max-width: 720px;
+  text-wrap: balance;
+}
+
+.ing-list{
+  max-width: 1300px;
+  margin: 0 auto;
+  display:flex; flex-direction:column;
+  gap: 96px;
+}
+.ing-row{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 7vw, 110px);
+  align-items: center;
+}
+.ing-row.reverse .ing-illus{ order: 2; }
+.ing-row.reverse .ing-copy{  order: 1; }
+
+.ing-illus{
+  position:relative;
+  width:100%;
+  aspect-ratio: 5 / 4;
+  background: var(--cream);
+  border: 1px solid var(--rule);
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+  padding: 28px;
+}
+.ing-illus image-slot{ width:100%; height:100%; display:block; }
+.ing-illus .ing-tag{
+  position:absolute; top:14px; left:14px;
+  font-family:'Roboto', sans-serif;
+  font-weight:300; font-size:10px; letter-spacing:0.36em;
+  text-transform:uppercase; color: var(--muted);
+  background: var(--cream-2);
+  padding: 5px 10px;
+  z-index: 2;
+}
+.ing-num{
+  font-family:'Roboto', sans-serif;
+  font-weight:300; font-size: 11px; letter-spacing:0.4em;
+  text-transform:uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+.ing-name{
+  font-family:'Veneer', sans-serif;
+  font-weight: 400;
+  font-size: clamp(40px, 4.4vw, 64px);
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 22px;
+}
+.ing-text{
+  font-family:'Roboto', sans-serif;
+  font-weight: 300; font-size: 15.5px; line-height: 1.75;
+  color: var(--ink);
+  max-width: 540px;
+  text-wrap: pretty;
+}
+.ing-text + .ing-text{ margin-top: 12px; }
+.ing-text strong{ color: var(--gold); font-weight: 500; }
+.ing-meta{
+  margin-top: 22px;
+  display:flex; gap: 22px; flex-wrap:wrap;
+  font-family:'Roboto', sans-serif;
+  font-weight: 300; font-size: 11px; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--muted);
+}
+.ing-meta span{
+  position:relative; padding-left: 16px;
+}
+.ing-meta span::before{
+  content: ""; position:absolute; left: 0; top: 50%;
+  width: 8px; height: 1px; background: var(--gold);
+  transform: translateY(-50%);
+}
+
+/* ============ FOOTER ============ */
+.foot{
+  background: var(--cream);
+  padding: 90px 8vw 110px;
+  text-align:center;
+}
+.foot-text{
+  font-family:'Veneer', sans-serif;
+  font-weight:400;
+  font-size: clamp(28px, 3.4vw, 44px);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  line-height: 1.1;
+}
+.foot-text .sep{
+  color: var(--gold);
+  margin: 0 14px;
+}
+
+/* ============ MENU PANEL (shared) ============ */
+.menu-panel{
+  position:fixed; inset:0; z-index:200;
+  background:var(--cream);
+  color:#111;
+  transform: translateY(-100%);
+  transition: transform .9s cubic-bezier(0.65,0,0.35,1);
+  display:grid; grid-template-columns: 1fr 1fr;
+  visibility:hidden; pointer-events:none;
+}
+.menu-panel.open{ transform: translateY(0); visibility:visible; pointer-events:auto; }
+.menu-topbar{
+  position:absolute; top:0; left:0; right:0;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:10px 28px;
+  z-index:3;
+  pointer-events:none;
+}
+.menu-topbar > *{ pointer-events:auto; }
+.menu-topbar img{ display:block; width:160px; height:auto; filter: brightness(0) invert(1); }
+.menu-close{
+  width:44px; height:44px;
+  display:flex; align-items:center; justify-content:center;
+  background:transparent; border:none; color:#111;
+}
+.menu-close svg{ width:22px; height:22px; }
+.menu-image{ position:relative; overflow:hidden; background:#111; }
+.menu-image .mi{
+  position:absolute; inset:0;
+  background-size:cover; background-position:center;
+  opacity:0; transform: scale(1);
+  transition: opacity .28s var(--ease), transform 6s ease;
+  filter: brightness(0.6) contrast(1.1);
+}
+.menu-image .mi.active{ opacity:1; transform: scale(1.04); }
+.menu-image::after{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.45) 100%);
+  pointer-events:none;
+}
+.menu-right{
+  display:flex; flex-direction:column; justify-content:center;
+  padding: 120px 8vw 60px; position:relative;
+}
+.menu-list{ list-style:none; display:flex; flex-direction:column; }
+.menu-list li{ border-bottom:1px solid rgba(0,0,0,0.12); }
+.menu-list li:first-child{ border-top:1px solid rgba(0,0,0,0.12); }
+.menu-list a{
+  display:flex; align-items:center; justify-content:flex-end;
+  gap:18px;
+  padding: clamp(18px, 2.2vw, 28px) 0;
+  font-family:'Cormorant Garamond', serif;
+  font-weight:500;
+  font-size: clamp(42px, 5vw, 64px);
+  line-height:1; color:#0b0b0b; text-align:right;
+  position:relative;
+  transition: transform .5s var(--ease), color .3s var(--ease);
+}
+.menu-list a .dot{
+  width:8px; height:8px; border-radius:50%;
+  background:var(--gold); opacity:0;
+  transform: translateX(-8px) scale(0.4);
+  transition: opacity .4s var(--ease), transform .4s var(--ease);
+}
+.menu-list a .lbl{ display:inline-block; transition: transform .5s var(--ease); }
+.menu-list a:hover,
+.menu-list a.is-hover{ color: var(--gold); }
+.menu-list a:hover .dot,
+.menu-list a.is-hover .dot{ opacity:1; transform: translateX(0) scale(1); }
+.menu-list a:hover .lbl,
+.menu-list a.is-hover .lbl{ transform: translateX(-12px); color: var(--gold); }
+.menu-list a .num{
+  font-family:'Roboto', sans-serif;
+  font-weight:300; font-size:12px; letter-spacing:0.3em;
+  color:rgba(0,0,0,0.35); margin-left:24px;
+  align-self:flex-start; padding-top:10px;
+}
+
+@media (max-width: 1000px){
+  .proceso-inner{ grid-template-columns: 1fr; gap: 48px; }
+  .ing-row{ grid-template-columns: 1fr; gap: 28px; }
+  .ing-row.reverse .ing-illus{ order: 0; }
+  .ing-row.reverse .ing-copy{  order: 0; }
+  .menu-panel{ grid-template-columns: 1fr; }
+  .menu-image{ display:none; }
+}
+</style>
+<style id="menu-unify">
+.menu-topbar-right{ display:flex; align-items:center; gap:14px; pointer-events:auto; }
+.menu-social{ width:40px; height:40px; border:1px solid var(--rule, rgba(0,0,0,0.18)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--ink, #1a1a1a); transition: background-color .3s var(--ease, ease), color .3s var(--ease, ease), border-color .3s var(--ease, ease), transform .3s var(--ease, ease); }
+.menu-social svg{ width:18px; height:18px; }
+.menu-social:hover{ background:var(--gold, #D99000); border-color:var(--gold, #D99000); color:#fff; transform:translateY(-2px); }
+
+.menu-list .has-sub > a > .caret{ display:inline-flex; align-items:center; justify-content:center; width:18px; height:18px; margin-left:8px; border:1px solid currentColor; border-radius:50%; font-family:'Roboto', sans-serif; font-weight:400; font-size:12px; line-height:1; opacity:0.6; transition: transform .35s var(--ease, ease), opacity .25s var(--ease, ease); align-self:flex-start; margin-top:16px; }
+.menu-list .has-sub:hover > a > .caret, .menu-list .has-sub.open > a > .caret{ opacity:1; transform: rotate(45deg); }
+.menu-list .submenu{ list-style:none; display:flex; flex-direction:column; max-height:0; overflow:hidden; transition: max-height .55s var(--ease, ease); }
+.menu-list .has-sub:hover > .submenu, .menu-list .has-sub.open > .submenu{ max-height:320px; }
+.menu-list .submenu li{ border:none; border-top:1px dashed rgba(0,0,0,0.12); }
+.menu-list .submenu li:first-child{ border-top:1px dashed rgba(0,0,0,0.12); }
+.menu-list .submenu a{ display:flex; flex-direction:column; align-items:flex-end; gap:4px; padding:18px 0; text-align:right; font-size:18px; line-height:1.15; font-family:'Roboto', sans-serif; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink, #1a1a1a); transition: color .25s var(--ease, ease), transform .35s var(--ease, ease); }
+.menu-list .submenu a .sub-hint{ font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:400; font-size:15px; letter-spacing:0; text-transform:none; color:var(--muted, #6a6660); }
+.menu-list .submenu a:hover{ color:var(--gold, #D99000); transform:translateX(-8px); }
+.menu-list .submenu a:hover .sub-hint{ color:rgba(217,144,0,0.8); }
+</style>
+</head>
+<body>
+
+<!-- ============ TOP BAR ============ -->
+<div class="topbar" id="topbar">
+  <a href="Home.html" class="topbar-logo" aria-label="Pariggi">
+    <img src="assets/logo-pariggi-transparente.png" alt="Pariggi" />
+  </a>
+  <div class="topbar-right"><div class="topbar-social"><a href="https://www.instagram.com/pastaspariggi/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg></a><a href="https://www.facebook.com/pastaspariggi/?locale=es_LA" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.3h2.45l.37-2.85H13.5V9.04c0-.83.23-1.39 1.42-1.39h1.51V5.1c-.26-.03-1.16-.11-2.2-.11-2.18 0-3.67 1.33-3.67 3.77v2.1H8.1v2.85h2.46V21h2.94z"/></svg></a></div><button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button></div>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" data-screen-label="Método — Hero">
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="assets/hero-trafilado-bronce.mp4" type="video/mp4" />
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Método · Tradición italiana</div>
+    <h1 class="hero-title">El método<br/>al modo<br/><em style="color:var(--gold); font-style:normal;">de Ferrara</em></h1>
+    <p class="hero-subtitle">Pasta fresca elaborada como se hacía hace cien años — trafilada en bronce, hecha con ingredientes simples y reposo lento.</p>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">
+    <span>Descubrir</span>
+    <span class="line"></span>
+  </div>
+</section>
+
+<!-- ============ EL PROCESO ============ -->
+<section class="proceso" data-screen-label="El proceso">
+  <div class="proceso-inner">
+
+    <div class="proceso-text-col">
+      <div class="proceso-eyebrow">El proceso</div>
+      <h2 class="proceso-title">Trafilado<br/>en <em>bronce</em></h2>
+      <p class="proceso-lead">El método tradicional italiano: el secreto está en cómo la pasta se forma, no sólo en lo que contiene.</p>
+      <p class="proceso-text">El <strong>trafilado en bronce</strong> es una técnica antigua en la que la masa se moldea forzándola a través de moldes (trafilas) hechos de bronce. A diferencia del teflón, el bronce le deja a la pasta una <strong>terminación porosa y rugosa</strong> — casi imperceptible al ojo, decisiva al paladar.</p>
+      <p class="proceso-text">Esa textura es la que <strong>atrapa la salsa</strong>: hace que cada bocado venga cargado de sabor y que la pasta y su acompañamiento se vuelvan un solo plato.</p>
+      <p class="proceso-text">Es un proceso más lento y más exigente con la maquinaria, pero es el que da el resultado que buscamos: una pasta firme, con cuerpo, hecha como se hacía en Ferrara.</p>
+    </div>
+
+    <ul class="proceso-points">
+      <li>
+        <div>
+          <div class="pp-title">Ingredientes elegidos</div>
+          <div class="pp-text">Sémola de trigo candeal y huevos frescos de campo. Granos duros, yemas amarillas, sin atajos.</div>
+        </div>
+      </li>
+      <li>
+        <div>
+          <div class="pp-title">Recetas balanceadas</div>
+          <div class="pp-text">Cada formato tiene su propia receta — la masa de un sorrentino no es la misma que la de un fusilli.</div>
+        </div>
+      </li>
+      <li>
+        <div>
+          <div class="pp-title">Trafilado en bronce</div>
+          <div class="pp-text">Moldeamos la pasta a través de trafilas de bronce. La textura porosa que deja en la superficie es lo que hace que la salsa se adhiera.</div>
+        </div>
+      </li>
+      <li>
+        <div>
+          <div class="pp-title">Al dente</div>
+          <div class="pp-text">Cocidas en su punto, son firmes y conservan el carácter de la harina. Ni blandas, ni crudas.</div>
+        </div>
+      </li>
+      <li>
+        <div>
+          <div class="pp-title">Sin agregados</div>
+          <div class="pp-text">No usamos colorantes, conservantes, saborizantes ni productos en polvo. Sólo ingredientes reales.</div>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+</section>
+
+<!-- ============ INGREDIENTES ============ -->
+<section class="ingredientes" data-screen-label="Ingredientes">
+  <div class="ingredientes-head">
+    <div class="ingredientes-eyebrow">Lo que entra en la pasta</div>
+    <h2 class="ingredientes-title">Ingredientes</h2>
+    <p class="ingredientes-lead">Pocos, simples, reales. Cada uno de los rellenos y cada masa salen de los mismos productos que usaríamos en casa.</p>
+  </div>
+
+  <div class="ing-list">
+
+    <!-- 01 — Sémola de trigo candeal -->
+    <article class="ing-row">
+      <div class="ing-illus">
+        <span class="ing-tag">Ilustración · Sémola + Raviolón</span>
+        <image-slot id="metodo-ing-semola" shape="rect" placeholder="Dibujo a tinta de espiga + raviolón"></image-slot>
+      </div>
+      <div class="ing-copy">
+        <div class="ing-num">01 · Base de la masa</div>
+        <h3 class="ing-name">Sémola de<br/>trigo candeal</h3>
+        <p class="ing-text">Un grano duro y antiguo, molido grueso. Le da a la pasta <strong>cuerpo, dente y un color cálido</strong> que no se logra con harinas comunes.</p>
+        <p class="ing-text">Trabajamos en versión clásica e integral. La integral conserva el salvado: aporta más fibra y un sabor más rústico, sin perder textura.</p>
+        <div class="ing-meta">
+          <span>Origen local</span>
+          <span>Molienda gruesa</span>
+          <span>Sin aditivos</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- 02 — Huevos -->
+    <article class="ing-row reverse">
+      <div class="ing-illus">
+        <span class="ing-tag">Ilustración · Huevos + Raviolón</span>
+        <image-slot id="metodo-ing-huevos" shape="rect" placeholder="Dibujo a tinta de huevos + raviolón"></image-slot>
+      </div>
+      <div class="ing-copy">
+        <div class="ing-num">02 · Huevos frescos</div>
+        <h3 class="ing-name">Huevos<br/>de campo</h3>
+        <p class="ing-text">De productores locales. Yemas naranjas, cáscara firme. Entran enteros a la masa el mismo día.</p>
+        <p class="ing-text">El huevo es lo que vuelve a la pasta <strong>elástica y nutritiva</strong> — más sedosa al morder, con tiempos de cocción más cortos.</p>
+        <div class="ing-meta">
+          <span>Productores locales</span>
+          <span>Sin conservantes</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- 03 — Calabaza -->
+    <article class="ing-row">
+      <div class="ing-illus">
+        <span class="ing-tag">Ilustración · Calabaza + Sorrentino</span>
+        <image-slot id="metodo-ing-calabaza" shape="rect" placeholder="Dibujo a tinta de calabaza + sorrentino"></image-slot>
+      </div>
+      <div class="ing-copy">
+        <div class="ing-num">03 · Para el relleno</div>
+        <h3 class="ing-name">Calabaza<br/>asada</h3>
+        <p class="ing-text">Asamos la calabaza en horno hasta que <strong>concentre su sabor</strong>. Después la secamos para sacarle agua: queda dulce, intensa, casi caramelizada.</p>
+        <p class="ing-text">Es la base de nuestros Sorrentinos de Ferrara — junto a mozzarella, da una textura cremosa y un sabor que recuerda al zapallo horneado.</p>
+        <div class="ing-meta">
+          <span>Asada en horno</span>
+          <span>Sin agregados</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- 04 — Espinaca -->
+    <article class="ing-row reverse">
+      <div class="ing-illus">
+        <span class="ing-tag">Ilustración · Espinaca + Raviol</span>
+        <image-slot id="metodo-ing-espinaca" shape="rect" placeholder="Dibujo a tinta de espinaca + raviol"></image-slot>
+      </div>
+      <div class="ing-copy">
+        <div class="ing-num">04 · Verde de huerta</div>
+        <h3 class="ing-name">Espinaca<br/>fresca</h3>
+        <p class="ing-text">Hoja recién cosechada. La blanqueamos para fijar el color y conservar el sabor, sin alterar su frescura.</p>
+        <p class="ing-text">Pinta la masa de los tagliatelle de un verde profundo y rellena nuestros ravioles junto a ricota: un clásico romano hecho con producto de huerta.</p>
+        <div class="ing-meta">
+          <span>De huerta</span>
+          <span>Sin colorantes</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- 05 — Ricota y hierbas frescas -->
+    <article class="ing-row">
+      <div class="ing-illus">
+        <span class="ing-tag">Ilustración · Ricota + Raviol</span>
+        <image-slot id="metodo-ing-ricota" shape="rect" placeholder="Dibujo a tinta de ricota + raviol"></image-slot>
+      </div>
+      <div class="ing-copy">
+        <div class="ing-num">05 · Relleno cremoso</div>
+        <h3 class="ing-name">Ricota y<br/>hierbas frescas</h3>
+        <p class="ing-text">Ricota artesanal — de textura granulosa y sabor láctico — mezclada con <strong>perejil, albahaca y romero</strong> picados el mismo día.</p>
+        <p class="ing-text">Las hierbas no son aroma agregado: son hoja fresca, cortada a cuchillo, que entra entera al relleno.</p>
+        <div class="ing-meta">
+          <span>Artesanal</span>
+          <span>Hierbas frescas</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- 06 — Jamón y mozzarella -->
+    <article class="ing-row reverse">
+      <div class="ing-illus">
+        <span class="ing-tag">Ilustración · Jamón + Sorrentino</span>
+        <image-slot id="metodo-ing-jamonmozza" shape="rect" placeholder="Dibujo a tinta de jamón + sorrentino"></image-slot>
+      </div>
+      <div class="ing-copy">
+        <div class="ing-num">06 · Clásico de la casa</div>
+        <h3 class="ing-name">Jamón y<br/>mozzarella</h3>
+        <p class="ing-text">Mozzarella fresca de fábrica local y jamón cocido natural — sin polifosfatos, sin almidones.</p>
+        <p class="ing-text">Es el relleno con el que más gente conoce a Pariggi. Lo hicimos durante años de una sola forma: <strong>con producto real</strong>.</p>
+        <div class="ing-meta">
+          <span>Mozzarella fresca</span>
+          <span>Jamón natural</span>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<div class="foot">
+  <div class="foot-text">Pastas Pariggi <span class="sep">—</span> come una volta</div>
+</div>
+
+<!-- ============ MENU PANEL ============ -->
+<aside class="menu-panel" id="menuPanel" aria-hidden="true">
+  <div class="menu-topbar">
+    <a href="Home.html" class="menu-logo-link" aria-label="Pariggi — Inicio">
+      <img src="assets/logo-pariggi-transparente.png" alt="Pariggi" />
+    </a>
+    <div class="menu-topbar-right">
+      <a class="menu-social" href="https://www.instagram.com/pastaspariggi/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a class="menu-social" href="https://www.facebook.com/pastaspariggi/?locale=es_LA" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.3h2.45l.37-2.85H13.5V9.04c0-.83.23-1.39 1.42-1.39h1.51V5.1c-.26-.03-1.16-.11-2.2-.11-2.18 0-3.67 1.33-3.67 3.77v2.1H8.1v2.85h2.46V21h2.94z"/></svg>
+      </a>
+      <button class="menu-close" id="menuClose" aria-label="Cerrar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+          <line x1="5" y1="5" x2="19" y2="19"/>
+          <line x1="19" y1="5" x2="5" y2="19"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="menu-image" id="menuImage">
+    <div class="mi" data-key="nosotros"  style="background-image:url('assets/menu-nosotros.jpg');"></div>
+    <div class="mi" data-key="productos" style="background-image:url('assets/menu-productos.jpg');"></div>
+    <div class="mi" data-key="metodo"    style="background-image:url('assets/menu-metodo.jpg');"></div>
+    <div class="mi" data-key="b2b"       style="background-image:url('assets/menu-b2b.jpg');"></div>
+    <div class="mi" data-key="distribuidores" style="background-image:url('assets/menu-distribuidores.jpg');"></div>
+    <div class="mi" data-key="contacto"  style="background-image:url('assets/menu-general.jpg');"></div>
+    <div class="mi active" data-key="__default" style="background-image:url('assets/menu-general.jpg');"></div>
+  </div>
+
+  <div class="menu-right">
+    <ul class="menu-list">
+      <li><a href="nosotros.html"  data-key="nosotros"     ><span class="dot"></span><span class="lbl">Nosotros</span><span class="num">01</span></a></li>
+      <li><a href="productos.html" data-key="productos"    ><span class="dot"></span><span class="lbl">Productos</span><span class="num">02</span></a></li>
+      <li><a href="metodo.html"    data-key="metodo"       ><span class="dot"></span><span class="lbl">Método</span><span class="num">03</span></a></li>
+      <li class="has-sub" id="menuB2B"><a href="b2b.html" data-key="b2b"          ><span class="dot"></span><span class="lbl">B2B</span><span class="caret">+</span><span class="num">04</span></a>
+        <ul class="submenu">
+          <li><a href="contacto.html">Quiero ser cliente<span class="sub-hint">Hacer pedidos · catering · distribución</span></a></li>
+          <li><a href="http://186.123.162.186:8187/PortalClientes" target="_blank" rel="noopener">Portal mayorista<span class="sub-hint">Ingresá a tu cuenta y hacé tus pedidos</span></a></li>
+        </ul>
+      </li>
+      <li><a href="distribuidores.html" data-key="distribuidores"><span class="dot"></span><span class="lbl">Distribuidores</span><span class="num">05</span></a></li>
+      <li><a href="contacto.html" data-key="contacto" ><span class="dot"></span><span class="lbl">Contacto</span><span class="num">06</span></a></li>
+    </ul>
+  </div>
+</aside>
+
+<script src="assets/image-slot.js"></script>
+<script>
+/* ---------- Topbar scroll state (so logo/burger flip from white-on-video to dark-on-cream) ---------- */
+const topbar = document.getElementById('topbar');
+function onScroll(){
+  const hero = document.querySelector('.hero');
+  const threshold = hero ? hero.offsetHeight - 80 : 400;
+  topbar.classList.toggle('scrolled', window.scrollY > threshold);
+}
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+/* ---------- Video autoplay fallback ---------- */
+const heroVideo = document.querySelector('.hero-video');
+if (heroVideo) {
+  heroVideo.play().catch(() => {
+    document.body.addEventListener('click', () => heroVideo.play(), { once:true });
+  });
+}
+
+/* ---------- Menu panel wiring ---------- */
+const burger    = document.getElementById('burger');
+const panel     = document.getElementById('menuPanel');
+const closeBtn  = document.getElementById('menuClose');
+const imgs      = document.querySelectorAll('.menu-image .mi');
+
+function openMenu(){
+  burger.classList.add('open');
+  panel.classList.add('open');
+  panel.setAttribute('aria-hidden','false');
+}
+function closeMenu(){
+  burger.classList.remove('open');
+  panel.classList.remove('open');
+  panel.setAttribute('aria-hidden','true');
+  document.querySelectorAll('.menu-list a.is-hover').forEach(o => o.classList.remove('is-hover'));
+  imgs.forEach(m => m.classList.toggle('active', m.dataset.key === '__default'));
+}
+burger.addEventListener('click', () => panel.classList.contains('open') ? closeMenu() : openMenu());
+closeBtn.addEventListener('click', closeMenu);
+
+document.querySelectorAll('.menu-list a').forEach(a => {
+  a.addEventListener('mouseenter', () => {
+    document.querySelectorAll('.menu-list a.is-hover').forEach(o => o.classList.remove('is-hover'));
+    a.classList.add('is-hover');
+    const k = a.dataset.key;
+    imgs.forEach(i => i.classList.toggle('active', i.dataset.key === k));
+  });
+  a.addEventListener('mouseleave', () => { a.classList.remove('is-hover'); });
+});
+const menuListEl = document.querySelector('.menu-list');
+if (menuListEl) {
+  menuListEl.addEventListener('mouseleave', () => {
+    document.querySelectorAll('.menu-list a.is-hover').forEach(o => o.classList.remove('is-hover'));
+    imgs.forEach(m => m.classList.toggle('active', m.dataset.key === '__default'));
+  });
+}
+</script>
+<script src="social-float.js"></script>
+
+<script>
+(function(){
+  var menuB2B=document.getElementById('menuB2B');
+  if(menuB2B){
+    var trigger=menuB2B.querySelector('a[data-key="b2b"]');
+    if(trigger){ trigger.addEventListener('click',function(e){
+      if(!matchMedia('(hover: none)').matches) return;
+      if(!menuB2B.classList.contains('open')){ e.preventDefault(); menuB2B.classList.add('open'); }
+    }); }
+  }
+})();
+</script>
+</body>
+</html>

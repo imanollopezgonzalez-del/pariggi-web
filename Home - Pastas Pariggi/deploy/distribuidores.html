@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dónde conseguir Pastas Pariggi — Distribuidores</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="brand-loader.js"></script>
+
+<style>
+@font-face { font-family:'Veneer';     src:url('fonts/Veneer.ttf') format('truetype'); font-weight:400; font-display:swap; }
+@font-face { font-family:'Arca Heavy'; src:url('fonts/Arca-Heavy.ttf') format('truetype'); font-weight:900; font-display:swap; }
+@font-face { font-family:'Roboto';     src:url('fonts/Roboto-Thin.ttf')    format('truetype'); font-weight:100; font-display:swap; }
+@font-face { font-family:'Roboto';     src:url('fonts/Roboto-Light.ttf')   format('truetype'); font-weight:300; font-display:swap; }
+@font-face { font-family:'Roboto';     src:url('fonts/Roboto-Regular.ttf') format('truetype'); font-weight:400; font-display:swap; }
+@font-face { font-family:'Roboto';     src:url('fonts/Roboto-Medium.ttf')  format('truetype'); font-weight:500; font-display:swap; }
+@font-face { font-family:'Roboto';     src:url('fonts/Roboto-Bold.ttf')    format('truetype'); font-weight:700; font-display:swap; }
+
+:root{
+  --gold:#D99000;
+  --gold-deep:#A26A00;
+  --cream:#F5F0E8;
+  --cream-2:#EFE9DD;
+  --ink:#1a1a1a;
+  --muted:#6a6660;
+  --rule:rgba(0,0,0,0.12);
+  --ease: cubic-bezier(0.22,1,0.36,1);
+}
+
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+html,body{
+  background:var(--cream);
+  color:var(--ink);
+  font-family:'Roboto', system-ui, sans-serif;
+  font-weight:300;
+  -webkit-font-smoothing:antialiased;
+}
+a{ color:inherit; text-decoration:none; }
+button{ font-family:inherit; cursor:pointer; }
+img{ display:block; max-width:100%; }
+
+/* ============ TOP BAR ============ */
+.topbar{
+  position:fixed; top:0; left:0; right:0;
+  z-index:100;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 28px;
+  background-color:var(--cream);
+  border-bottom:1px solid rgba(0,0,0,0.06);
+}
+.topbar-logo img{ display:block; width:160px; height:auto; object-fit:contain; filter: brightness(0); }
+.topbar-right{ display:flex; align-items:center; gap:18px; }
+.topbar-social{ display:flex; align-items:center; gap:13px; }
+.topbar-social a{ display:flex; align-items:center; justify-content:center; color:inherit; opacity:.85; transition: color .4s var(--ease), opacity .3s var(--ease); }
+.topbar-social a:hover{ opacity:1; color:#D99000; }
+.topbar-social a svg{ width:20px; height:20px; display:block; }
+.topbar-social{ color:#0a0a0a; }
+.burger{
+  width:44px; height:44px;
+  display:flex; flex-direction:column; justify-content:center; align-items:flex-end;
+  gap:7px;
+  background:transparent; border:none; padding:0 4px;
+}
+.burger span{
+  display:block; height:1px; background:#0a0a0a;
+  transition: transform .5s var(--ease), width .5s var(--ease), opacity .3s var(--ease);
+  transform-origin:center;
+}
+.burger span:nth-child(1){ width:32px; }
+.burger span:nth-child(2){ width:22px; }
+.burger span:nth-child(3){ width:32px; }
+.burger.open span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
+.burger.open span:nth-child(2){ opacity:0; }
+.burger.open span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
+
+/* ============ HEADER ============ */
+.page-header{
+  padding: 140px 8vw 30px;
+  max-width: 1500px; margin: 0 auto;
+}
+.page-eyebrow{
+  font-family:'Roboto', sans-serif;
+  font-weight:300; font-size:11px; letter-spacing:0.42em;
+  text-transform:uppercase; color:var(--gold);
+  margin-bottom:18px;
+}
+.page-title{
+  font-family:'Veneer', sans-serif;
+  font-weight:400;
+  font-size: clamp(46px, 6.4vw, 100px);
+  line-height:0.98;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  color:var(--ink);
+  text-wrap: balance;
+  margin-bottom: 22px;
+}
+.page-title em{ font-style:normal; color: var(--gold); }
+.page-lead{
+  font-family:'Cormorant Garamond', serif;
+  font-style:italic; font-weight:500;
+  font-size: clamp(20px, 2vw, 28px);
+  line-height: 1.35;
+  color: var(--ink);
+  max-width: 680px;
+  text-wrap: balance;
+}
+
+/* ============ ONLINE GRID ============ */
+.online{
+  padding: 60px 8vw 110px;
+  max-width: 1500px; margin: 0 auto;
+}
+.section-eyebrow{
+  font-family:'Roboto', sans-serif;
+  font-weight:300; font-size:12px; letter-spacing:0.42em;
+  text-transform:uppercase; color:var(--gold);
+  margin-bottom: 16px;
+}
+.section-title{
+  font-family:'Veneer', sans-serif;
+  font-weight:400;
+  font-size: clamp(40px, 5vw, 76px);
+  line-height: 0.96;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 36px;
+}
+.section-title em{ font-style:normal; color: var(--gold); }
+.online-grid{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(16px, 2vw, 24px);
+}
+.online-card{
+  background:#fff;
+  border: 1px solid var(--rule);
+  padding: 26px 22px 22px;
+  display:flex; flex-direction:column; align-items:center;
+  text-align:center; gap: 16px;
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+}
+.online-card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+.online-logo{
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: var(--cream-2);
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+  border: 1px solid var(--rule);
+}
+.online-logo img{
+  width: 78%; height: 78%; object-fit: contain;
+}
+.online-logo.empty{
+  position: relative;
+}
+.online-logo.empty::before{
+  content: attr(data-name);
+  font-family:'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 17px;
+  color: var(--muted);
+  text-align: center;
+  padding: 12px;
+  text-wrap: balance;
+  line-height: 1.2;
+}
+.online-region{
+  font-family:'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.online-name{
+  font-family:'Cormorant Garamond', serif;
+  font-weight: 500; font-style: italic;
+  font-size: 20px;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 4px;
+  text-wrap: balance;
+}
+.online-cta{
+  display:inline-flex; align-items:center; gap: 10px;
+  padding: 10px 20px;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family:'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  transition: background-color .3s var(--ease), color .3s var(--ease);
+  margin-top: auto;
+}
+.online-cta:hover{ background: var(--gold); color: #fff; }
+
+/* ============ MAP SECTION ============ */
+.map-section{
+  background: var(--cream-2);
+  padding: 90px 8vw 110px;
+  border-top: 1px solid var(--rule);
+}
+.map-head{
+  max-width: 1500px; margin: 0 auto 36px;
+}
+
+.search-bar{
+  max-width: 1500px;
+  margin: 0 auto 26px;
+  display:grid;
+  grid-template-columns: 2fr 1.2fr 1.2fr auto;
+  gap: 12px;
+  background: var(--cream);
+  border: 1px solid var(--rule);
+  padding: 14px;
+}
+.search-bar label{
+  display:flex; flex-direction:column;
+  gap: 4px;
+  font-family:'Roboto', sans-serif;
+  font-weight: 400; font-size: 9px; letter-spacing: 0.32em;
+  text-transform: uppercase; color: var(--muted);
+}
+.search-bar input,
+.search-bar select{
+  font-family:'Roboto', sans-serif;
+  font-weight: 300; font-size: 14.5px;
+  color: var(--ink);
+  padding: 8px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  outline: none;
+  letter-spacing: normal; text-transform: none;
+  transition: border-color .3s var(--ease);
+}
+.search-bar input:focus,
+.search-bar select:focus{ border-bottom-color: var(--gold); }
+.search-bar select{
+  appearance: none; -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><polyline points='1,1 5,5 9,1' fill='none' stroke='%231a1a1a' stroke-width='1.2'/></svg>");
+  background-repeat: no-repeat; background-position: right 4px center;
+  padding-right: 18px;
+}
+.search-clear{
+  align-self: flex-end;
+  padding: 8px 14px;
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.2);
+  color: var(--muted);
+  font-family:'Roboto', sans-serif;
+  font-weight: 400; font-size: 10px; letter-spacing: 0.24em;
+  text-transform: uppercase;
+  transition: border-color .3s var(--ease), color .3s var(--ease);
+}
+.search-clear:hover{ border-color: var(--ink); color: var(--ink); }
+
+.map-grid{
+  max-width: 1500px;
+  margin: 0 auto;
+  display:grid;
+  grid-template-columns: 380px 1fr;
+  gap: 18px;
+  height: 600px;
+}
+.store-list{
+  background: var(--cream);
+  border: 1px solid var(--rule);
+  overflow: hidden auto;
+  scrollbar-width: thin;
+}
+.store-list-count{
+  position: sticky; top: 0;
+  background: var(--cream);
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--rule);
+  font-family:'Roboto', sans-serif;
+  font-weight: 400; font-size: 10px; letter-spacing: 0.32em;
+  text-transform: uppercase; color: var(--muted);
+  z-index: 2;
+}
+.store-item{
+  padding: 16px 18px 18px;
+  border-bottom: 1px solid var(--rule);
+  cursor: pointer;
+  transition: background-color .25s var(--ease);
+  display:flex; flex-direction: column; gap: 4px;
+}
+.store-item:hover{ background: var(--cream-2); }
+.store-item.active{ background: rgba(217,144,0,0.12); border-left: 3px solid var(--gold); padding-left: 15px; }
+.store-name{
+  font-family:'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.2;
+  color: var(--ink);
+}
+.store-address{
+  font-family:'Roboto', sans-serif;
+  font-weight: 300; font-size: 13px; line-height: 1.45;
+  color: var(--ink);
+}
+.store-meta{
+  display:flex; gap: 10px; flex-wrap: wrap;
+  margin-top: 6px;
+  font-family:'Roboto', sans-serif;
+  font-weight: 400; font-size: 9px; letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.store-meta .badge{
+  padding: 3px 8px;
+  background: rgba(217,144,0,0.12);
+  color: var(--gold-deep);
+  border: 1px solid rgba(217,144,0,0.32);
+}
+.store-meta .telefono{ color: var(--ink); font-weight: 400; }
+.store-empty{
+  padding: 60px 22px;
+  text-align: center;
+  font-family:'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 19px;
+  color: var(--muted);
+}
+
+#map{
+  background: var(--cream);
+  border: 1px solid var(--rule);
+  height: 100%;
+  z-index: 0;
+}
+.leaflet-container{ font-family:'Roboto', sans-serif; background: #efe9dd; }
+.leaflet-popup-content-wrapper{
+  border-radius: 0;
+  padding: 0;
+  background: var(--cream);
+  border: 1px solid var(--rule);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+.leaflet-popup-content{ margin: 16px 18px; }
+.leaflet-popup-tip{ background: var(--cream); }
+.popup-title{
+  font-family:'Cormorant Garamond', serif;
+  font-weight: 500; font-style: italic;
+  font-size: 18px; color: var(--ink);
+  margin-bottom: 4px;
+}
+.popup-addr{
+  font-family:'Roboto', sans-serif;
+  font-weight: 300; font-size: 13px; line-height: 1.4;
+  color: var(--ink); margin-bottom: 6px;
+}
+.popup-tel{
+  font-family:'Roboto', sans-serif;
+  font-weight: 500; font-size: 12px;
+  color: var(--gold-deep);
+}
+.popup-link{
+  display:inline-block;
+  margin-top: 8px;
+  font-family:'Roboto', sans-serif;
+  font-weight: 500; font-size: 10px; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--gold);
+}
+
+/* Custom marker pin */
+.pariggi-pin{
+  width: 30px; height: 38px;
+  position: relative;
+}
+.pariggi-pin::before{
+  content:"";
+  position: absolute; inset: 0;
+  background: var(--gold);
+  border: 2px solid #fff;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+.pariggi-pin::after{
+  content:"";
+  position:absolute; left: 50%; top: 12px;
+  width: 8px; height: 8px;
+  background: #fff;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+.pariggi-pin.fabrica::before{ background: var(--ink); }
+
+/* ============ NOTE FOR ADMIN ============ */
+.admin-note{
+  max-width: 1500px;
+  margin: 24px auto 0;
+  padding: 16px 20px;
+  background: rgba(217,144,0,0.08);
+  border: 1px dashed rgba(217,144,0,0.5);
+  font-family:'Roboto', sans-serif;
+  font-weight: 300; font-size: 13px;
+  color: var(--ink); line-height: 1.5;
+}
+.admin-note strong{ color: var(--gold-deep); font-weight: 500; }
+.admin-note code{
+  font-family: 'Menlo', monospace; font-size: 12px;
+  background: #fff; padding: 2px 6px;
+  border: 1px solid var(--rule);
+}
+
+/* ============ ADMIN PANEL (?admin=1) ============ */
+.admin-panel{
+  position: fixed;
+  top: 70px; right: 20px;
+  width: 360px;
+  max-height: calc(100vh - 90px);
+  background: #fff;
+  border: 1px solid var(--ink);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+  z-index: 150;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+}
+.admin-panel.on{ display: flex; }
+.admin-head{
+  padding: 14px 18px;
+  background: var(--ink); color: #fff;
+  display:flex; justify-content: space-between; align-items: center;
+  font-family:'Roboto', sans-serif;
+  font-weight: 500; font-size: 11px; letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+.admin-head button{
+  background: transparent; border: none;
+  color: #fff; font-size: 22px; line-height: 1;
+}
+.admin-body{
+  padding: 20px;
+  overflow: auto;
+  display:flex; flex-direction: column; gap: 14px;
+}
+.admin-body label{
+  display:flex; flex-direction:column; gap: 5px;
+  font-family:'Roboto', sans-serif;
+  font-weight: 400; font-size: 10px; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--muted);
+}
+.admin-body input,
+.admin-body select{
+  font-family:'Roboto', sans-serif;
+  font-weight: 300; font-size: 14px;
+  color: var(--ink);
+  padding: 8px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0,0.25);
+  outline: none;
+  letter-spacing: normal; text-transform: none;
+}
+.admin-body input:focus,
+.admin-body select:focus{ border-bottom-color: var(--gold); }
+.admin-row{ display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.admin-actions{
+  display:flex; gap: 8px;
+  margin-top: 6px;
+}
+.admin-btn{
+  flex: 1;
+  padding: 10px 14px;
+  font-family:'Roboto', sans-serif;
+  font-weight: 500; font-size: 10px; letter-spacing: 0.24em;
+  text-transform: uppercase;
+  border: 1px solid var(--ink); background: var(--ink); color: #fff;
+  transition: background-color .3s var(--ease), color .3s var(--ease);
+}
+.admin-btn:hover{ background: var(--gold); border-color: var(--gold); }
+.admin-btn.ghost{ background: transparent; color: var(--ink); }
+.admin-btn.ghost:hover{ background: var(--ink); color: #fff; }
+.admin-status{
+  font-family:'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--muted);
+  min-height: 18px;
+}
+.admin-status.ok{ color: var(--gold-deep); }
+.admin-status.err{ color: #c33; }
+
+/* ============ FOOTER ============ */
+.foot{
+  background: var(--cream);
+  padding: 90px 8vw 110px;
+  text-align:center;
+}
+.foot-text{
+  font-family:'Veneer', sans-serif;
+  font-weight:400;
+  font-size: clamp(28px, 3.4vw, 44px);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  line-height: 1.1;
+}
+.foot-text .sep{ color: var(--gold); margin: 0 14px; }
+
+/* ============ MENU PANEL (shared) ============ */
+.menu-panel{
+  position:fixed; inset:0; z-index:200;
+  background:var(--cream);
+  color:#111;
+  transform: translateY(-100%);
+  transition: transform .9s cubic-bezier(0.65,0,0.35,1);
+  display:grid; grid-template-columns: 1fr 1fr;
+  visibility:hidden; pointer-events:none;
+}
+.menu-panel.open{ transform: translateY(0); visibility:visible; pointer-events:auto; }
+.menu-topbar{
+  position:absolute; top:0; left:0; right:0;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:10px 28px;
+  z-index:3;
+  pointer-events:none;
+}
+.menu-topbar > *{ pointer-events:auto; }
+.menu-topbar img{ display:block; width:160px; height:auto; filter: brightness(0) invert(1); }
+.menu-close{
+  width:44px; height:44px;
+  display:flex; align-items:center; justify-content:center;
+  background:transparent; border:none; color:#111;
+}
+.menu-close svg{ width:22px; height:22px; }
+.menu-image{ position:relative; overflow:hidden; background:#111; }
+.menu-image .mi{
+  position:absolute; inset:0;
+  background-size:cover; background-position:center;
+  opacity:0; transform: scale(1);
+  transition: opacity .28s var(--ease), transform 6s ease;
+  filter: brightness(0.6) contrast(1.1);
+}
+.menu-image .mi.active{ opacity:1; transform: scale(1.04); }
+.menu-image::after{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.45) 100%);
+  pointer-events:none;
+}
+.menu-right{
+  display:flex; flex-direction:column; justify-content:center;
+  padding: 120px 8vw 60px; position:relative;
+}
+.menu-list{ list-style:none; display:flex; flex-direction:column; }
+.menu-list li{ border-bottom:1px solid rgba(0,0,0,0.12); }
+.menu-list li:first-child{ border-top:1px solid rgba(0,0,0,0.12); }
+.menu-list a{
+  display:flex; align-items:center; justify-content:flex-end;
+  gap:18px;
+  padding: clamp(18px, 2.2vw, 28px) 0;
+  font-family:'Cormorant Garamond', serif;
+  font-weight:500;
+  font-size: clamp(42px, 5vw, 64px);
+  line-height:1; color:#0b0b0b; text-align:right;
+  position:relative;
+  transition: transform .5s var(--ease), color .3s var(--ease);
+}
+.menu-list a .dot{
+  width:8px; height:8px; border-radius:50%;
+  background:var(--gold); opacity:0;
+  transform: translateX(-8px) scale(0.4);
+  transition: opacity .4s var(--ease), transform .4s var(--ease);
+}
+.menu-list a .lbl{ display:inline-block; transition: transform .5s var(--ease); }
+.menu-list a:hover, .menu-list a.is-hover{ color: var(--gold); }
+.menu-list a:hover .dot, .menu-list a.is-hover .dot{ opacity:1; transform: translateX(0) scale(1); }
+.menu-list a:hover .lbl, .menu-list a.is-hover .lbl{ transform: translateX(-12px); color: var(--gold); }
+.menu-list a .num{
+  font-family:'Roboto', sans-serif;
+  font-weight:300; font-size:12px; letter-spacing:0.3em;
+  color:rgba(0,0,0,0.35); margin-left:24px;
+  align-self:flex-start; padding-top:10px;
+}
+
+@media (max-width: 1000px){
+  .online-grid{ grid-template-columns: repeat(2, 1fr); }
+  .search-bar{ grid-template-columns: 1fr 1fr; }
+  .map-grid{ grid-template-columns: 1fr; height: auto; }
+  .store-list{ max-height: 420px; }
+  #map{ height: 460px; }
+  .menu-panel{ grid-template-columns: 1fr; }
+  .menu-image{ display:none; }
+  .admin-panel{ width: calc(100vw - 24px); right: 12px; left: 12px; }
+}
+@media (max-width: 560px){
+  .online-grid{ grid-template-columns: 1fr; }
+  .search-bar{ grid-template-columns: 1fr; }
+}
+</style>
+<style id="menu-unify">
+.menu-topbar-right{ display:flex; align-items:center; gap:14px; pointer-events:auto; }
+.menu-social{ width:40px; height:40px; border:1px solid var(--rule, rgba(0,0,0,0.18)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--ink, #1a1a1a); transition: background-color .3s var(--ease, ease), color .3s var(--ease, ease), border-color .3s var(--ease, ease), transform .3s var(--ease, ease); }
+.menu-social svg{ width:18px; height:18px; }
+.menu-social:hover{ background:var(--gold, #D99000); border-color:var(--gold, #D99000); color:#fff; transform:translateY(-2px); }
+
+.menu-list .has-sub > a > .caret{ display:inline-flex; align-items:center; justify-content:center; width:18px; height:18px; margin-left:8px; border:1px solid currentColor; border-radius:50%; font-family:'Roboto', sans-serif; font-weight:400; font-size:12px; line-height:1; opacity:0.6; transition: transform .35s var(--ease, ease), opacity .25s var(--ease, ease); align-self:flex-start; margin-top:16px; }
+.menu-list .has-sub:hover > a > .caret, .menu-list .has-sub.open > a > .caret{ opacity:1; transform: rotate(45deg); }
+.menu-list .submenu{ list-style:none; display:flex; flex-direction:column; max-height:0; overflow:hidden; transition: max-height .55s var(--ease, ease); }
+.menu-list .has-sub:hover > .submenu, .menu-list .has-sub.open > .submenu{ max-height:320px; }
+.menu-list .submenu li{ border:none; border-top:1px dashed rgba(0,0,0,0.12); }
+.menu-list .submenu li:first-child{ border-top:1px dashed rgba(0,0,0,0.12); }
+.menu-list .submenu a{ display:flex; flex-direction:column; align-items:flex-end; gap:4px; padding:18px 0; text-align:right; font-size:18px; line-height:1.15; font-family:'Roboto', sans-serif; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink, #1a1a1a); transition: color .25s var(--ease, ease), transform .35s var(--ease, ease); }
+.menu-list .submenu a .sub-hint{ font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:400; font-size:15px; letter-spacing:0; text-transform:none; color:var(--muted, #6a6660); }
+.menu-list .submenu a:hover{ color:var(--gold, #D99000); transform:translateX(-8px); }
+.menu-list .submenu a:hover .sub-hint{ color:rgba(217,144,0,0.8); }
+</style>
+</head>
+<body>
+
+<!-- ============ TOP BAR ============ -->
+<div class="topbar" id="topbar">
+  <a href="Home.html" class="topbar-logo" aria-label="Pariggi">
+    <img src="assets/logo-pariggi-transparente.png" alt="Pariggi" />
+  </a>
+  <div class="topbar-right"><div class="topbar-social"><a href="https://www.instagram.com/pastaspariggi/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg></a><a href="https://www.facebook.com/pastaspariggi/?locale=es_LA" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.3h2.45l.37-2.85H13.5V9.04c0-.83.23-1.39 1.42-1.39h1.51V5.1c-.26-.03-1.16-.11-2.2-.11-2.18 0-3.67 1.33-3.67 3.77v2.1H8.1v2.85h2.46V21h2.94z"/></svg></a></div><button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button></div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="page-header">
+  <div class="page-eyebrow">Dónde conseguir</div>
+  <h1 class="page-title">Pastas Pariggi<br/>cerca <em>tuyo</em></h1>
+  <p class="page-lead">Encontrá tus Pariggi en las principales tiendas online de Argentina y en los puntos de venta físicos. Para mayoristas y restaurantes, ingresá a B2B.</p>
+</header>
+
+<!-- ============ ONLINE GRID ============ -->
+<section class="online" data-screen-label="Dónde comprar online">
+  <div class="section-eyebrow">Tiendas online</div>
+  <h2 class="section-title">Donde <em>comprar</em></h2>
+  <div class="online-grid" id="onlineGrid">
+    <!-- Filled by JS from distribuidores.json -->
+  </div>
+</section>
+
+<!-- ============ MAP + LIST ============ -->
+<section class="map-section" data-screen-label="Mapa">
+  <div class="map-head">
+    <div class="section-eyebrow">Mapa de distribuidores</div>
+    <h2 class="section-title">Encontrá tu<br/>tienda más <em>cercana</em></h2>
+  </div>
+
+  <div class="search-bar">
+    <label>
+      Buscar
+      <input type="search" id="searchText" placeholder="Nombre, dirección o ciudad..." />
+    </label>
+    <label>
+      Provincia
+      <select id="searchProv"><option value="">Todas</option></select>
+    </label>
+    <label>
+      Código postal
+      <input type="text" id="searchCP" inputmode="numeric" placeholder="Ej. 1772" />
+    </label>
+    <button type="button" class="search-clear" id="searchClear">Limpiar</button>
+  </div>
+
+  <div class="map-grid">
+    <aside class="store-list" id="storeList">
+      <div class="store-list-count" id="storeCount">Cargando…</div>
+    </aside>
+    <div id="map"></div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<div class="foot">
+  <div class="foot-text">Pastas Pariggi <span class="sep">—</span> come una volta</div>
+</div>
+
+<!-- ============ ADMIN PANEL (?admin=1) ============ -->
+<aside class="admin-panel" id="adminPanel">
+  <div class="admin-head">
+    <span>Sumar distribuidor</span>
+    <button id="adminClose" aria-label="Cerrar">×</button>
+  </div>
+  <div class="admin-body">
+    <label>Nombre del local
+      <input type="text" id="adNombre" placeholder="Ej. Almacén La Italiana" />
+    </label>
+    <label>Dirección completa
+      <input type="text" id="adDireccion" placeholder="Av. Corrientes 1234" />
+    </label>
+    <div class="admin-row">
+      <label>Ciudad
+        <input type="text" id="adCiudad" placeholder="CABA" />
+      </label>
+      <label>Provincia
+        <select id="adProvincia">
+          <option>Buenos Aires</option><option>CABA</option><option>Catamarca</option>
+          <option>Chaco</option><option>Chubut</option><option>Córdoba</option>
+          <option>Corrientes</option><option>Entre Ríos</option><option>Formosa</option>
+          <option>Jujuy</option><option>La Pampa</option><option>La Rioja</option>
+          <option>Mendoza</option><option>Misiones</option><option>Neuquén</option>
+          <option>Río Negro</option><option>Salta</option><option>San Juan</option>
+          <option>San Luis</option><option>Santa Cruz</option><option>Santa Fe</option>
+          <option>Santiago del Estero</option><option>Tierra del Fuego</option><option>Tucumán</option>
+        </select>
+      </label>
+    </div>
+    <div class="admin-row">
+      <label>Código postal
+        <input type="text" id="adCP" placeholder="1234" />
+      </label>
+      <label>Teléfono
+        <input type="text" id="adTel" placeholder="+54 11 ..." />
+      </label>
+    </div>
+    <label>Horario (opcional)
+      <input type="text" id="adHorario" placeholder="Lun a Sáb · 9 a 20 h" />
+    </label>
+    <div class="admin-actions">
+      <button class="admin-btn ghost" id="adGeocode">1. Buscar en mapa</button>
+      <button class="admin-btn" id="adAdd" disabled>2. Sumar</button>
+    </div>
+    <div class="admin-status" id="adStatus">Llená los campos y tocá <em>buscar en mapa</em>.</div>
+    <div class="admin-actions">
+      <button class="admin-btn ghost" id="adExport">Descargar JSON actualizado</button>
+    </div>
+  </div>
+</aside>
+
+<!-- ============ MENU PANEL ============ -->
+<aside class="menu-panel" id="menuPanel" aria-hidden="true">
+  <div class="menu-topbar">
+    <a href="Home.html" class="menu-logo-link" aria-label="Pariggi — Inicio">
+      <img src="assets/logo-pariggi-transparente.png" alt="Pariggi" />
+    </a>
+    <div class="menu-topbar-right">
+      <a class="menu-social" href="https://www.instagram.com/pastaspariggi/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a class="menu-social" href="https://www.facebook.com/pastaspariggi/?locale=es_LA" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.3h2.45l.37-2.85H13.5V9.04c0-.83.23-1.39 1.42-1.39h1.51V5.1c-.26-.03-1.16-.11-2.2-.11-2.18 0-3.67 1.33-3.67 3.77v2.1H8.1v2.85h2.46V21h2.94z"/></svg>
+      </a>
+      <button class="menu-close" id="menuClose" aria-label="Cerrar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+          <line x1="5" y1="5" x2="19" y2="19"/>
+          <line x1="19" y1="5" x2="5" y2="19"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="menu-image" id="menuImage">
+    <div class="mi" data-key="nosotros"  style="background-image:url('assets/menu-nosotros.jpg');"></div>
+    <div class="mi" data-key="productos" style="background-image:url('assets/menu-productos.jpg');"></div>
+    <div class="mi" data-key="metodo"    style="background-image:url('assets/menu-metodo.jpg');"></div>
+    <div class="mi" data-key="b2b"       style="background-image:url('assets/menu-b2b.jpg');"></div>
+    <div class="mi" data-key="distribuidores" style="background-image:url('assets/menu-distribuidores.jpg');"></div>
+    <div class="mi" data-key="contacto"  style="background-image:url('assets/menu-general.jpg');"></div>
+    <div class="mi active" data-key="__default" style="background-image:url('assets/menu-general.jpg');"></div>
+  </div>
+
+  <div class="menu-right">
+    <ul class="menu-list">
+      <li><a href="nosotros.html" data-key="nosotros"><span class="dot"></span><span class="lbl">Nosotros</span><span class="num">01</span></a></li>
+      <li><a href="productos.html" data-key="productos"><span class="dot"></span><span class="lbl">Productos</span><span class="num">02</span></a></li>
+      <li><a href="metodo.html" data-key="metodo"><span class="dot"></span><span class="lbl">Método</span><span class="num">03</span></a></li>
+      <li class="has-sub" id="menuB2B"><a href="b2b.html" data-key="b2b"          ><span class="dot"></span><span class="lbl">B2B</span><span class="caret">+</span><span class="num">04</span></a>
+        <ul class="submenu">
+          <li><a href="contacto.html">Quiero ser cliente<span class="sub-hint">Hacer pedidos · catering · distribución</span></a></li>
+          <li><a href="http://186.123.162.186:8187/PortalClientes" target="_blank" rel="noopener">Portal mayorista<span class="sub-hint">Ingresá a tu cuenta y hacé tus pedidos</span></a></li>
+        </ul>
+      </li>
+      <li><a href="distribuidores.html" data-key="distribuidores"><span class="dot"></span><span class="lbl">Distribuidores</span><span class="num">05</span></a></li>
+      <li><a href="contacto.html" data-key="contacto"><span class="dot"></span><span class="lbl">Contacto</span><span class="num">06</span></a></li>
+    </ul>
+  </div>
+</aside>
+
+<script>
+/* ===================== Menu wiring ===================== */
+const burger = document.getElementById('burger');
+const panel  = document.getElementById('menuPanel');
+const closeBtn = document.getElementById('menuClose');
+const imgs = document.querySelectorAll('.menu-image .mi');
+function openMenu(){ burger.classList.add('open'); panel.classList.add('open'); panel.setAttribute('aria-hidden','false'); }
+function closeMenu(){
+  burger.classList.remove('open'); panel.classList.remove('open'); panel.setAttribute('aria-hidden','true');
+  document.querySelectorAll('.menu-list a.is-hover').forEach(o => o.classList.remove('is-hover'));
+  imgs.forEach(m => m.classList.toggle('active', m.dataset.key === '__default'));
+}
+burger.addEventListener('click', () => panel.classList.contains('open') ? closeMenu() : openMenu());
+closeBtn.addEventListener('click', closeMenu);
+document.querySelectorAll('.menu-list a').forEach(a => {
+  a.addEventListener('mouseenter', () => {
+    document.querySelectorAll('.menu-list a.is-hover').forEach(o => o.classList.remove('is-hover'));
+    a.classList.add('is-hover');
+    const k = a.dataset.key;
+    if (k) imgs.forEach(i => i.classList.toggle('active', i.dataset.key === k));
+  });
+  a.addEventListener('mouseleave', () => { a.classList.remove('is-hover'); });
+});
+const menuListEl = document.querySelector('.menu-list');
+if (menuListEl) menuListEl.addEventListener('mouseleave', () => {
+  document.querySelectorAll('.menu-list a.is-hover').forEach(o => o.classList.remove('is-hover'));
+  imgs.forEach(m => m.classList.toggle('active', m.dataset.key === '__default'));
+});
+
+/* ===================== Data + Map ===================== */
+let DATA = { online: [], tiendas: [] };
+let STORES = [];
+let map, markers = {};
+
+async function loadData(){
+  try {
+    const res = await fetch('assets/distribuidores.json', { cache: 'no-store' });
+    DATA = await res.json();
+  } catch (e) {
+    console.warn('No se pudo cargar distribuidores.json — usando vacío.', e);
+  }
+  STORES = (DATA.tiendas || []).slice();
+  renderOnline();
+  populateProvinces();
+  initMap();
+  renderList();
+}
+
+function renderOnline(){
+  const grid = document.getElementById('onlineGrid');
+  grid.innerHTML = '';
+  (DATA.online || []).forEach(s => {
+    const a = document.createElement('a');
+    a.className = 'online-card';
+    a.href = s.url || '#';
+    a.target = '_blank';
+    a.rel = 'noopener';
+    const logoBox = s.logo
+      ? `<div class="online-logo"><img src="${s.logo}" alt="${s.nombre}" onerror="this.parentElement.classList.add('empty');this.parentElement.dataset.name='${s.nombre.replace(/'/g,'&apos;')}';this.remove();"/></div>`
+      : `<div class="online-logo empty" data-name="${s.nombre}"></div>`;
+    a.innerHTML = `
+      ${logoBox}
+      <div class="online-region">${s.region || ''}</div>
+      <div class="online-name">${s.nombre}</div>
+      <span class="online-cta">Visitar</span>
+    `;
+    grid.appendChild(a);
+  });
+}
+
+function populateProvinces(){
+  const sel = document.getElementById('searchProv');
+  const provs = [...new Set(STORES.map(s => s.provincia).filter(Boolean))].sort();
+  provs.forEach(p => { const o = document.createElement('option'); o.value = p; o.textContent = p; sel.appendChild(o); });
+}
+
+function pinIcon(kind){
+  return L.divIcon({
+    className: '',
+    html: `<div class="pariggi-pin ${kind || ''}"></div>`,
+    iconSize: [30, 38],
+    iconAnchor: [15, 38],
+    popupAnchor: [0, -34],
+  });
+}
+
+function initMap(){
+  map = L.map('map', { scrollWheelZoom: false }).setView([-34.6, -58.5], 6);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap',
+    maxZoom: 18,
+  }).addTo(map);
+  STORES.forEach(s => addMarker(s));
+  fitToMarkers();
+}
+
+function addMarker(s){
+  if (typeof s.lat !== 'number' || typeof s.lng !== 'number') return;
+  const m = L.marker([s.lat, s.lng], { icon: pinIcon(s.tipo) });
+  const popup = `
+    <div class="popup-title">${s.nombre}</div>
+    <div class="popup-addr">${s.direccion || ''}${s.ciudad ? ', ' + s.ciudad : ''}${s.cp ? ' · ' + s.cp : ''}</div>
+    ${s.telefono ? `<div class="popup-tel">${s.telefono}</div>` : ''}
+    ${s.horario ? `<div class="popup-addr">${s.horario}</div>` : ''}
+  `;
+  m.bindPopup(popup);
+  m.on('click', () => highlightStore(s.id));
+  m.addTo(map);
+  markers[s.id] = m;
+}
+
+function fitToMarkers(){
+  const arr = STORES.filter(s => typeof s.lat === 'number');
+  if (!arr.length) return;
+  const bounds = L.latLngBounds(arr.map(s => [s.lat, s.lng]));
+  map.fitBounds(bounds, { padding: [30, 30], maxZoom: 13 });
+}
+
+function getFiltered(){
+  const txt = (document.getElementById('searchText').value || '').toLowerCase().trim();
+  const prov = document.getElementById('searchProv').value;
+  const cp  = (document.getElementById('searchCP').value || '').trim();
+  return STORES.filter(s => {
+    if (prov && s.provincia !== prov) return false;
+    if (cp && !(s.cp || '').toString().startsWith(cp)) return false;
+    if (txt) {
+      const hay = [s.nombre, s.direccion, s.ciudad, s.provincia].filter(Boolean).join(' ').toLowerCase();
+      if (!hay.includes(txt)) return false;
+    }
+    return true;
+  });
+}
+
+function renderList(){
+  const list = document.getElementById('storeList');
+  const filtered = getFiltered();
+  // count header stays first
+  list.innerHTML = `<div class="store-list-count" id="storeCount">${filtered.length} ${filtered.length === 1 ? 'punto' : 'puntos'} de venta</div>`;
+  if (!filtered.length){
+    list.insertAdjacentHTML('beforeend', `<div class="store-empty">No encontramos puntos con esos filtros.<br/>Probá con otra búsqueda o ampliá la provincia.</div>`);
+  }
+  // hide all markers, show only filtered
+  Object.entries(markers).forEach(([id, m]) => map.removeLayer(m));
+  filtered.forEach(s => {
+    const item = document.createElement('div');
+    item.className = 'store-item';
+    item.dataset.id = s.id;
+    item.innerHTML = `
+      <div class="store-name">${s.nombre}</div>
+      <div class="store-address">${s.direccion || ''}${s.ciudad ? ', ' + s.ciudad : ''}${s.provincia ? ', ' + s.provincia : ''}${s.cp ? ' (' + s.cp + ')' : ''}</div>
+      <div class="store-meta">
+        ${s.tipo === 'fabrica' ? '<span class="badge">Fábrica</span>' : '<span class="badge">Tienda</span>'}
+        ${s.telefono ? `<span class="telefono">${s.telefono}</span>` : ''}
+        ${s.horario ? `<span>${s.horario}</span>` : ''}
+      </div>
+    `;
+    item.addEventListener('click', () => highlightStore(s.id, true));
+    list.appendChild(item);
+    if (markers[s.id]) markers[s.id].addTo(map);
+  });
+  const arr = filtered.filter(s => typeof s.lat === 'number');
+  if (arr.length){
+    const bounds = L.latLngBounds(arr.map(s => [s.lat, s.lng]));
+    map.fitBounds(bounds, { padding: [30, 30], maxZoom: 14 });
+  }
+}
+
+function highlightStore(id, panTo){
+  document.querySelectorAll('.store-item').forEach(el => el.classList.toggle('active', el.dataset.id === id));
+  const s = STORES.find(x => x.id === id);
+  if (!s) return;
+  if (panTo && typeof s.lat === 'number'){
+    map.setView([s.lat, s.lng], Math.max(map.getZoom(), 14), { animate: true });
+    if (markers[id]) markers[id].openPopup();
+  }
+  // scroll into view in list
+  const el = document.querySelector(`.store-item[data-id="${id}"]`);
+  if (el) el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+}
+
+// Search wiring
+['searchText','searchProv','searchCP'].forEach(id => {
+  document.getElementById(id).addEventListener('input', renderList);
+});
+document.getElementById('searchClear').addEventListener('click', () => {
+  document.getElementById('searchText').value = '';
+  document.getElementById('searchProv').value = '';
+  document.getElementById('searchCP').value = '';
+  renderList();
+});
+
+/* ===================== Admin (?admin=1) ===================== */
+const params = new URLSearchParams(location.search);
+const adminMode = params.get('admin') === '1';
+if (adminMode){
+  document.getElementById('adminPanel').classList.add('on');
+  // Allow toggling closed
+  document.getElementById('adminClose').addEventListener('click', () => {
+    document.getElementById('adminPanel').classList.remove('on');
+  });
+
+  let pendingStore = null;
+  let editedStores = null; // copy with new entry
+
+  const status = (msg, kind = '') => {
+    const el = document.getElementById('adStatus');
+    el.textContent = msg;
+    el.className = 'admin-status ' + kind;
+  };
+
+  document.getElementById('adGeocode').addEventListener('click', async () => {
+    const nombre = document.getElementById('adNombre').value.trim();
+    const direccion = document.getElementById('adDireccion').value.trim();
+    const ciudad = document.getElementById('adCiudad').value.trim();
+    const provincia = document.getElementById('adProvincia').value;
+    const cp = document.getElementById('adCP').value.trim();
+    const telefono = document.getElementById('adTel').value.trim();
+    const horario = document.getElementById('adHorario').value.trim();
+    if (!nombre || !direccion) { status('Faltan nombre o dirección.', 'err'); return; }
+    status('Buscando coordenadas en OpenStreetMap…');
+    const q = `${direccion}, ${ciudad}, ${provincia}, Argentina`;
+    try {
+      const r = await fetch(`https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(q)}`,
+        { headers: { 'Accept-Language': 'es' } });
+      const arr = await r.json();
+      if (!arr.length){ status('No encontramos esa dirección. Probá agregar más detalle o cargá lat/lng a mano.', 'err'); return; }
+      const lat = +arr[0].lat, lng = +arr[0].lon;
+      pendingStore = {
+        id: 't-' + Date.now().toString(36),
+        nombre, direccion, ciudad, provincia, cp, telefono, horario,
+        tipo: 'tienda', lat, lng,
+      };
+      status(`Encontrado: ${arr[0].display_name.slice(0, 60)}…`, 'ok');
+      // preview marker
+      const tmp = L.marker([lat, lng], { icon: pinIcon('tienda') }).addTo(map);
+      map.setView([lat, lng], 14);
+      tmp.bindPopup(`<div class="popup-title">${nombre}</div><div class="popup-addr">${direccion}</div>`).openPopup();
+      document.getElementById('adAdd').disabled = false;
+      document.getElementById('adAdd').dataset.tmpid = pendingStore.id;
+      window.__tmpMarker = tmp;
+    } catch (e) {
+      status('Error consultando el servicio: ' + e.message, 'err');
+    }
+  });
+
+  document.getElementById('adAdd').addEventListener('click', () => {
+    if (!pendingStore) return;
+    STORES.push(pendingStore);
+    if (!editedStores) editedStores = DATA.tiendas.slice();
+    editedStores.push(pendingStore);
+    if (window.__tmpMarker){ map.removeLayer(window.__tmpMarker); window.__tmpMarker = null; }
+    addMarker(pendingStore);
+    populateProvinces();
+    renderList();
+    status('Sumado. Cuando termines, descargá el JSON actualizado.', 'ok');
+    document.getElementById('adAdd').disabled = true;
+    pendingStore = null;
+    // clear form
+    ['adNombre','adDireccion','adCiudad','adCP','adTel','adHorario'].forEach(id => document.getElementById(id).value = '');
+  });
+
+  document.getElementById('adExport').addEventListener('click', () => {
+    const out = {
+      _comment: DATA._comment,
+      online: DATA.online,
+      tiendas: editedStores || STORES,
+    };
+    const blob = new Blob([JSON.stringify(out, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'distribuidores.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    URL.revokeObjectURL(url);
+    status('JSON descargado. Reemplazalo en /assets/ para actualizar el sitio.', 'ok');
+  });
+}
+
+loadData();
+</script>
+<script src="social-float.js"></script>
+
+<script>
+(function(){
+  var menuB2B=document.getElementById('menuB2B');
+  if(menuB2B){
+    var trigger=menuB2B.querySelector('a[data-key="b2b"]');
+    if(trigger){ trigger.addEventListener('click',function(e){
+      if(!matchMedia('(hover: none)').matches) return;
+      if(!menuB2B.classList.contains('open')){ e.preventDefault(); menuB2B.classList.add('open'); }
+    }); }
+  }
+})();
+</script>
+</body>
+</html>

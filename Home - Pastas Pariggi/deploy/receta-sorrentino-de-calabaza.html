@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Receta — Sorrentinos de Calabaza con manteca de hierbas | Pastas Pariggi</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+<script src="brand-loader.js"></script>
+
+<style>
+@font-face { font-family:'Veneer';     src:url('fonts/Veneer.ttf') format('truetype'); font-weight:400; font-display:swap; }
+@font-face { font-family:'Arca Heavy'; src:url('fonts/Arca-Heavy.ttf') format('truetype'); font-weight:900; font-display:swap; }
+@font-face { font-family:'Roboto';     src:url('fonts/Roboto-Thin.ttf')    format('truetype'); font-weight:100; font-display:swap; }
+@font-face { font-family:'Roboto';     src:url('fonts/Roboto-Light.ttf')   format('truetype'); font-weight:300; font-display:swap; }
+@font-face { font-family:'Roboto';     src:url('fonts/Roboto-Regular.ttf') format('truetype'); font-weight:400; font-display:swap; }
+@font-face { font-family:'Roboto';     src:url('fonts/Roboto-Medium.ttf')  format('truetype'); font-weight:500; font-display:swap; }
+
+:root{
+  --black:#0a0a0a;
+  --gold:#D99000;
+  --brown:#905F33;
+  --cream:#F5F0E8;
+  --cream-2:#EFE9DD;
+  --ink:#1a1a1a;
+  --muted:#6a6660;
+  --rule:rgba(0,0,0,0.12);
+  --ease: cubic-bezier(0.22,1,0.36,1);
+}
+
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+html,body{
+  background:var(--cream);
+  color:var(--ink);
+  font-family:'Roboto', system-ui, sans-serif;
+  font-weight:300;
+  -webkit-font-smoothing:antialiased;
+}
+a{ color:inherit; text-decoration:none; }
+button{ font-family:inherit; cursor:pointer; }
+img{ display:block; max-width:100%; }
+
+/* ============ TOP BAR (shared) — cream so it matches breadcrumb area ============ */
+.topbar{
+  position:fixed; top:0; left:0; right:0;
+  z-index:100;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 28px;
+  background-color:var(--cream);
+  border-bottom:1px solid rgba(0,0,0,0.06);
+}
+.topbar-logo img{
+  display:block; width:160px; height:auto; object-fit:contain;
+  filter: brightness(0);
+}
+.topbar-right{ display:flex; align-items:center; gap:18px; }
+.topbar-social{ display:flex; align-items:center; gap:13px; }
+.topbar-social a{ display:flex; align-items:center; justify-content:center; color:inherit; opacity:.85; transition: color .4s var(--ease), opacity .3s var(--ease); }
+.topbar-social a:hover{ opacity:1; color:#D99000; }
+.topbar-social a svg{ width:20px; height:20px; display:block; }
+.topbar-social{ color:#0a0a0a; }
+.burger{
+  width:44px; height:44px;
+  display:flex; flex-direction:column; justify-content:center; align-items:flex-end;
+  gap:7px;
+  background:transparent; border:none;
+  padding:0 4px;
+}
+.burger span{
+  display:block; height:1px;
+  background:#0a0a0a;
+  transition: transform .5s var(--ease), width .5s var(--ease), opacity .3s var(--ease);
+  transform-origin:center;
+}
+.burger span:nth-child(1){ width:32px; }
+.burger span:nth-child(2){ width:22px; }
+.burger span:nth-child(3){ width:32px; }
+.burger.open span:nth-child(1){ transform: translateY(7px) rotate(45deg); width:32px; }
+.burger.open span:nth-child(2){ opacity:0; }
+.burger.open span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); width:32px; }
+
+/* ============ BREADCRUMB ============ */
+.breadcrumb{
+  padding: 110px 8vw 0;
+  display:flex; align-items:center; gap:14px;
+  flex-wrap:wrap;
+  font-family:'Roboto', sans-serif;
+  font-weight:300;
+  font-size:11px;
+  letter-spacing:0.32em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.breadcrumb a{ color:var(--muted); transition: color .25s var(--ease); }
+.breadcrumb a:hover{ color:var(--gold); }
+.breadcrumb .sep{ opacity:0.4; }
+.breadcrumb .current{ color:var(--ink); }
+
+/* ============ RECETA — light section (matches product page) ============ */
+.receta{
+  background: var(--cream);
+  color: var(--ink);
+  padding: 60px 8vw 100px;
+  margin-top: 28px;
+  position:relative;
+  overflow:hidden;
+}
+.receta::before{
+  content:"";
+  position:absolute; top:0; left:0; right:0; height:1px;
+  background: linear-gradient(to right, transparent, rgba(217,144,0,0.4), transparent);
+}
+.receta-inner{
+  max-width: 1500px;
+  margin: 0 auto;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 100px);
+  align-items:flex-start;
+}
+.receta-eyebrow{
+  font-family:'Roboto', sans-serif;
+  font-weight:300; font-size:12px; letter-spacing:0.42em;
+  text-transform:uppercase;
+  color: var(--gold);
+  margin-bottom: 26px;
+}
+.receta-title{
+  font-family:'Veneer', sans-serif;
+  font-weight:400;
+  font-size: clamp(40px, 5vw, 76px);
+  line-height: 1.02;
+  letter-spacing:0.05em;
+  text-transform:uppercase;
+  color: var(--ink);
+  margin-bottom:40px;
+}
+.receta-title em{ font-style:normal; color: var(--gold); }
+.recipe-meta{
+  display:flex;
+  gap: 36px;
+  margin-bottom: 44px;
+  flex-wrap:wrap;
+}
+.recipe-meta .meta-item{
+  display:flex; flex-direction:column;
+  font-family:'Roboto', sans-serif;
+}
+.recipe-meta .meta-k{
+  font-size:11px; letter-spacing:0.4em; text-transform:uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.recipe-meta .meta-v{
+  font-size:20px;
+  color: var(--ink);
+  font-family:'Cormorant Garamond', serif;
+  font-style:italic;
+}
+.recipe-h{
+  font-family:'Cormorant Garamond', serif;
+  font-weight:500; font-size:22px; line-height:1.2;
+  color: var(--ink);
+  margin-bottom:14px;
+  margin-top: 32px;
+}
+.recipe-text{
+  font-family:'Roboto', sans-serif;
+  font-weight:300; font-size:15px; line-height:1.7;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+.recipe-text + .recipe-text{ margin-top: 12px; }
+.recipe-ing{
+  list-style:none;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 22px;
+  margin-top: 6px;
+}
+.recipe-ing li{
+  font-family:'Roboto', sans-serif;
+  font-weight:300; font-size:14px;
+  color: var(--ink);
+  padding: 6px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.recipe-ing li strong{
+  font-weight:500;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+.receta-photo{
+  width:100%;
+  aspect-ratio: 4 / 5;
+  background: var(--cream-2);
+  position:relative;
+  overflow:hidden;
+  border: 1px solid var(--rule);
+}
+.receta-photo image-slot{ width:100%; height:100%; display:block; }
+.receta-photo-wrap{
+  position:sticky; top: 100px;
+  display:flex; justify-content:center;
+}
+
+/* Back to product link */
+.back-link-row{
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 40px 8vw 0;
+}
+.back-link{
+  display:inline-flex; align-items:center; gap:10px;
+  font-family:'Roboto', sans-serif;
+  font-weight:700;
+  font-size:12px; letter-spacing:0.32em;
+  text-transform:uppercase;
+  color: var(--ink);
+  transition: color .25s var(--ease), gap .25s var(--ease);
+}
+.back-link:hover{ color: var(--gold); gap: 16px; }
+.back-link .arrow{
+  width:20px; height:1.5px; background:currentColor; position:relative;
+}
+.back-link .arrow::before{
+  content:""; position:absolute; left:0; top:-3.5px;
+  width:8px; height:8px; border-left:1.5px solid currentColor; border-bottom:1.5px solid currentColor;
+  transform: rotate(45deg);
+}
+
+/* Footer */
+.foot{
+  padding: 60px 8vw 80px;
+  text-align:center;
+}
+.foot .rule{
+  width: 48px; height:1px;
+  background: var(--gold);
+  margin: 0 auto 22px;
+}
+.foot-text{
+  font-family:'Veneer', sans-serif;
+  font-weight:400;
+  font-size: clamp(28px, 3.4vw, 44px);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  line-height: 1.1;
+}
+.foot-text .sep{
+  color: var(--gold);
+  margin: 0 14px;
+  font-weight:400;
+}
+
+/* ============ MENU PANEL (shared) ============ */
+.menu-panel{
+  position:fixed; inset:0; z-index:200;
+  background:var(--cream);
+  color:#111;
+  transform: translateY(-100%);
+  transition: transform .9s cubic-bezier(0.65,0,0.35,1);
+  display:grid; grid-template-columns: 1fr 1fr;
+  visibility:hidden; pointer-events:none;
+}
+.menu-panel.open{ transform: translateY(0); visibility:visible; pointer-events:auto; }
+.menu-topbar{
+  position:absolute; top:0; left:0; right:0;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:10px 28px;
+  z-index:3;
+  pointer-events:none;
+}
+.menu-topbar > *{ pointer-events:auto; }
+.menu-topbar img{ display:block; width:160px; height:auto; filter: brightness(0) invert(1); }
+.menu-close{
+  width:44px; height:44px;
+  display:flex; align-items:center; justify-content:center;
+  background:transparent; border:none; color:#111;
+}
+.menu-close svg{ width:22px; height:22px; }
+.menu-image{ position:relative; overflow:hidden; background:#111; }
+.menu-image .mi{
+  position:absolute; inset:0;
+  background-size:cover; background-position:center;
+  opacity:0; transform: scale(1);
+  transition: opacity .28s var(--ease), transform 6s ease;
+  filter: brightness(0.6) contrast(1.1);
+}
+.menu-image .mi.active{ opacity:1; transform: scale(1.04); }
+.menu-image::after{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.45) 100%);
+  pointer-events:none;
+}
+.menu-right{
+  display:flex; flex-direction:column; justify-content:center;
+  padding: 120px 8vw 60px; position:relative;
+}
+.menu-list{ list-style:none; display:flex; flex-direction:column; }
+.menu-list li{ border-bottom:1px solid rgba(0,0,0,0.12); }
+.menu-list li:first-child{ border-top:1px solid rgba(0,0,0,0.12); }
+.menu-list a{
+  display:flex; align-items:center; justify-content:flex-end;
+  gap:18px;
+  padding: clamp(18px, 2.2vw, 28px) 0;
+  font-family:'Cormorant Garamond', serif;
+  font-weight:500;
+  font-size: clamp(42px, 5vw, 64px);
+  line-height:1; color:#0b0b0b; text-align:right;
+  position:relative;
+  transition: transform .5s var(--ease), color .3s var(--ease);
+}
+.menu-list a .dot{
+  width:8px; height:8px; border-radius:50%;
+  background:var(--gold); opacity:0;
+  transform: translateX(-8px) scale(0.4);
+  transition: opacity .4s var(--ease), transform .4s var(--ease);
+}
+.menu-list a .lbl{ display:inline-block; transition: transform .5s var(--ease); }
+.menu-list a:hover,
+.menu-list a.is-hover{ color: var(--gold); }
+.menu-list a:hover .dot,
+.menu-list a.is-hover .dot{ opacity:1; transform: translateX(0) scale(1); }
+.menu-list a:hover .lbl,
+.menu-list a.is-hover .lbl{ transform: translateX(-12px); color: var(--gold); }
+.menu-list a .num{
+  font-family:'Roboto', sans-serif;
+  font-weight:300; font-size:12px; letter-spacing:0.3em;
+  color:rgba(0,0,0,0.35); margin-left:24px;
+  align-self:flex-start; padding-top:10px;
+}
+
+@media (max-width: 1000px){
+  .receta-inner{ grid-template-columns: 1fr; }
+  .receta-photo-wrap{ position:static; }
+  .recipe-ing{ grid-template-columns: 1fr; }
+  .menu-panel{ grid-template-columns: 1fr; }
+  .menu-image{ display:none; }
+}
+</style>
+<style id="menu-unify">
+.menu-topbar-right{ display:flex; align-items:center; gap:14px; pointer-events:auto; }
+.menu-social{ width:40px; height:40px; border:1px solid var(--rule, rgba(0,0,0,0.18)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--ink, #1a1a1a); transition: background-color .3s var(--ease, ease), color .3s var(--ease, ease), border-color .3s var(--ease, ease), transform .3s var(--ease, ease); }
+.menu-social svg{ width:18px; height:18px; }
+.menu-social:hover{ background:var(--gold, #D99000); border-color:var(--gold, #D99000); color:#fff; transform:translateY(-2px); }
+
+.menu-list .has-sub > a > .caret{ display:inline-flex; align-items:center; justify-content:center; width:18px; height:18px; margin-left:8px; border:1px solid currentColor; border-radius:50%; font-family:'Roboto', sans-serif; font-weight:400; font-size:12px; line-height:1; opacity:0.6; transition: transform .35s var(--ease, ease), opacity .25s var(--ease, ease); align-self:flex-start; margin-top:16px; }
+.menu-list .has-sub:hover > a > .caret, .menu-list .has-sub.open > a > .caret{ opacity:1; transform: rotate(45deg); }
+.menu-list .submenu{ list-style:none; display:flex; flex-direction:column; max-height:0; overflow:hidden; transition: max-height .55s var(--ease, ease); }
+.menu-list .has-sub:hover > .submenu, .menu-list .has-sub.open > .submenu{ max-height:320px; }
+.menu-list .submenu li{ border:none; border-top:1px dashed rgba(0,0,0,0.12); }
+.menu-list .submenu li:first-child{ border-top:1px dashed rgba(0,0,0,0.12); }
+.menu-list .submenu a{ display:flex; flex-direction:column; align-items:flex-end; gap:4px; padding:18px 0; text-align:right; font-size:18px; line-height:1.15; font-family:'Roboto', sans-serif; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink, #1a1a1a); transition: color .25s var(--ease, ease), transform .35s var(--ease, ease); }
+.menu-list .submenu a .sub-hint{ font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:400; font-size:15px; letter-spacing:0; text-transform:none; color:var(--muted, #6a6660); }
+.menu-list .submenu a:hover{ color:var(--gold, #D99000); transform:translateX(-8px); }
+.menu-list .submenu a:hover .sub-hint{ color:rgba(217,144,0,0.8); }
+</style>
+</head>
+<body>
+
+<!-- ============ TOP BAR ============ -->
+<div class="topbar" id="topbar">
+  <a href="Home.html" class="topbar-logo" aria-label="Pariggi">
+    <img src="assets/logo-pariggi-transparente.png" alt="Pariggi" />
+  </a>
+  <div class="topbar-right"><div class="topbar-social"><a href="https://www.instagram.com/pastaspariggi/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg></a><a href="https://www.facebook.com/pastaspariggi/?locale=es_LA" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.3h2.45l.37-2.85H13.5V9.04c0-.83.23-1.39 1.42-1.39h1.51V5.1c-.26-.03-1.16-.11-2.2-.11-2.18 0-3.67 1.33-3.67 3.77v2.1H8.1v2.85h2.46V21h2.94z"/></svg></a></div><button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button></div>
+</div>
+
+<!-- ============ BREADCRUMB ============ -->
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="Home.html">Inicio</a>
+  <span class="sep">/</span>
+  <a href="productos.html">Productos</a>
+  <span class="sep">/</span>
+  <a href="producto-sorrentinos-de-calabaza.html">Sorrentinos de Calabaza</a>
+  <span class="sep">/</span>
+  <span class="current">Receta</span>
+</nav>
+
+<!-- ============ RECETA ============ -->
+<section class="receta" data-screen-label="Receta">
+  <div class="receta-inner">
+
+    <div class="receta-text">
+      <div class="receta-eyebrow">Material de cocina · Receta</div>
+      <h1 class="receta-title">Sorrentinos de <em>calabaza</em><br/>con manteca de hierbas, cebollas dulces y avellanas</h1>
+
+      <div class="recipe-meta">
+        <div class="meta-item"><span class="meta-k">Tiempo</span><span class="meta-v">15 minutos</span></div>
+        <div class="meta-item"><span class="meta-k">Porciones</span><span class="meta-v">2 personas</span></div>
+        <div class="meta-item"><span class="meta-k">Dificultad</span><span class="meta-v">Fácil</span></div>
+      </div>
+
+      <h3 class="recipe-h">Ingredientes</h3>
+      <p class="recipe-text" style="margin-bottom:10px;">Para 2 personas</p>
+      <ul class="recipe-ing">
+        <li><strong>400&nbsp;g</strong> &nbsp;Sorrentinos de Calabazas de Ferrara Pariggi®</li>
+        <li><strong>1 cda</strong> &nbsp;Aceite de oliva virgen extra</li>
+        <li><strong>1 cda</strong> &nbsp;Manteca de hierbas</li>
+        <li><strong>6</strong> &nbsp;Hojas de perejil fresco</li>
+        <li><strong>1 cda</strong> &nbsp;Avellanas tostadas picadas</li>
+        <li><strong>2</strong> &nbsp;Cebollas dulces</li>
+        <li><strong>c/n</strong> &nbsp;Sal y pimienta negra</li>
+      </ul>
+
+      <h3 class="recipe-h">Manteca de hierbas</h3>
+      <ul class="recipe-ing">
+        <li><strong>1 cda</strong> &nbsp;Manteca</li>
+        <li><strong>1 cda</strong> &nbsp;Romero, orégano, tomillo y perejil picados</li>
+        <li><strong>c/n</strong> &nbsp;Sal y pimienta</li>
+      </ul>
+
+      <h3 class="recipe-h">Cebollas dulces</h3>
+      <ul class="recipe-ing">
+        <li><strong>1 cda</strong> &nbsp;Manteca</li>
+        <li><strong>2</strong> &nbsp;Cebollas</li>
+        <li><strong>1 cda</strong> &nbsp;Azúcar mascabo</li>
+        <li><strong>c/n</strong> &nbsp;Sal y pimienta</li>
+      </ul>
+
+      <h3 class="recipe-h">Manteca de hierbas · Preparación</h3>
+      <p class="recipe-text">Picar las hierbas finamente. Mezclar con la manteca pomada y reservar.</p>
+
+      <h3 class="recipe-h">Cebollas dulces · Preparación</h3>
+      <p class="recipe-text">Cortar las cebollas en cuartos. Colocar en una bandeja para horno con sal, pimienta, azúcar mascabo y manteca. Hornear a 180° hasta que estén tiernas y doradas. Reservar.</p>
+
+      <h3 class="recipe-h">Cocción de la pasta</h3>
+      <p class="recipe-text">En una sartén grande colocar la manteca de hierbas y el aceite de oliva. Agregar las cebollas dulces. Reservar. Mientras tanto, hervir en una olla agua salada y cocinar los Sorrentinos de Calabazas Pariggi® durante los minutos exactos indicados en el paquete.</p>
+      <p class="recipe-text">A continuación, retirarlos del agua y añadirlos a la sartén, removiendo con suavidad. Condimentar los sorrentinos con sal y pimienta a gusto y saltear.</p>
+      <p class="recipe-text">Sobre un plato hondo colocar los Sorrentinos de Calabazas de Ferrara Pariggi®, las cebollas dulces y esparcir las avellanas picadas. ¡Y a disfrutar!</p>
+    </div>
+
+    <div class="receta-photo-wrap">
+      <div class="receta-photo">
+        <img src="assets/recipes/sorrentinos-calabaza-receta.jpg" alt="Sorrentinos de calabaza con manteca de hierbas, cebollas dulces y avellanas" style="width:100%;height:100%;object-fit:cover;display:block;" />
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Back link -->
+<div class="back-link-row">
+  <a href="producto-sorrentinos-de-calabaza.html" class="back-link">
+    <span class="arrow"></span>
+    Volver al producto
+  </a>
+</div>
+
+<div class="foot">
+  <div class="foot-text">Pastas Pariggi <span class="sep">—</span> come una volta</div>
+</div>
+
+<!-- ============ MENU PANEL ============ -->
+<aside class="menu-panel" id="menuPanel" aria-hidden="true">
+  <div class="menu-topbar">
+    <a href="Home.html" class="menu-logo-link" aria-label="Pariggi — Inicio">
+      <img src="assets/logo-pariggi-transparente.png" alt="Pariggi" />
+    </a>
+    <div class="menu-topbar-right">
+      <a class="menu-social" href="https://www.instagram.com/pastaspariggi/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a class="menu-social" href="https://www.facebook.com/pastaspariggi/?locale=es_LA" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.3h2.45l.37-2.85H13.5V9.04c0-.83.23-1.39 1.42-1.39h1.51V5.1c-.26-.03-1.16-.11-2.2-.11-2.18 0-3.67 1.33-3.67 3.77v2.1H8.1v2.85h2.46V21h2.94z"/></svg>
+      </a>
+      <button class="menu-close" id="menuClose" aria-label="Cerrar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+          <line x1="5" y1="5" x2="19" y2="19"/>
+          <line x1="19" y1="5" x2="5" y2="19"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="menu-image" id="menuImage">
+    <div class="mi" data-key="nosotros"  style="background-image:url('assets/menu-nosotros.jpg');"></div>
+    <div class="mi" data-key="productos" style="background-image:url('assets/menu-productos.jpg');"></div>
+    <div class="mi" data-key="metodo"    style="background-image:url('assets/menu-metodo.jpg');"></div>
+    <div class="mi" data-key="b2b"       style="background-image:url('assets/menu-b2b.jpg');"></div>
+    <div class="mi" data-key="distribuidores" style="background-image:url('assets/menu-distribuidores.jpg');"></div>
+    <div class="mi" data-key="contacto"  style="background-image:url('assets/menu-general.jpg');"></div>
+    <div class="mi active" data-key="__default" style="background-image:url('assets/menu-general.jpg');"></div>
+  </div>
+
+  <div class="menu-right">
+    <ul class="menu-list">
+      <li><a href="nosotros.html"  data-key="nosotros"     ><span class="dot"></span><span class="lbl">Nosotros</span><span class="num">01</span></a></li>
+      <li><a href="productos.html" data-key="productos"    ><span class="dot"></span><span class="lbl">Productos</span><span class="num">02</span></a></li>
+      <li><a href="metodo.html" data-key="metodo"        ><span class="dot"></span><span class="lbl">Método</span><span class="num">03</span></a></li>
+      <li class="has-sub" id="menuB2B"><a href="b2b.html" data-key="b2b"          ><span class="dot"></span><span class="lbl">B2B</span><span class="caret">+</span><span class="num">04</span></a>
+        <ul class="submenu">
+          <li><a href="contacto.html">Quiero ser cliente<span class="sub-hint">Hacer pedidos · catering · distribución</span></a></li>
+          <li><a href="http://186.123.162.186:8187/PortalClientes" target="_blank" rel="noopener">Portal mayorista<span class="sub-hint">Ingresá a tu cuenta y hacé tus pedidos</span></a></li>
+        </ul>
+      </li>
+      <li><a href="distribuidores.html" data-key="distribuidores"><span class="dot"></span><span class="lbl">Distribuidores</span><span class="num">05</span></a></li>
+      <li><a href="contacto.html" data-key="contacto" ><span class="dot"></span><span class="lbl">Contacto</span><span class="num">06</span></a></li>
+    </ul>
+  </div>
+</aside>
+
+<script src="assets/image-slot.js"></script>
+<script>
+/* ---------- Menu panel wiring (shared) ---------- */
+const burger    = document.getElementById('burger');
+const panel     = document.getElementById('menuPanel');
+const closeBtn  = document.getElementById('menuClose');
+const menuImage = document.getElementById('menuImage');
+const imgs      = document.querySelectorAll('.menu-image .mi');
+
+function openMenu(){
+  burger.classList.add('open');
+  panel.classList.add('open');
+  panel.setAttribute('aria-hidden','false');
+}
+function closeMenu(){
+  burger.classList.remove('open');
+  panel.classList.remove('open');
+  panel.setAttribute('aria-hidden','true');
+  document.querySelectorAll('.menu-list a.is-hover').forEach(o => o.classList.remove('is-hover'));
+  imgs.forEach(m => m.classList.toggle('active', m.dataset.key === '__default'));
+}
+burger.addEventListener('click', () => panel.classList.contains('open') ? closeMenu() : openMenu());
+closeBtn.addEventListener('click', closeMenu);
+
+document.querySelectorAll('.menu-list a').forEach(a => {
+  a.addEventListener('mouseenter', () => {
+    document.querySelectorAll('.menu-list a.is-hover').forEach(o => o.classList.remove('is-hover'));
+    a.classList.add('is-hover');
+    const k = a.dataset.key;
+    imgs.forEach(i => i.classList.toggle('active', i.dataset.key === k));
+  });
+  a.addEventListener('mouseleave', () => { a.classList.remove('is-hover'); });
+});
+const menuListEl = document.querySelector('.menu-list');
+if (menuListEl) {
+  menuListEl.addEventListener('mouseleave', () => {
+    document.querySelectorAll('.menu-list a.is-hover').forEach(o => o.classList.remove('is-hover'));
+    imgs.forEach(m => m.classList.toggle('active', m.dataset.key === '__default'));
+  });
+}
+</script>
+<script src="social-float.js"></script>
+
+<script>
+(function(){
+  var menuB2B=document.getElementById('menuB2B');
+  if(menuB2B){
+    var trigger=menuB2B.querySelector('a[data-key="b2b"]');
+    if(trigger){ trigger.addEventListener('click',function(e){
+      if(!matchMedia('(hover: none)').matches) return;
+      if(!menuB2B.classList.contains('open')){ e.preventDefault(); menuB2B.classList.add('open'); }
+    }); }
+  }
+})();
+</script>
+</body>
+</html>

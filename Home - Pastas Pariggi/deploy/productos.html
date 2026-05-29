@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Productos — Pastas Pariggi</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+<script src="brand-loader.js"></script>
+
+<!-- Preload hero + packaging images so they appear together, no flash -->
+<link rel="preload" as="image" href="assets/productos/11.jpg" />
+<link rel="preload" as="image" href="assets/productos/22.jpg" />
+<link rel="preload" as="image" href="assets/productos/33.jpg" />
+<link rel="preload" as="image" href="assets/productos/packagings/sorrentinos-de-calabaza-de-ferrara.jpg" />
+<link rel="preload" as="image" href="assets/productos/packagings/ravioles-de-ricota-sicilianos.jpg" />
+<link rel="preload" as="image" href="assets/productos/packagings/fusilli-lunghi-al-huevo.jpg" />
+<link rel="preload" as="image" href="assets/productos/packagings/cuerdas-de-guitarra-al-huevo.png" />
+<link rel="preload" as="image" href="assets/productos/packagings/foglia-de-lasagna.png" />
+<link rel="preload" as="image" href="assets/productos/packagings/fusilli-lunghi-integral.png" />
+<link rel="preload" as="image" href="assets/productos/packagings/noquis-de-pura-papa.png" />
+<link rel="preload" as="image" href="assets/productos/packagings/noquis-a-la-romana-con-parmesano.png" />
+<link rel="preload" as="image" href="assets/productos/packagings/noquis-de-calabaza.png" />
+<link rel="preload" as="image" href="assets/productos/packagings/noquis-de-espinaca.png" />
+<link rel="preload" as="image" href="assets/productos/packagings/bucatini-al-huevo.png" />
+<link rel="preload" as="image" href="assets/productos/packagings/sorrentino-de-jamon-mozzarella.png" />
+
+<style>
+@font-face { font-family:'Roboto'; src:url('fonts/Roboto-Thin.ttf') format('truetype'); font-weight:100; font-display:swap; }
+@font-face { font-family:'Roboto'; src:url('fonts/Roboto-Light.ttf') format('truetype'); font-weight:300; font-display:swap; }
+@font-face { font-family:'Roboto'; src:url('fonts/Roboto-Regular.ttf') format('truetype'); font-weight:400; font-display:swap; }
+@font-face { font-family:'Roboto'; src:url('fonts/Roboto-Medium.ttf') format('truetype'); font-weight:500; font-display:swap; }
+@font-face { font-family:'Roboto'; src:url('fonts/Roboto-Bold.ttf') format('truetype'); font-weight:700; font-display:swap; }
+@font-face { font-family:'Veneer'; src:url('fonts/Veneer.ttf') format('truetype'); font-weight:400; font-display:swap; }
+@font-face { font-family:'Arca Heavy'; src:url('fonts/Arca-Heavy.ttf') format('truetype'); font-weight:900; font-display:swap; }
+
+:root{
+  --gold:#D99000;
+  --brown:#905F33;
+  --cream:#F5F0E8;
+  --ease: cubic-bezier(0.22,1,0.36,1);
+  --ease-io: cubic-bezier(0.65,0,0.35,1);
+}
+
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+
+html, body{
+  width:100%;
+  background:var(--cream);
+  color:#0a0a0a;
+  font-family:'Roboto', system-ui, sans-serif;
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='20' viewBox='0 0 28 20'><g fill='%23fff' stroke='%230a0a0a' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'><path d='M14 10 L3 2 C1.5 2 0.8 4 1.8 7 C0 8 0 12 1.8 13 C0.8 16 1.5 18 3 18 Z'/><path d='M14 10 L25 2 C26.5 2 27.2 4 26.2 7 C28 8 28 12 26.2 13 C27.2 16 26.5 18 25 18 Z'/><path d='M14 10 L7 5 M14 10 L7 15 M14 10 L21 5 M14 10 L21 15' fill='none'/><path d='M11 7 L14 10 L11 13 M17 7 L14 10 L17 13' fill='none'/></g></svg>") 14 10, auto;
+}
+a{ color:inherit; text-decoration:none; }
+button{ font-family:inherit; cursor:pointer; }
+a, button, .nav-link, .menu-list a, .burger, .menu-close, .carrusel-arrow, .hero-cta, .card-cta, .carrusel-viewport{
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='20' viewBox='0 0 28 20'><g fill='%23C9A24B' stroke='%230a0a0a' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'><path d='M14 10 L3 2 C1.5 2 0.8 4 1.8 7 C0 8 0 12 1.8 13 C0.8 16 1.5 18 3 18 Z'/><path d='M14 10 L25 2 C26.5 2 27.2 4 26.2 7 C28 8 28 12 26.2 13 C27.2 16 26.5 18 25 18 Z'/><path d='M14 10 L7 5 M14 10 L7 15 M14 10 L21 5 M14 10 L21 15' fill='none'/><path d='M11 7 L14 10 L11 13 M17 7 L14 10 L17 13' fill='none'/></g></svg>") 14 10, pointer;
+}
+
+/* ============ TOP BAR ============ */
+.topbar{
+  position:fixed; top:0; left:0; right:0;
+  z-index:100;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 28px;
+  background:transparent;
+  transition: background-color .4s var(--ease);
+}
+.topbar.scrolled{ background-color:#F5F0E8; }
+.topbar-logo img{
+  display:block; width:160px; height:auto; object-fit:contain;
+  filter: brightness(0) invert(1);
+  transition: filter .4s var(--ease);
+}
+.topbar.scrolled .topbar-logo img{ filter: brightness(0); }
+.topbar-right{ display:flex; align-items:center; gap:18px; }
+.topbar-social{ display:flex; align-items:center; gap:13px; }
+.topbar-social a{ display:flex; align-items:center; justify-content:center; color:inherit; opacity:.85; transition: color .4s var(--ease), opacity .3s var(--ease); }
+.topbar-social a:hover{ opacity:1; color:#D99000; }
+.topbar-social a svg{ width:20px; height:20px; display:block; }
+.topbar-social{ color:#fff; }
+.topbar.scrolled .topbar-social{ color:#0a0a0a; }
+.burger{
+  width:56px; height:56px;
+  display:flex; flex-direction:column; justify-content:center; align-items:flex-end;
+  gap:8px;
+  background:transparent; border:none;
+  padding:0 4px;
+}
+.burger span{
+  display:block; height:1.5px; background:#fff;
+  transition: transform .5s var(--ease), width .5s var(--ease), opacity .3s var(--ease), background-color .4s var(--ease);
+  transform-origin:center;
+}
+.topbar.scrolled .burger span{ background:#111; }
+.burger span:nth-child(1){ width:36px; }
+.burger span:nth-child(2){ width:26px; }
+.burger span:nth-child(3){ width:36px; }
+.burger.open span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
+.burger.open span:nth-child(2){ opacity:0; }
+.burger.open span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
+
+/* ============ HERO ROTATIVO ============ */
+.hero{
+  position:relative;
+  width:100%;
+  height:100vh;
+  overflow:hidden;
+  background:#000;
+}
+.hero-slides{
+  position:absolute; inset:0;
+}
+.hero-slide{
+  position:absolute; inset:0;
+  background-size:cover; background-position:center;
+  opacity:0;
+  transition: opacity 0.8s ease-in-out;
+}
+.hero-slide.active{ opacity:1; }
+.hero-overlay{
+  position:absolute; inset:0;
+  background:rgba(0,0,0,0.35);
+  z-index:2;
+}
+.hero-content{
+  position:absolute; inset:0;
+  z-index:3;
+  pointer-events:none;
+}
+.hero-text{
+  position:absolute;
+  right:64px;
+  bottom:40px;
+  text-align:right;
+  pointer-events:auto;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:24px;
+  max-width: 640px;
+}
+.hero-text-line{
+  font-family:'Cormorant Garamond', serif;
+  font-style:italic;
+  font-weight:400;
+  font-size:34px;
+  color:#fff;
+  letter-spacing:0.01em;
+  line-height:1.2;
+  text-align:right;
+  white-space:nowrap;
+}
+
+/* CTA — clone of .historia-cta from nosotros */
+.hero-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  padding: 20px 56px;
+  border: 1px solid var(--gold);
+  background-color: var(--gold);
+  color: #000;
+  font-family:'Roboto', sans-serif;
+  font-weight:400;
+  font-size: 13px;
+  letter-spacing:0.25em;
+  text-transform:uppercase;
+  pointer-events:auto;
+  transition: background-color .4s var(--ease), color .4s var(--ease), border-color .4s var(--ease);
+}
+.hero-cta .arrow{ display:inline-block; transition: transform .4s var(--ease); }
+.hero-cta:hover{ background-color: #000; color: var(--gold); border-color: #000; }
+.hero-cta:hover .arrow{ transform: translateX(6px); }
+
+/* ============ DECORATIVE DIVIDER ============ */
+.pasta-runner-wrap{
+  width:100%;
+  overflow:hidden;
+  background:#F5F0E8;
+  padding:60px 0 20px;
+  perspective:1200px;
+}
+#pasta-runner{
+  display:block;
+  width:100%;
+  height:120px;
+  background-image: url('assets/fusilli_separador.png');
+  background-repeat: repeat-x;
+  background-size: 720px 120px;
+  background-position: 0 50%;
+  animation: pasta-scroll 12s linear infinite;
+}
+@keyframes pasta-scroll {
+  from { background-position: 0 50%; }
+  to   { background-position: 720px 50%; }
+}
+@keyframes pasta-spin {
+  from { transform: rotateX(0deg); }
+  to   { transform: rotateX(360deg); }
+}
+
+/* ============ SECTION 2 — CARRUSEL ============ */
+.productos-section{
+  background: var(--cream);
+  padding: 20px 0 100px;
+  position:relative;
+}
+.productos-title{
+  font-family:'Veneer', sans-serif;
+  font-weight:400;
+  font-size:72px;
+  letter-spacing:0.08em;
+  color:#000;
+  text-align:center;
+  margin-bottom:40px;
+  text-transform:uppercase;
+}
+
+.carrusel-wrap{
+  position:relative;
+  width:100%;
+  padding: 0 60px;
+}
+.carrusel-viewport{
+  overflow:hidden;
+  position:relative;
+}
+.carrusel-viewport.dragging{ }
+.carrusel-track{
+  display:grid;
+  grid-template-rows: 460px;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 96px) / 4);
+  gap: 32px;
+  padding: 8px 0;
+  will-change: transform;
+}
+
+.card{
+  width:100%;
+  height:460px;
+  background:#fff;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  border-radius:0;
+  display:flex;
+  flex-direction:column;
+  user-select:none;
+  -webkit-user-drag:none;
+}
+.card-img{
+  width:100%;
+  height:320px;
+  background:#fff;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+  padding:0;
+}
+.card-img img{
+  max-width:100%;
+  max-height:100%;
+  width:auto; height:auto;
+  object-fit:contain;
+  pointer-events:none;
+  transform: scale(1.55);
+  transform-origin: center center;
+}
+/* Foglia is shot closer — scale down + nudge down so it lines up with the rest */
+.card-img.is-foglia img{ transform: translateY(6px) scale(0.86); }
+/* Portrait packaging shots — show full label without aggressive cropping */
+.card-img.is-portrait img{ transform: translateY(14px) scale(0.72); }
+.card-img.is-espinaca img{ transform: translateY(14px) scale(0.82); }
+.card-img.is-cuerdas img{ transform: translateY(6px) scale(0.94); }
+.card-img.is-fusilli-int img{ transform: translateY(10px) scale(1.04); }
+.card-img.is-noquis-papa img{ transform: translateY(7px) scale(0.96); }
+.card-img.is-sorr-jm img{ transform: translateY(7px) scale(0.92); }
+.card-img.is-bucatini img{ transform: translateY(7px) scale(0.85); }
+.card-img.is-tagli-esp img{ transform: translateY(7px) scale(0.82); }
+.card-img.is-puntalette img{ transform: scale(0.82); }
+.card-img.is-romana img{ transform: scale(0.82); }
+.card-placeholder{
+  width:100%;
+  height:320px;
+  background:#F5F0E8;
+  display:flex; align-items:center; justify-content:center;
+}
+.card-placeholder img{
+  width:54%;
+  height:auto;
+  opacity:0.18;
+  filter: grayscale(1);
+  pointer-events:none;
+}
+.card-body{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-between;
+  padding: 22px 16px 22px;
+  text-align:center;
+}
+.card-name{
+  font-family:'Arca Heavy', 'Roboto', sans-serif;
+  font-weight:900;
+  font-size:15px;
+  color:#000;
+  line-height:1.25;
+  text-wrap: balance;
+  letter-spacing:0.01em;
+}
+.card-cta{
+  display:inline-block;
+  padding: 9px 18px;
+  border:1px solid var(--gold);
+  background:transparent;
+  color:var(--gold);
+  font-family:'Roboto', sans-serif;
+  font-weight:400;
+  font-size:11px;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  transition: background-color .3s var(--ease), color .3s var(--ease);
+}
+.card-cta:hover{ background:var(--gold); color:#fff; }
+
+/* arrows */
+.carrusel-arrow{
+  position:absolute;
+  top:50%;
+  transform: translateY(-50%);
+  width:54px; height:54px;
+  border-radius:50%;
+  background:#fff;
+  border:1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  display:flex; align-items:center; justify-content:center;
+  z-index:10;
+  color:#000;
+  transition: background-color .3s var(--ease), color .3s var(--ease), transform .3s var(--ease);
+}
+.carrusel-arrow:hover{ background:#000; color:#fff; }
+.carrusel-arrow.left{ left:14px; }
+.carrusel-arrow.right{ right:14px; }
+.carrusel-arrow svg{ width:18px; height:18px; }
+
+/* ============ MENU PANEL ============ */
+.menu-panel{
+  position:fixed; inset:0;
+  z-index:200;
+  background:var(--cream);
+  color:#111;
+  transform: translateY(-100%);
+  transition: transform .9s var(--ease-io);
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  visibility:hidden;
+  pointer-events:none;
+}
+.menu-panel.open{
+  transform: translateY(0);
+  visibility:visible;
+  pointer-events:auto;
+}
+.menu-topbar{
+  position:absolute; top:0; left:0; right:0;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:24px 36px;
+  z-index:3;
+  pointer-events:none;
+}
+.menu-topbar > *{ pointer-events:auto; }
+.menu-topbar img{ display:block; width:160px; height:auto; filter: brightness(0) invert(1); }
+.menu-close{
+  width:44px; height:44px;
+  display:flex; align-items:center; justify-content:center;
+  background:transparent; border:none;
+  color:#111;
+}
+.menu-close svg{ width:22px; height:22px; }
+
+.menu-image{ position:relative; overflow:hidden; background:#111; }
+.menu-image .mi{
+  position:absolute; inset:0;
+  background-size:cover; background-position:center;
+  opacity:0;
+  transition: opacity .9s var(--ease), transform 6s ease;
+  filter: brightness(0.6) contrast(1.1);
+}
+.menu-image .mi.active{ opacity:1; transform: scale(1.04); }
+.menu-image::after{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.45) 100%);
+  pointer-events:none;
+}
+
+.menu-right{
+  display:flex; flex-direction:column; justify-content:center;
+  padding: 120px 8vw 60px;
+  position:relative;
+}
+.menu-list{ list-style:none; display:flex; flex-direction:column; }
+.menu-list li{ border-bottom:1px solid rgba(0,0,0,0.12); }
+.menu-list li:first-child{ border-top:1px solid rgba(0,0,0,0.12); }
+.menu-list a{
+  display:flex; align-items:center; justify-content:flex-end;
+  gap:18px;
+  padding: clamp(18px, 2.2vw, 28px) 0;
+  font-family:'Cormorant Garamond', serif;
+  font-weight:500;
+  font-size: clamp(42px, 5vw, 64px);
+  line-height:1;
+  color:#0b0b0b;
+  text-align:right;
+  transition: color .3s var(--ease);
+}
+.menu-list a .dot{
+  width:8px; height:8px; border-radius:50%;
+  background:var(--gold); opacity:0;
+  transform: translateX(-8px) scale(0.4);
+  transition: opacity .4s var(--ease), transform .4s var(--ease);
+}
+.menu-list a .lbl{ display:inline-block; transition: transform .5s var(--ease); }
+.menu-list a:hover .dot{ opacity:1; transform: translateX(0) scale(1); }
+.menu-list a:hover .lbl{ transform: translateX(-12px); color: var(--gold); }
+.menu-list a:hover{ color: var(--gold); }
+.menu-list a .num{
+  font-family:'Roboto', sans-serif;
+  font-weight:300; font-size:12px; letter-spacing:0.3em;
+  color:rgba(0,0,0,0.35);
+  margin-left:24px;
+  align-self:flex-start;
+  padding-top:10px;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 900px){
+  .hero-text{ left:24px; bottom:140px; }
+  .hero-text-1{ font-size:22px; }
+  .hero-text-2{ font-size:13px; }
+  .hero-cta{ right:24px; bottom:24px; padding:22px 32px; font-size:11px; }
+  .productos-title{ font-size:48px; }
+  .carrusel-wrap{ padding: 0 16px; }
+  .carrusel-arrow{ display:none; }
+  .menu-panel{ grid-template-columns: 1fr; }
+  .menu-image{ display:none; }
+  .menu-list a{ font-size: 38px; }
+}
+</style>
+<style id="menu-unify">
+.menu-topbar-right{ display:flex; align-items:center; gap:14px; pointer-events:auto; }
+.menu-social{ width:40px; height:40px; border:1px solid var(--rule, rgba(0,0,0,0.18)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--ink, #1a1a1a); transition: background-color .3s var(--ease, ease), color .3s var(--ease, ease), border-color .3s var(--ease, ease), transform .3s var(--ease, ease); }
+.menu-social svg{ width:18px; height:18px; }
+.menu-social:hover{ background:var(--gold, #D99000); border-color:var(--gold, #D99000); color:#fff; transform:translateY(-2px); }
+
+.menu-list .has-sub > a > .caret{ display:inline-flex; align-items:center; justify-content:center; width:18px; height:18px; margin-left:8px; border:1px solid currentColor; border-radius:50%; font-family:'Roboto', sans-serif; font-weight:400; font-size:12px; line-height:1; opacity:0.6; transition: transform .35s var(--ease, ease), opacity .25s var(--ease, ease); align-self:flex-start; margin-top:16px; }
+.menu-list .has-sub:hover > a > .caret, .menu-list .has-sub.open > a > .caret{ opacity:1; transform: rotate(45deg); }
+.menu-list .submenu{ list-style:none; display:flex; flex-direction:column; max-height:0; overflow:hidden; transition: max-height .55s var(--ease, ease); }
+.menu-list .has-sub:hover > .submenu, .menu-list .has-sub.open > .submenu{ max-height:320px; }
+.menu-list .submenu li{ border:none; border-top:1px dashed rgba(0,0,0,0.12); }
+.menu-list .submenu li:first-child{ border-top:1px dashed rgba(0,0,0,0.12); }
+.menu-list .submenu a{ display:flex; flex-direction:column; align-items:flex-end; gap:4px; padding:18px 0; text-align:right; font-size:18px; line-height:1.15; font-family:'Roboto', sans-serif; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink, #1a1a1a); transition: color .25s var(--ease, ease), transform .35s var(--ease, ease); }
+.menu-list .submenu a .sub-hint{ font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:400; font-size:15px; letter-spacing:0; text-transform:none; color:var(--muted, #6a6660); }
+.menu-list .submenu a:hover{ color:var(--gold, #D99000); transform:translateX(-8px); }
+.menu-list .submenu a:hover .sub-hint{ color:rgba(217,144,0,0.8); }
+</style>
+</head>
+<body>
+
+<!-- ============ TOP BAR ============ -->
+<div class="topbar" id="topbar">
+  <a href="Home.html" class="topbar-logo" aria-label="Pariggi">
+    <img src="assets/logo-pariggi-transparente.png" alt="Pariggi" />
+  </a>
+  <div class="topbar-right"><div class="topbar-social"><a href="https://www.instagram.com/pastaspariggi/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg></a><a href="https://www.facebook.com/pastaspariggi/?locale=es_LA" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.3h2.45l.37-2.85H13.5V9.04c0-.83.23-1.39 1.42-1.39h1.51V5.1c-.26-.03-1.16-.11-2.2-.11-2.18 0-3.67 1.33-3.67 3.77v2.1H8.1v2.85h2.46V21h2.94z"/></svg></a></div><button class="burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button></div>
+</div>
+
+<!-- ============ SECTION 1 — HERO ============ -->
+<section class="hero" data-screen-label="01 Hero">
+  <div class="hero-slides" id="heroSlides">
+    <div class="hero-slide active" style="background-image:url('assets/productos/11.jpg');"></div>
+    <div class="hero-slide" style="background-image:url('assets/productos/22.jpg');"></div>
+    <div class="hero-slide" style="background-image:url('assets/productos/33.jpg');"></div>
+  </div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-text-line">Pasta fresca para cocinas profesionales</div>
+
+      <a href="#productos" class="hero-cta" id="heroCta" aria-label="Ver catálogo">
+        <span>Ver catálogo</span>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DECORATIVE DIVIDER ============ -->
+<div class="pasta-runner-wrap" aria-hidden="true">
+  <div id="pasta-runner"></div>
+</div>
+
+
+<!-- ============ SECTION 2 — PRODUCTOS ============ -->
+<section class="productos-section" id="productos" data-screen-label="02 Productos" style="height: 600px; margin-top: -20px; position: relative; z-index: 2;">
+  <h2 class="productos-title" style="margin: -40px 0px 40px;">Nuestros Productos</h2>
+
+  <div class="carrusel-wrap" style="height: 470px;">
+    <button class="carrusel-arrow left" id="arrowLeft" aria-label="Anterior">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+        <polyline points="15,5 8,12 15,19"/>
+      </svg>
+    </button>
+
+    <div class="carrusel-viewport" id="viewport">
+      <div class="carrusel-track" id="track"></div>
+    </div>
+
+    <button class="carrusel-arrow right" id="arrowRight" aria-label="Siguiente">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+        <polyline points="9,5 16,12 9,19"/>
+      </svg>
+    </button>
+  </div>
+</section>
+
+<!-- ============ MENU PANEL ============ -->
+<aside class="menu-panel" id="menuPanel" aria-hidden="true">
+  <div class="menu-topbar">
+    <a href="Home.html" class="menu-logo-link" aria-label="Pariggi — Inicio">
+      <img src="assets/logo-pariggi-transparente.png" alt="Pariggi" />
+    </a>
+    <div class="menu-topbar-right">
+      <a class="menu-social" href="https://www.instagram.com/pastaspariggi/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a class="menu-social" href="https://www.facebook.com/pastaspariggi/?locale=es_LA" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.3h2.45l.37-2.85H13.5V9.04c0-.83.23-1.39 1.42-1.39h1.51V5.1c-.26-.03-1.16-.11-2.2-.11-2.18 0-3.67 1.33-3.67 3.77v2.1H8.1v2.85h2.46V21h2.94z"/></svg>
+      </a>
+      <button class="menu-close" id="menuClose" aria-label="Cerrar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+          <line x1="5" y1="5" x2="19" y2="19"/>
+          <line x1="19" y1="5" x2="5" y2="19"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="menu-image" id="menuImage">
+    <div class="mi" data-key="nosotros"       style="background-image:url('assets/menu-nosotros.jpg');"></div>
+    <div class="mi" data-key="productos"      style="background-image:url('assets/menu-productos.jpg');"></div>
+    <div class="mi" data-key="metodo"         style="background-image:url('assets/menu-metodo.jpg');"></div>
+    <div class="mi" data-key="b2b"            style="background-image:url('assets/menu-b2b.jpg');"></div>
+    <div class="mi" data-key="distribuidores" style="background-image:url('assets/menu-distribuidores.jpg');"></div>
+    <div class="mi" data-key="contacto"       style="background-image:url('assets/menu-general.jpg');"></div>
+    <div class="mi active" data-key="__default" style="background-image:url('assets/menu-general.jpg');"></div>
+  </div>
+
+  <div class="menu-right">
+    <ul class="menu-list">
+      <li><a href="nosotros.html" data-key="nosotros"      ><span class="dot"></span><span class="lbl">Nosotros</span><span class="num">01</span></a></li>
+      <li><a href="productos.html" data-key="productos"    ><span class="dot"></span><span class="lbl">Productos</span><span class="num">02</span></a></li>
+      <li><a href="metodo.html" data-key="metodo"                    ><span class="dot"></span><span class="lbl">Método</span><span class="num">03</span></a></li>
+      <li class="has-sub" id="menuB2B"><a href="b2b.html" data-key="b2b"          ><span class="dot"></span><span class="lbl">B2B</span><span class="caret">+</span><span class="num">04</span></a>
+        <ul class="submenu">
+          <li><a href="contacto.html">Quiero ser cliente<span class="sub-hint">Hacer pedidos · catering · distribución</span></a></li>
+          <li><a href="http://186.123.162.186:8187/PortalClientes" target="_blank" rel="noopener">Portal mayorista<span class="sub-hint">Ingresá a tu cuenta y hacé tus pedidos</span></a></li>
+        </ul>
+      </li>
+      <li><a href="distribuidores.html" data-key="distribuidores"            ><span class="dot"></span><span class="lbl">Distribuidores</span><span class="num">05</span></a></li>
+      <li><a href="contacto.html" data-key="contacto" ><span class="dot"></span><span class="lbl">Contacto</span><span class="num">06</span></a></li>
+    </ul>
+  </div>
+</aside>
+
+<script>
+/* ---------- Top bar scroll state ---------- */
+const topbar = document.getElementById('topbar');
+function onScroll(){
+  if (window.scrollY > 40) topbar.classList.add('scrolled');
+  else topbar.classList.remove('scrolled');
+}
+addEventListener('scroll', onScroll, { passive:true });
+onScroll();
+
+/* ---------- Menu ---------- */
+const burger = document.getElementById('burger');
+const panel  = document.getElementById('menuPanel');
+const closeBtn = document.getElementById('menuClose');
+const imgs = document.querySelectorAll('.menu-image .mi');
+function openMenu(){ burger.classList.add('open'); panel.classList.add('open'); panel.setAttribute('aria-hidden','false'); }
+function closeMenu(){ burger.classList.remove('open'); panel.classList.remove('open'); panel.setAttribute('aria-hidden','true'); }
+burger.addEventListener('click', () => panel.classList.contains('open') ? closeMenu() : openMenu());
+closeBtn.addEventListener('click', closeMenu);
+document.querySelectorAll('.menu-list a').forEach(a => {
+  a.addEventListener('mouseenter', () => {
+    const k = a.dataset.key;
+    imgs.forEach(i => i.classList.toggle('active', i.dataset.key === k));
+  });
+  a.addEventListener('mouseleave', () => {
+    imgs.forEach(i => i.classList.toggle('active', i.dataset.key === '__default'));
+  });
+});
+
+/* ---------- Hero rotator ---------- */
+const slides = document.querySelectorAll('.hero-slide');
+let heroIdx = 0;
+setInterval(() => {
+  slides[heroIdx].classList.remove('active');
+  heroIdx = (heroIdx + 1) % slides.length;
+  slides[heroIdx].classList.add('active');
+}, 5000);
+
+/* ---------- CTA edge wave traveling rightward (SVG <animate> morph) ---------- */
+(function(){
+  const src = document.getElementById('ctaPathSrc');
+  const live = document.getElementById('ctaPathLive');
+  if (!src || !live) return;
+
+  const total = src.getTotalLength();
+  const N = 220;
+  const samples = [];
+  for (let i = 0; i < N; i++){
+    const p = src.getPointAtLength((i / N) * total);
+    samples.push([p.x, p.y]);
+  }
+  let cx = 0, cy = 0;
+  samples.forEach(([x, y]) => { cx += x; cy += y; });
+  cx /= N; cy /= N;
+  let xMin = Infinity, xMax = -Infinity;
+  samples.forEach(([x]) => { if (x < xMin) xMin = x; if (x > xMax) xMax = x; });
+  const xRange = xMax - xMin;
+
+  function buildPath(t){
+    let d = '';
+    for (let i = 0; i < N; i++){
+      const [x, y] = samples[i];
+      let dx = x - cx, dy = y - cy;
+      const len = Math.hypot(dx, dy) || 1;
+      dx /= len; dy /= len;
+      const phase = ((x - xMin) / xRange) * Math.PI * 4 - t;
+      const wave = Math.sin(phase) * 55 + Math.sin(phase * 2.3) * 22;
+      d += (i === 0 ? 'M' : 'L') + (x + dx * wave).toFixed(1) + ',' + (y + dy * wave).toFixed(1) + ' ';
+    }
+    return d + 'Z';
+  }
+
+  // Generate keyframes covering one full 2π cycle, looping seamlessly
+  const FRAMES = 16;
+  const values = [];
+  for (let k = 0; k <= FRAMES; k++){
+    values.push(buildPath((k / FRAMES) * Math.PI * 2));
+  }
+  // Set initial d, then attach <animate>
+  live.setAttribute('d', values[0]);
+  const animate = document.createElementNS('http://www.w3.org/2000/svg', 'animate');
+  animate.setAttribute('attributeName', 'd');
+  animate.setAttribute('dur', '2s');
+  animate.setAttribute('repeatCount', 'indefinite');
+  animate.setAttribute('values', values.join(';'));
+  animate.setAttribute('calcMode', 'linear');
+  live.appendChild(animate);
+})();
+
+/* ---------- Hero CTA scroll to productos ---------- */
+document.getElementById('heroCta').addEventListener('click', (e) => {
+  e.preventDefault();
+  const target = document.getElementById('productos');
+  const y = target.getBoundingClientRect().top + window.scrollY - 20;
+  window.scrollTo({ top: y, behavior: 'smooth' });
+});
+
+/* ---------- Carrusel ---------- */
+const products = [
+  { name: 'Sorrentinos de Calabaza de Ferrara', img: 'assets/productos/packagings/sorrentinos-de-calabaza-de-ferrara.jpg', slug: 'producto-sorrentinos-de-calabaza.html' },
+  { name: 'Ravioles de Ricota Sicilianos',      img: 'assets/productos/packagings/ravioles-de-ricota-sicilianos.jpg' },
+  { name: 'Fusilli Lunghi al Huevo',            img: 'assets/productos/packagings/fusilli-lunghi-al-huevo.jpg' },
+  { name: 'Cuerdas de Guitarra al Huevo',       img: 'assets/productos/packagings/cuerdas-de-guitarra-al-huevo.png' },
+  { name: 'Foglia de Lasagna',                  img: 'assets/productos/packagings/foglia-de-lasagna.png' },
+  { name: 'Fusilli Lunghi Integral',            img: 'assets/productos/packagings/fusilli-lunghi-integral.png' },
+  { name: 'Ñoquis de Pura Papa',                img: 'assets/productos/packagings/noquis-de-pura-papa.png' },
+  { name: 'Sorrentino de Jamón & Mozzarella',   img: 'assets/productos/packagings/sorrentino-de-jamon-mozzarella.png' },
+  { name: 'Bucatini al Huevo',                  img: 'assets/productos/packagings/bucatini-al-huevo.png' },
+  { name: 'Ñoquis a la Romana con Parmesano',   img: 'assets/productos/packagings/noquis-a-la-romana-con-parmesano.png' },
+  { name: 'Ñoquis de Espinaca',                 img: 'assets/productos/packagings/noquis-de-espinaca.png' },
+  { name: 'Ñoquis de Calabaza',                 img: 'assets/productos/packagings/noquis-de-calabaza.png' },
+  { name: 'Tagliatelle de Espinaca',            img: 'assets/productos/packagings/tagliatelle-de-espinaca.png' },
+  { name: 'Puntalette Pasta Seca',              img: 'assets/productos/packagings/puntalette-pasta-seca.png' },
+  { name: 'Ravioles de Ricota Sicilianos',      img: 'assets/productos/packagings/ravioles-de-ricota-sicilianos.jpg' },
+  { name: 'Fusilli Lunghi al Huevo',            img: 'assets/productos/packagings/fusilli-lunghi-al-huevo.jpg' }
+];
+
+const PLACEHOLDER = 'assets/isologo-pariggi-blanco.png';
+const track = document.getElementById('track');
+const viewport = document.getElementById('viewport');
+
+function buildCard(p){
+  const card = document.createElement('div');
+  card.className = 'card';
+  const isFoglia = /foglia/i.test(p.name);
+  const isPortrait = !!p.img && p.img.endsWith('.png');
+  const isEspinaca = /espinaca/i.test(p.name) && /oquis/i.test(p.name);
+  const isCuerdas = /cuerdas de guitarra/i.test(p.name);
+  const isFusilliInt = /fusilli lunghi integral/i.test(p.name);
+  const isNoquisPapa = /ñoquis de pura papa/i.test(p.name);
+  const isSorrJM = /sorrentino de jam/i.test(p.name);
+  const isBucatini = /bucatini/i.test(p.name);
+  const isRomana = /romana/i.test(p.name);
+  const isCalabaza = /ñoquis de calabaza/i.test(p.name);
+  const isTagliEsp = /tagliatelle de espinaca/i.test(p.name);
+  const isPuntalette = /puntalette/i.test(p.name);
+  const imgClass = isFoglia
+    ? 'is-foglia'
+    : (isFusilliInt ? 'is-fusilli-int' : (isNoquisPapa ? 'is-noquis-papa' : (isSorrJM ? 'is-sorr-jm' : (isBucatini ? 'is-bucatini' : (isRomana ? 'is-romana' : (isCalabaza ? 'is-bucatini' : (isTagliEsp ? 'is-tagli-esp' : (isPuntalette ? 'is-puntalette' : (isEspinaca ? 'is-bucatini' : (isCuerdas ? 'is-portrait is-cuerdas' : (isPortrait ? 'is-portrait' : '')))))))))));
+  const imgBlock = p.img
+    ? `<div class="card-img ${imgClass}"><img src="${p.img}" alt="${p.name}" draggable="false"/></div>`
+    : `<div class="card-placeholder"><img src="${PLACEHOLDER}" alt="" draggable="false"/></div>`;
+  card.innerHTML = `
+    ${imgBlock}
+    <div class="card-body">
+      <div class="card-name">${p.name}</div>
+      <a class="card-cta" href="${p.slug || 'producto-sorrentinos-de-calabaza.html'}">Ver más</a>
+    </div>
+  `;
+  return card;
+}
+
+// Build two rows by interleaving: even -> row 1, odd -> row 2.
+// We want grid to fill column-by-column, with the order we want.
+// Strategy: render cards in chunks of 2 per column, and place them via grid-auto-flow:column.
+function renderTrack(arr){
+  arr.forEach(p => track.appendChild(buildCard(p)));
+}
+
+// To enable infinite loop, render the catalog three times.
+renderTrack(products);
+renderTrack(products);
+renderTrack(products);
+
+// One card width + gap, measured from the live DOM (responsive)
+function cardStep(){
+  const first = track.querySelector('.card');
+  if (!first) return 372;
+  return first.getBoundingClientRect().width + 32;
+}
+
+// Measure one set width — single row
+function setWidth(){
+  const cols = products.length;
+  return cols * cardStep();
+}
+
+let offset = -setWidth(); // start at the middle set
+let targetOffset = offset;
+const damping = 0.12;
+let raf = null;
+
+function applyTransform(){
+  track.style.transform = `translate3d(${offset}px, 0, 0)`;
+}
+function tick(){
+  const w = setWidth();
+  // Wrap offset and targetOffset together (preserve their delta) so the
+  // visible position never snaps — the tripled content makes wraps invisible
+  // and the carousel feels truly infinite in both directions.
+  while (offset <= -2 * w) { offset += w; targetOffset += w; }
+  while (offset >= 0)      { offset -= w; targetOffset -= w; }
+
+  offset += (targetOffset - offset) * damping;
+
+  applyTransform();
+  if (Math.abs(targetOffset - offset) > 0.2) raf = requestAnimationFrame(tick);
+  else { offset = targetOffset; applyTransform(); raf = null; }
+}
+function schedule(){ if (!raf) raf = requestAnimationFrame(tick); }
+
+applyTransform();
+
+/* arrows */
+document.getElementById('arrowLeft').addEventListener('click', () => {
+  targetOffset += cardStep() * 4;
+  schedule();
+});
+document.getElementById('arrowRight').addEventListener('click', () => {
+  targetOffset -= cardStep() * 4;
+  schedule();
+});
+
+/* drag */
+let dragging = false;
+let dragStartX = 0;
+let dragStartOffset = 0;
+let pointerId = null;
+
+viewport.addEventListener('pointerdown', (e) => {
+  // Don't start a drag when clicking the "Ver más" link — let the native
+  // anchor click fire so brand-loader can intercept and navigate.
+  if (e.target.closest('.card-cta')) return;
+  dragging = true;
+  pointerId = e.pointerId;
+  dragStartX = e.clientX;
+  dragStartOffset = offset;
+  targetOffset = offset;
+  viewport.classList.add('dragging');
+  viewport.setPointerCapture(pointerId);
+  if (raf) { cancelAnimationFrame(raf); raf = null; }
+});
+viewport.addEventListener('pointermove', (e) => {
+  if (!dragging) return;
+  const dx = e.clientX - dragStartX;
+  offset = dragStartOffset + dx;
+  targetOffset = offset;
+  const w = setWidth();
+  // keep offset in a safe range while dragging
+  if (offset <= -2 * w) { offset += w; dragStartOffset += w; }
+  if (offset >= 0)      { offset -= w; dragStartOffset -= w; }
+  applyTransform();
+});
+function endDrag(){
+  if (!dragging) return;
+  dragging = false;
+  viewport.classList.remove('dragging');
+  try { viewport.releasePointerCapture(pointerId); } catch(_){}
+  pointerId = null;
+  targetOffset = offset;
+}
+viewport.addEventListener('pointerup', endDrag);
+viewport.addEventListener('pointercancel', endDrag);
+viewport.addEventListener('pointerleave', endDrag);
+
+/* prevent image drag default */
+viewport.addEventListener('dragstart', e => e.preventDefault());
+
+/* keyboard */
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowLeft')  { targetOffset += cardStep() * 4; schedule(); }
+  if (e.key === 'ArrowRight') { targetOffset -= cardStep() * 4; schedule(); }
+});
+</script>
+<script src="social-float.js"></script>
+
+<script>
+(function(){
+  var menuB2B=document.getElementById('menuB2B');
+  if(menuB2B){
+    var trigger=menuB2B.querySelector('a[data-key="b2b"]');
+    if(trigger){ trigger.addEventListener('click',function(e){
+      if(!matchMedia('(hover: none)').matches) return;
+      if(!menuB2B.classList.contains('open')){ e.preventDefault(); menuB2B.classList.add('open'); }
+    }); }
+  }
+})();
+</script>
+</body>
+</html>

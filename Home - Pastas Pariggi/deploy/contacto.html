@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contacto — Pastas Pariggi</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+<script src="brand-loader.js"></script>
+
+<style>
+@font-face { font-family:'Veneer';     src:url('fonts/Veneer.ttf') format('truetype'); font-weight:400; font-display:swap; }
+@font-face { font-family:'Arca Heavy'; src:url('fonts/Arca-Heavy.ttf') format('truetype'); font-weight:900; font-display:swap; }
+@font-face { font-family:'Roboto';     src:url('fonts/Roboto-Thin.ttf')    format('truetype'); font-weight:100; font-display:swap; }
+@font-face { font-family:'Roboto';     src:url('fonts/Roboto-Light.ttf')   format('truetype'); font-weight:300; font-display:swap; }
+@font-face { font-family:'Roboto';     src:url('fonts/Roboto-Regular.ttf') format('truetype'); font-weight:400; font-display:swap; }
+@font-face { font-family:'Roboto';     src:url('fonts/Roboto-Medium.ttf')  format('truetype'); font-weight:500; font-display:swap; }
+@font-face { font-family:'Roboto';     src:url('fonts/Roboto-Bold.ttf')    format('truetype'); font-weight:700; font-display:swap; }
+
+:root{
+  --black:#0a0a0a;
+  --gold:#D99000;
+  --gold-deep:#A26A00;
+  --brown:#905F33;
+  --cream:#F5F0E8;
+  --cream-2:#EFE9DD;
+  --ink:#1a1a1a;
+  --muted:#6a6660;
+  --rule:rgba(0,0,0,0.12);
+  --ease: cubic-bezier(0.22,1,0.36,1);
+}
+
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+html,body{
+  background:var(--cream);
+  color:var(--ink);
+  font-family:'Roboto', system-ui, sans-serif;
+  font-weight:300;
+  -webkit-font-smoothing:antialiased;
+}
+a{ color:inherit; text-decoration:none; }
+button{ font-family:inherit; cursor:pointer; }
+img{ display:block; max-width:100%; }
+
+/* ============ TOP BAR ============ */
+.topbar{
+  position:fixed; top:0; left:0; right:0;
+  z-index:100;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 28px;
+  background-color:var(--cream);
+  border-bottom:1px solid rgba(0,0,0,0.06);
+}
+.topbar-logo img{
+  display:block; width:160px; height:auto; object-fit:contain;
+  filter: brightness(0);
+}
+.topbar-right{ display:flex; align-items:center; gap:18px; }
+.topbar-social{ display:flex; align-items:center; gap:13px; }
+.topbar-social a{ display:flex; align-items:center; justify-content:center; color:inherit; opacity:.85; transition: color .4s var(--ease), opacity .3s var(--ease); }
+.topbar-social a:hover{ opacity:1; color:#D99000; }
+.topbar-social a svg{ width:20px; height:20px; display:block; }
+.topbar-social{ color:#0a0a0a; }
+.burger{
+  width:44px; height:44px;
+  display:flex; flex-direction:column; justify-content:center; align-items:flex-end;
+  gap:7px;
+  background:transparent; border:none;
+  padding:0 4px;
+}
+.burger span{
+  display:block; height:1px;
+  background:#0a0a0a;
+  transition: transform .5s var(--ease), width .5s var(--ease), opacity .3s var(--ease);
+  transform-origin:center;
+}
+.burger span:nth-child(1){ width:32px; }
+.burger span:nth-child(2){ width:22px; }
+.burger span:nth-child(3){ width:32px; }
+.burger.open span:nth-child(1){ transform: translateY(7px) rotate(45deg); width:32px; }
+.burger.open span:nth-child(2){ opacity:0; }
+.burger.open span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); width:32px; }
+
+/* ============ HEADER ============ */
+.page-header{
+  padding: 140px 8vw 60px;
+  max-width: 1500px; margin: 0 auto;
+}
+.page-eyebrow{
+  font-family:'Roboto', sans-serif;
+  font-weight:300; font-size:11px; letter-spacing:0.4em;
+  text-transform:uppercase; color:var(--gold);
+  margin-bottom:14px;
+}
+.page-title{
+  font-family:'Veneer', sans-serif;
+  font-weight:400;
+  font-size: clamp(46px, 6vw, 90px);
+  line-height:0.98;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  color:var(--ink);
+  text-wrap: balance;
+  margin-bottom: 22px;
+}
+.page-title em{ font-style:normal; color: var(--gold); }
+.page-lead{
+  font-family:'Cormorant Garamond', serif;
+  font-style:italic;
+  font-weight:500;
+  font-size: clamp(20px, 2vw, 28px);
+  line-height: 1.35;
+  color: var(--ink);
+  max-width: 680px;
+  text-wrap: balance;
+}
+
+/* ============ CONTACTO ============ */
+.contacto{
+  background: var(--cream-2);
+  padding: 60px 8vw 130px;
+  border-top: 1px solid var(--rule);
+}
+.contacto-inner{
+  max-width: 1280px; margin: 0 auto;
+  display:grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: clamp(50px, 7vw, 100px);
+  align-items: flex-start;
+  padding-top: 60px;
+}
+.contacto-eyebrow{
+  font-family:'Roboto', sans-serif;
+  font-weight:300; font-size:12px; letter-spacing:0.42em;
+  text-transform:uppercase;
+  color: var(--gold);
+  margin-bottom: 22px;
+}
+.contacto-title{
+  font-family:'Veneer', sans-serif;
+  font-weight:400;
+  font-size: clamp(40px, 4.4vw, 64px);
+  line-height: 0.96;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+.contacto-lead{
+  font-family:'Cormorant Garamond', serif;
+  font-style:italic;
+  font-weight: 500;
+  font-size: clamp(18px, 1.7vw, 24px);
+  line-height: 1.35;
+  color: var(--ink);
+  max-width: 460px;
+  text-wrap: balance;
+  margin-bottom: 36px;
+}
+.contacto-info{
+  display:flex; flex-direction:column;
+  gap: 0;
+  margin-top: 36px;
+}
+.contacto-info-item{
+  display:flex; gap: 14px; align-items: flex-start;
+  padding: 14px 0;
+  border-top: 1px solid var(--rule);
+  font-family:'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 14.5px;
+  color: var(--ink);
+}
+.contacto-info-item:last-child{ border-bottom: 1px solid var(--rule); }
+.contacto-info-item .ci-k{
+  flex: 0 0 110px;
+  font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--muted);
+  padding-top: 3px;
+}
+.contacto-info-item .ci-v strong{
+  font-weight: 500;
+  display:block;
+  font-size: 16px;
+  margin-bottom: 2px;
+}
+.contacto-social{
+  margin-top: 30px;
+  display:flex; align-items:center; gap: 16px;
+}
+.contacto-social .cs-label{
+  font-family:'Roboto', sans-serif;
+  font-weight:400; font-size:10px; letter-spacing:0.32em;
+  text-transform:uppercase; color: var(--muted);
+}
+.contacto-social a{
+  width: 42px; height: 42px;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  display:flex; align-items:center; justify-content:center;
+  color: var(--ink);
+  transition: background-color .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease), transform .3s var(--ease);
+}
+.contacto-social a svg{ width: 20px; height: 20px; }
+.contacto-social a:hover{ background: var(--gold); border-color: var(--gold); color:#fff; transform: translateY(-2px); }
+
+/* Existing client banner */
+.portal-banner{
+  margin-top: 40px;
+  padding: 22px 24px;
+  background: var(--cream);
+  border: 1px solid var(--rule);
+  display:flex; align-items: center; gap: 18px;
+  flex-wrap: wrap;
+}
+.portal-banner-icon{
+  width: 44px; height: 44px;
+  display:flex; align-items:center; justify-content:center;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+.portal-banner-icon svg{ width: 22px; height: 22px; }
+.portal-banner-text{
+  flex: 1;
+  font-family:'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink);
+  min-width: 200px;
+}
+.portal-banner-text strong{
+  display:block;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
+}
+.portal-banner-link{
+  font-family:'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  white-space: nowrap;
+  display:inline-flex; align-items:center; gap:10px;
+  transition: gap .3s var(--ease);
+}
+.portal-banner-link:hover{ gap: 16px; }
+.portal-banner-link .arrow{
+  width: 18px; height: 1px; background: currentColor; position:relative;
+}
+.portal-banner-link .arrow::after{
+  content:""; position:absolute; right:0; top: -4px;
+  width: 8px; height: 8px;
+  border-right: 1px solid currentColor; border-top: 1px solid currentColor;
+  transform: rotate(45deg);
+}
+
+/* Form */
+form.contacto-form{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px 22px;
+  background: var(--cream);
+  padding: 36px;
+  border: 1px solid var(--rule);
+}
+form.contacto-form .field-full{ grid-column: 1 / -1; }
+form.contacto-form label{
+  display:flex; flex-direction:column;
+  gap: 8px;
+  font-family:'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+form.contacto-form input,
+form.contacto-form select,
+form.contacto-form textarea{
+  font-family:'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  color: var(--ink);
+  padding: 12px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0,0.25);
+  outline: none;
+  transition: border-color .3s var(--ease);
+  letter-spacing: normal;
+  text-transform: none;
+}
+form.contacto-form input:focus,
+form.contacto-form select:focus,
+form.contacto-form textarea:focus{
+  border-bottom-color: var(--gold);
+}
+form.contacto-form textarea{
+  resize: vertical;
+  min-height: 110px;
+}
+form.contacto-form select{
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><polyline points='1,1 5,5 9,1' fill='none' stroke='%231a1a1a' stroke-width='1.2'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 6px center;
+  padding-right: 22px;
+}
+form.contacto-form .submit-row{
+  display:flex; justify-content: flex-start; margin-top: 10px;
+}
+form.contacto-form button{
+  display:inline-flex; align-items:center; gap: 14px;
+  padding: 16px 32px;
+  background: var(--ink);
+  color:#fff;
+  font-family:'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  border: 1px solid var(--ink);
+  transition: background-color .3s var(--ease), color .3s var(--ease), gap .3s var(--ease);
+}
+form.contacto-form button:hover{
+  background: var(--gold);
+  color:#fff;
+  border-color: var(--gold);
+  gap: 22px;
+}
+form.contacto-form button .arrow{
+  width: 22px; height: 1px; background: currentColor; position:relative;
+}
+form.contacto-form button .arrow::after{
+  content:""; position:absolute; right:0; top: -4px;
+  width: 9px; height: 9px;
+  border-right: 1px solid currentColor;
+  border-top: 1px solid currentColor;
+  transform: rotate(45deg);
+}
+.form-success{
+  display:none;
+  grid-column: 1 / -1;
+  padding: 22px 18px;
+  background: rgba(217,144,0,0.12);
+  border: 1px solid var(--gold);
+  color: var(--ink);
+  font-family:'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 18px;
+  text-align: center;
+}
+.form-success.on{ display:block; }
+
+/* ============ FOOTER ============ */
+.foot{
+  background: var(--cream);
+  padding: 90px 8vw 110px;
+  text-align:center;
+}
+.foot-text{
+  font-family:'Veneer', sans-serif;
+  font-weight:400;
+  font-size: clamp(28px, 3.4vw, 44px);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  line-height: 1.1;
+}
+.foot-text .sep{ color: var(--gold); margin: 0 14px; }
+
+/* ============ MENU PANEL (shared) ============ */
+.menu-panel{
+  position:fixed; inset:0; z-index:200;
+  background:var(--cream);
+  color:#111;
+  transform: translateY(-100%);
+  transition: transform .9s cubic-bezier(0.65,0,0.35,1);
+  display:grid; grid-template-columns: 1fr 1fr;
+  visibility:hidden; pointer-events:none;
+}
+.menu-panel.open{ transform: translateY(0); visibility:visible; pointer-events:auto; }
+.menu-topbar{
+  position:absolute; top:0; left:0; right:0;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:10px 28px;
+  z-index:3;
+  pointer-events:none;
+}
+.menu-topbar > *{ pointer-events:auto; }
+.menu-topbar img{ display:block; width:160px; height:auto; filter: brightness(0) invert(1); }
+.menu-close{
+  width:44px; height:44px;
+  display:flex; align-items:center; justify-content:center;
+  background:transparent; border:none; color:#111;
+}
+.menu-close svg{ width:22px; height:22px; }
+.menu-image{ position:relative; overflow:hidden; background:#111; }
+.menu-image .mi{
+  position:absolute; inset:0;
+  background-size:cover; background-position:center;
+  opacity:0; transform: scale(1);
+  transition: opacity .28s var(--ease), transform 6s ease;
+  filter: brightness(0.6) contrast(1.1);
+}
+.menu-image .mi.active{ opacity:1; transform: scale(1.04); }
+.menu-image::after{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.45) 100%);
+  pointer-events:none;
+}
+.menu-right{
+  display:flex; flex-direction:column; justify-content:center;
+  padding: 120px 8vw 60px; position:relative;
+}
+.menu-list{ list-style:none; display:flex; flex-direction:column; }
+.menu-list li{ border-bottom:1px solid rgba(0,0,0,0.12); }
+.menu-list li:first-child{ border-top:1px solid rgba(0,0,0,0.12); }
+.menu-list a{
+  display:flex; align-items:center; justify-content:flex-end;
+  gap:18px;
+  padding: clamp(18px, 2.2vw, 28px) 0;
+  font-family:'Cormorant Garamond', serif;
+  font-weight:500;
+  font-size: clamp(42px, 5vw, 64px);
+  line-height:1; color:#0b0b0b; text-align:right;
+  position:relative;
+  transition: transform .5s var(--ease), color .3s var(--ease);
+}
+.menu-list a .dot{
+  width:8px; height:8px; border-radius:50%;
+  background:var(--gold); opacity:0;
+  transform: translateX(-8px) scale(0.4);
+  transition: opacity .4s var(--ease), transform .4s var(--ease);
+}
+.menu-list a .lbl{ display:inline-block; transition: transform .5s var(--ease); }
+.menu-list a:hover,
+.menu-list a.is-hover{ color: var(--gold); }
+.menu-list a:hover .dot,
+.menu-list a.is-hover .dot{ opacity:1; transform: translateX(0) scale(1); }
+.menu-list a:hover .lbl,
+.menu-list a.is-hover .lbl{ transform: translateX(-12px); color: var(--gold); }
+.menu-list a .num{
+  font-family:'Roboto', sans-serif;
+  font-weight:300; font-size:12px; letter-spacing:0.3em;
+  color:rgba(0,0,0,0.35); margin-left:24px;
+  align-self:flex-start; padding-top:10px;
+}
+.menu-list .has-sub > a > .caret{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:18px; height:18px;
+  margin-left: 8px;
+  border:1px solid currentColor;
+  border-radius:50%;
+  font-family:'Roboto', sans-serif;
+  font-weight:400; font-size:12px;
+  line-height:1;
+  opacity: 0.6;
+  transition: transform .35s var(--ease), opacity .25s var(--ease);
+  align-self:flex-start; margin-top: 16px;
+}
+.menu-list .has-sub:hover > a > .caret,
+.menu-list .has-sub.open > a > .caret{ opacity:1; transform: rotate(45deg); }
+.menu-list .submenu{
+  list-style:none;
+  display:flex; flex-direction:column;
+  max-height: 0;
+  overflow:hidden;
+  transition: max-height .55s var(--ease);
+}
+.menu-list .has-sub:hover > .submenu,
+.menu-list .has-sub.open > .submenu{ max-height: 320px; }
+.menu-list .submenu li{
+  border:none;
+  border-top:1px dashed rgba(0,0,0,0.12);
+}
+.menu-list .submenu li:first-child{ border-top: 1px dashed rgba(0,0,0,0.12); }
+.menu-list .submenu a{
+  display:flex; flex-direction:column; align-items:flex-end;
+  gap: 4px;
+  padding: 18px 0;
+  text-align:right;
+  font-size: 18px;
+  line-height: 1.15;
+  font-family:'Roboto', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  transition: color .25s var(--ease), transform .35s var(--ease);
+}
+.menu-list .submenu a .sub-hint{
+  font-family:'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--muted);
+}
+.menu-list .submenu a:hover{ color: var(--gold); transform: translateX(-8px); }
+.menu-list .submenu a:hover .sub-hint{ color: rgba(217,144,0,0.8); }
+
+@media (max-width: 1000px){
+  .contacto-inner{ grid-template-columns: 1fr; gap: 50px; }
+  form.contacto-form{ grid-template-columns: 1fr; }
+  .menu-panel{ grid-template-columns: 1fr; }
+  .menu-image{ display:none; }
+}
+</style>
+<style id="menu-unify">
+.menu-topbar-right{ display:flex; align-items:center; gap:14px; pointer-events:auto; }
+.menu-social{ width:40px; height:40px; border:1px solid var(--rule, rgba(0,0,0,0.18)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--ink, #1a1a1a); transition: background-color .3s var(--ease, ease), color .3s var(--ease, ease), border-color .3s var(--ease, ease), transform .3s var(--ease, ease); }
+.menu-social svg{ width:18px; height:18px; }
+.menu-social:hover{ background:var(--gold, #D99000); border-color:var(--gold, #D99000); color:#fff; transform:translateY(-2px); }
+</style>
+</head>
+<body>
+
+<!-- ============ TOP BAR ============ -->
+<div class="topbar" id="topbar">
+  <a href="Home.html" class="topbar-logo" aria-label="Pariggi">
+    <img src="assets/logo-pariggi-transparente.png" alt="Pariggi" />
+  </a>
+  <div class="topbar-right"><div class="topbar-social"><a href="https://www.instagram.com/pastaspariggi/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg></a><a href="https://www.facebook.com/pastaspariggi/?locale=es_LA" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.3h2.45l.37-2.85H13.5V9.04c0-.83.23-1.39 1.42-1.39h1.51V5.1c-.26-.03-1.16-.11-2.2-.11-2.18 0-3.67 1.33-3.67 3.77v2.1H8.1v2.85h2.46V21h2.94z"/></svg></a></div><button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button></div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="page-header">
+  <div class="page-eyebrow">Hablemos</div>
+  <h1 class="page-title">Quiero ser<br/>cliente <em>Pariggi</em></h1>
+  <p class="page-lead">Contanos qué necesitás — restaurante, catering, distribución o exportación — y armamos una propuesta a tu medida.</p>
+</header>
+
+<!-- ============ CONTACTO ============ -->
+<section class="contacto" id="contacto" data-screen-label="Contacto">
+  <div class="contacto-inner">
+
+    <div class="contacto-text">
+      <div class="contacto-eyebrow">Datos de contacto</div>
+      <h2 class="contacto-title">Escribínos y<br/>te <em style="color:var(--gold);font-style:normal;">contactamos</em></h2>
+      <p class="contacto-lead">Respondemos consultas comerciales y solicitudes de pedido. Para cuentas existentes, ingresá al portal mayorista.</p>
+
+      <div class="contacto-info">
+        <div class="contacto-info-item">
+          <span class="ci-k">Pedidos</span>
+          <span class="ci-v"><strong>+54 9 11 7637-0365</strong>Lunes a viernes de 9 a 15 h</span>
+        </div>
+        <div class="contacto-info-item">
+          <span class="ci-k">Email</span>
+          <span class="ci-v"><strong>pedidos@pariggi.com.ar</strong>Respondemos en menos de 24 h hábiles</span>
+        </div>
+        <div class="contacto-info-item">
+          <span class="ci-k">Planta</span>
+          <span class="ci-v"><strong>Chivilcoy, Buenos Aires</strong>Distribución a todo el país</span>
+        </div>
+      </div>
+
+      <a href="http://186.123.162.186:8187/PortalClientes" target="_blank" rel="noopener" class="portal-banner">
+        <div class="portal-banner-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 4 L20 4 L20 20 L14 20"/>
+            <line x1="4" y1="12" x2="16" y2="12"/>
+            <polyline points="12,8 16,12 12,16"/>
+          </svg>
+        </div>
+        <div class="portal-banner-text">
+          <strong>¿Ya sos cliente Pariggi?</strong>
+          Ingresá al portal mayorista para hacer pedidos, consultar facturación y stock.
+        </div>
+        <span class="portal-banner-link">Ingresar<span class="arrow"></span></span>
+      </a>
+
+      <div class="contacto-social">
+        <span class="cs-label">Seguinos</span>
+        <a href="https://www.instagram.com/pastaspariggi/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.facebook.com/pastaspariggi/?locale=es_LA" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.3h2.45l.37-2.85H13.5V9.04c0-.83.23-1.39 1.42-1.39h1.51V5.1c-.26-.03-1.16-.11-2.2-.11-2.18 0-3.67 1.33-3.67 3.77v2.1H8.1v2.85h2.46V21h2.94z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <form class="contacto-form" id="contactoForm" novalidate>
+      <label>
+        Nombre y apellido
+        <input type="text" name="nombre" required placeholder="Tu nombre" />
+      </label>
+      <label>
+        Empresa o local
+        <input type="text" name="empresa" required placeholder="Nombre de tu negocio" />
+      </label>
+      <label>
+        Email
+        <input type="email" name="email" required placeholder="tu@correo.com" />
+      </label>
+      <label>
+        Teléfono
+        <input type="tel" name="telefono" placeholder="+54 9 11 7637-0365" />
+      </label>
+      <label>
+        Tipo de negocio
+        <select name="tipo" required>
+          <option value="">Seleccionar</option>
+          <option>Restaurante</option>
+          <option>Catering</option>
+          <option>Comedor / Hotelería</option>
+          <option>Distribuidor</option>
+          <option>Exportador</option>
+          <option>Otro</option>
+        </select>
+      </label>
+      <label>
+        Localidad
+        <input type="text" name="localidad" placeholder="Ciudad / Provincia / País" />
+      </label>
+      <label class="field-full">
+        Contanos qué necesitás
+        <textarea name="mensaje" placeholder="Productos de interés, frecuencia estimada, plazos, etc."></textarea>
+      </label>
+      <div class="form-success" id="formOk">¡Gracias! Recibimos tu mensaje — te respondemos en menos de 24 hs hábiles.</div>
+      <div class="submit-row field-full">
+        <button type="submit">Enviar consulta<span class="arrow"></span></button>
+      </div>
+    </form>
+
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<div class="foot">
+  <div class="foot-text">Pastas Pariggi <span class="sep">—</span> come una volta</div>
+</div>
+
+<!-- ============ MENU PANEL ============ -->
+<aside class="menu-panel" id="menuPanel" aria-hidden="true">
+  <div class="menu-topbar">
+    <a href="Home.html" class="menu-logo-link" aria-label="Pariggi — Inicio">
+      <img src="assets/logo-pariggi-transparente.png" alt="Pariggi" />
+    </a>
+    <div class="menu-topbar-right">
+      <a class="menu-social" href="https://www.instagram.com/pastaspariggi/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a class="menu-social" href="https://www.facebook.com/pastaspariggi/?locale=es_LA" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.3h2.45l.37-2.85H13.5V9.04c0-.83.23-1.39 1.42-1.39h1.51V5.1c-.26-.03-1.16-.11-2.2-.11-2.18 0-3.67 1.33-3.67 3.77v2.1H8.1v2.85h2.46V21h2.94z"/></svg>
+      </a>
+      <button class="menu-close" id="menuClose" aria-label="Cerrar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+          <line x1="5" y1="5" x2="19" y2="19"/>
+          <line x1="19" y1="5" x2="5" y2="19"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="menu-image" id="menuImage">
+    <div class="mi" data-key="nosotros"  style="background-image:url('assets/menu-nosotros.jpg');"></div>
+    <div class="mi" data-key="productos" style="background-image:url('assets/menu-productos.jpg');"></div>
+    <div class="mi" data-key="metodo"    style="background-image:url('assets/menu-metodo.jpg');"></div>
+    <div class="mi" data-key="b2b"       style="background-image:url('assets/menu-b2b.jpg');"></div>
+    <div class="mi" data-key="distribuidores" style="background-image:url('assets/menu-distribuidores.jpg');"></div>
+    <div class="mi" data-key="contacto"  style="background-image:url('assets/menu-general.jpg');"></div>
+    <div class="mi active" data-key="__default" style="background-image:url('assets/menu-general.jpg');"></div>
+  </div>
+
+  <div class="menu-right">
+    <ul class="menu-list">
+      <li><a href="nosotros.html"  data-key="nosotros"     ><span class="dot"></span><span class="lbl">Nosotros</span><span class="num">01</span></a></li>
+      <li><a href="productos.html" data-key="productos"    ><span class="dot"></span><span class="lbl">Productos</span><span class="num">02</span></a></li>
+      <li><a href="metodo.html"    data-key="metodo"       ><span class="dot"></span><span class="lbl">Método</span><span class="num">03</span></a></li>
+      <li class="has-sub" id="menuB2B"><a href="b2b.html" data-key="b2b"          ><span class="dot"></span><span class="lbl">B2B</span><span class="caret">+</span><span class="num">04</span></a>
+        <ul class="submenu">
+          <li><a href="contacto.html">Quiero ser cliente<span class="sub-hint">Hacer pedidos · catering · distribución</span></a></li>
+          <li><a href="http://186.123.162.186:8187/PortalClientes" target="_blank" rel="noopener">Portal mayorista<span class="sub-hint">Ingresá a tu cuenta y hacé tus pedidos</span></a></li>
+        </ul>
+      </li>
+      <li><a href="distribuidores.html" data-key="distribuidores"><span class="dot"></span><span class="lbl">Distribuidores</span><span class="num">05</span></a></li>
+      <li><a href="contacto.html" data-key="contacto"      ><span class="dot"></span><span class="lbl">Contacto</span><span class="num">06</span></a></li>
+    </ul>
+  </div>
+</aside>
+
+<script>
+/* ---------- Menu panel wiring ---------- */
+const burger    = document.getElementById('burger');
+const panel     = document.getElementById('menuPanel');
+const closeBtn  = document.getElementById('menuClose');
+const imgs      = document.querySelectorAll('.menu-image .mi');
+
+function openMenu(){
+  burger.classList.add('open');
+  panel.classList.add('open');
+  panel.setAttribute('aria-hidden','false');
+}
+function closeMenu(){
+  burger.classList.remove('open');
+  panel.classList.remove('open');
+  panel.setAttribute('aria-hidden','true');
+  document.querySelectorAll('.menu-list a.is-hover').forEach(o => o.classList.remove('is-hover'));
+  imgs.forEach(m => m.classList.toggle('active', m.dataset.key === '__default'));
+}
+burger.addEventListener('click', () => panel.classList.contains('open') ? closeMenu() : openMenu());
+closeBtn.addEventListener('click', closeMenu);
+
+document.querySelectorAll('.menu-list a').forEach(a => {
+  a.addEventListener('mouseenter', () => {
+    document.querySelectorAll('.menu-list a.is-hover').forEach(o => o.classList.remove('is-hover'));
+    a.classList.add('is-hover');
+    const k = a.dataset.key;
+    if (k) imgs.forEach(i => i.classList.toggle('active', i.dataset.key === k));
+  });
+  a.addEventListener('mouseleave', () => { a.classList.remove('is-hover'); });
+});
+const menuListEl = document.querySelector('.menu-list');
+if (menuListEl) {
+  menuListEl.addEventListener('mouseleave', () => {
+    document.querySelectorAll('.menu-list a.is-hover').forEach(o => o.classList.remove('is-hover'));
+    imgs.forEach(m => m.classList.toggle('active', m.dataset.key === '__default'));
+  });
+}
+
+/* Submenu — toggle on tap for touch devices */
+const menuB2B = document.getElementById('menuB2B');
+if (menuB2B){
+  const trigger = menuB2B.querySelector('a[data-key="b2b"]');
+  trigger.addEventListener('click', (e) => {
+    if (!matchMedia('(hover: none)').matches) return;
+    if (!menuB2B.classList.contains('open')){
+      e.preventDefault();
+      menuB2B.classList.add('open');
+    }
+  });
+}
+
+/* ---------- Form handler ---------- */
+const form = document.getElementById('contactoForm');
+const ok = document.getElementById('formOk');
+if (form){
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const required = form.querySelectorAll('[required]');
+    let valid = true;
+    required.forEach(r => {
+      if (!r.value.trim()) {
+        valid = false;
+        r.style.borderBottomColor = '#c33';
+        r.addEventListener('input', () => { r.style.borderBottomColor = ''; }, { once: true });
+      }
+    });
+    if (!valid) return;
+    form.querySelectorAll('input, select, textarea, button').forEach(el => el.disabled = true);
+    ok.classList.add('on');
+    ok.scrollIntoView({ behavior:'smooth', block:'center' });
+  });
+}
+</script>
+<script src="social-float.js"></script>
+</body>
+</html>
